@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { techGroups, categories, questions } from '@/data/questions';
+import { techGroups, categories, questions } from '@/data/index';
 import { useLanguage } from '@/context/LanguageContext';
 import { useProgress } from '@/context/ProgressContext';
 
