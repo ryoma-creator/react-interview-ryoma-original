@@ -1,0 +1,10 @@
+src/
+  data/
+    index.js            # すべてをインポート・エクスポートする中心ファイル
+    techGroups.js       # 技術グループの定義
+    categories.js       # カテゴリーの定義
+    questions/          # 質問を技術グループごとに分割
+      javascript.js     # JavaScriptの質問
+      react.js          # Reactの質問
+      nextjs.js         # Next.jsの質問
+      dev-tools.js      # 開発ツールの質問
