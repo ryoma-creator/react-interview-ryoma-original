@@ -8,6 +8,8 @@ const ProgressContext = createContext();
 
 export function ProgressProvider({ children }) {
   const [completedQuestions, setCompletedQuestions] = useState({});
+  // Add new state for review items
+  const [reviewItems, setReviewItems] = useState({});
   
   // LocalStorageから進捗状況をロード
   useEffect(() => {
@@ -15,6 +17,12 @@ export function ProgressProvider({ children }) {
       const storedProgress = localStorage.getItem('reactInterviewProgress');
       if (storedProgress) {
         setCompletedQuestions(JSON.parse(storedProgress));
+      }
+      
+      // Load review items
+      const storedReviewItems = localStorage.getItem('reactInterviewReview');
+      if (storedReviewItems) {
+        setReviewItems(JSON.parse(storedReviewItems));
       }
     }
   }, []);
@@ -25,6 +33,13 @@ export function ProgressProvider({ children }) {
       localStorage.setItem('reactInterviewProgress', JSON.stringify(completedQuestions));
     }
   }, [completedQuestions]);
+  
+  // Save review items to localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined' && Object.keys(reviewItems).length > 0) {
+      localStorage.setItem('reactInterviewReview', JSON.stringify(reviewItems));
+    }
+  }, [reviewItems]);
   
   // 質問の完了状態を切り替える
   const toggleQuestionCompletion = (questionId) => {
@@ -39,7 +54,20 @@ export function ProgressProvider({ children }) {
     });
   };
   
-  // 特定のカテゴリーの完了率を取得
+  // Toggle review status for an item
+  const toggleReviewItem = (questionId) => {
+    setReviewItems(prev => {
+      const newState = { ...prev };
+      if (newState[questionId]) {
+        delete newState[questionId];
+      } else {
+        newState[questionId] = true;
+      }
+      return newState;
+    });
+  };
+  
+  // Your existing functions...
   const getCategoryProgress = (categoryId, questions) => {
     const categoryQuestions = questions.filter(q => q.category === categoryId);
     if (categoryQuestions.length === 0) return 0;
@@ -48,7 +76,6 @@ export function ProgressProvider({ children }) {
     return Math.round((completedCount / categoryQuestions.length) * 100);
   };
   
-  // 特定の技術グループの完了率を取得
   const getTechGroupProgress = (techGroupId, categories, questions) => {
     const groupCategories = categories.filter(c => c.techGroup === techGroupId);
     if (groupCategories.length === 0) return 0;
@@ -66,7 +93,6 @@ export function ProgressProvider({ children }) {
     return Math.round((totalCompleted / totalQuestions) * 100);
   };
   
-  // 全体の完了率を取得
   const getTotalProgress = (questions) => {
     if (questions.length === 0) return 0;
     
@@ -81,7 +107,9 @@ export function ProgressProvider({ children }) {
         toggleQuestionCompletion,
         getCategoryProgress,
         getTechGroupProgress,
-        getTotalProgress
+        getTotalProgress,
+        reviewItems,         // Add these new values
+        toggleReviewItem
       }}
     >
       {children}

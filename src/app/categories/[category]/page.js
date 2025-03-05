@@ -11,7 +11,7 @@ import CodeBlock from '@/components/CodeBlock';
 
 export default function CategoryPage({ params }) {
   const { language, t } = useLanguage();
-  const { completedQuestions, toggleQuestionCompletion } = useProgress();
+  const { completedQuestions, toggleQuestionCompletion, reviewItems, toggleReviewItem } = useProgress();
   const [expandedQuestionId, setExpandedQuestionId] = useState(null);
   const [isReading, setIsReading] = useState(false);
   
@@ -168,9 +168,28 @@ export default function CategoryPage({ params }) {
                       </div>
                     )}
                     
-                    <div className="flex justify-end">
+                    <div className="flex justify-end space-x-2">
                       <button
-                        onClick={() => toggleQuestionCompletion(question.id)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleReviewItem(question.id);
+                        }}
+                        className={`px-4 py-2 rounded-md ${
+                          reviewItems?.[question.id] 
+                            ? 'bg-yellow-100 text-yellow-600 border border-yellow-600' 
+                            : 'bg-gray-200 text-gray-700'
+                        }`}
+                      >
+                        {reviewItems?.[question.id] 
+                          ? (language === 'en' ? 'Remove from Review' : 'レビューから削除') 
+                          : (language === 'en' ? 'Add to Review' : 'レビューに追加')}
+                      </button>
+                      
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleQuestionCompletion(question.id);
+                        }}
                         className={`px-4 py-2 rounded-md ${
                           isCompleted 
                             ? 'bg-white text-green-600 border border-green-600' 

@@ -15,3 +15,7 @@ setCount(count + 1);  // 古い状態を参照する可能性
 
 // 良い例
 setCount(prevCount => prevCount + 1);  // 最新の状態を確実に使用
+
+
+Sample English Explanation Template for Toggle Component:
+"I've implemented a React toggle button using the useState hook. The component manages a boolean state that can be switched between on and off.

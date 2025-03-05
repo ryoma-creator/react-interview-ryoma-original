@@ -1,53 +1,44 @@
-'use client';
+'use client'
 
 import { useState } from 'react';
 
-
 export default function Counter() {
 
-    const [state, setState]= useState(0);
-
-    const incrementClick = () => {
-        setState(prevState => prevState +1);
-    };
-
-    const decrement = () => {
-        setState(prevState => prevState -1);
-    };
-
-    const reset = () => {
+    const [state, setState] = useState(0);
+    
+    const incrementClick=()=>{
+      setState( prev => prev+1 );
+    }
+    const decrementClick=()=>{
+        setState( prev=> Math.max(0, prev-1) );
+    }
+    const resetClick=()=>{
         setState(0);
-    };
+    }
+    
 
-    return (
-        <>
-            <button
-                className='bg-blue-500 rounded-md p-2 text-white'
-                onClick={incrementClick}
-            >
-                plus button
-            </button>
-            <button
-                className='bg-red-400 rounded-md p-2 text-white'
-                onClick={decrement}
-            >
-                minus button
-            </button>
+    return(
+      <>
+        <button
+          className='p-4 bg-green-400'
+          onClick={incrementClick}
+        >
+            Increment
+        </button>
+        <button
+          className='p-4 bg-green-400'
+          onClick={decrementClick}
+        >
+            Decrement
+        </button>
+        <button
+          className='p-4 bg-green-400'
+          onClick={resetClick}
+        >
+            Reset
+        </button> 
 
-            <p>count: {state}</p>
-
-
-            <button
-                className='bg-slate-500 rounded-md text-black'
-                onClick={reset}
-            >
-                reset
-            </button>
-
-
-        </>
-
-    )
-
-
-}; 
+        <p>counter: {state}</p>
+      </>
+    );
+};

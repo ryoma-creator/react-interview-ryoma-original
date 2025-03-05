@@ -1,28 +1,23 @@
 'use client'
 
-import React from 'react';
 import { useState } from 'react';
 
-const Toggle = () => {
-    const [toggleState, setToggleState] = useState(false);
+export default function Toggle (){
+  const [isToggled, setIsToggled]=useState(false);
 
-    const handleToggleChange = () => {
-        setToggleState(!toggleState);
-    };
+  const handleClicked=()=>{
+    setIsToggled(!isToggled);
+  };
 
-
-  return (
-    <div>
+  return(
+    <>
+      <div>
         <button 
-            onClick={handleToggleChange}
-            className={`p-3 rounded-md
-            ${toggleState ? "bg-green-400" : "bg-red-500" }
-            `}>
-          <p> {toggleState ? "ON" : "OFF" }</p> 
+          onClick={handleClicked}
+          className={`p-4 ${isToggled ? 'bg-green-500' : 'bg-red-500'}`}>
+            {isToggled ? "On" : "Off"}
         </button>
-
-    </div>
+      </div>
+    </>
   );
 };
-
-export default Toggle;

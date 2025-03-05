@@ -9,9 +9,10 @@ import { useProgress } from '@/context/ProgressContext';
 
 export default function Home() {
   const { language, t } = useLanguage();
-  const { getCategoryProgress, getTechGroupProgress, getTotalProgress } = useProgress();
+  const { getCategoryProgress, getTechGroupProgress, getTotalProgress, reviewItems } = useProgress();
   
   const totalProgress = getTotalProgress(questions);
+  const reviewCount = reviewItems ? Object.keys(reviewItems).filter(key => reviewItems[key]).length : 0;
   
   return (
     <main className="min-h-screen">
@@ -26,6 +27,26 @@ export default function Home() {
             style={{ width: `${totalProgress}%` }}
           ></div>
         </div>
+      </div>
+      
+      {/* Add Review Link Here */}
+      <div className="mb-8">
+        <Link 
+          href="/review" 
+          className="flex items-center justify-between p-4 bg-yellow-50 border border-yellow-200 rounded-lg shadow hover:bg-yellow-100 transition"
+        >
+          <div className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mr-2 text-yellow-600">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+            <span className="font-medium">
+              {language === 'en' ? 'Daily Review' : '日々のレビュー'}
+            </span>
+          </div>
+          <div className="bg-yellow-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
+            {reviewCount}
+          </div>
+        </Link>
       </div>
       
       {techGroups.map(group => {
