@@ -3,21 +3,20 @@
 import { useState } from 'react';
 
 export default function Toggle (){
-  const [isToggled, setIsToggled]=useState(false);
-
-  const handleClicked=()=>{
-    setIsToggled(!isToggled);
+  const [isToggle, setIsToggle] = useState(false);
+  const handleClick=()=>{
+    setIsToggle(
+      prev => !prev 
+    );
   };
-
   return(
     <>
-      <div>
-        <button 
-          onClick={handleClicked}
-          className={`p-4 ${isToggled ? 'bg-green-500' : 'bg-red-500'}`}>
-            {isToggled ? "On" : "Off"}
-        </button>
-      </div>
+      <button
+        className={`${isToggle ? 'text-green-400' : 'bg-gray-400'}`}
+        onClick={handleClick}
+      >
+        <p>{isToggle ? ON : OFF}</p>
+      </button>
     </>
   );
 };

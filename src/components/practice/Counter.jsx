@@ -2,43 +2,50 @@
 
 import { useState } from 'react';
 
-export default function Counter() {
 
-    const [state, setState] = useState(0);
-    
-    const incrementClick=()=>{
-      setState( prev => prev+1 );
-    }
-    const decrementClick=()=>{
-        setState( prev=> Math.max(0, prev-1) );
-    }
-    const resetClick=()=>{
-        setState(0);
-    }
-    
+const Counter = () => {
+
+  const [state, setState] = useState(0);
+  const plusHandleClick=()=>{
+   setState(
+    prev => prev + 1
+   );
+  };
+
+  const minusHandleClick=()=>{
+    setState(
+     prev => Math.max(0, prev-1)
+    );
+   };
+
+   const resetHandleClick=()=>{
+    setState(0);
+   }
 
     return(
-      <>
-        <button
-          className='p-4 bg-green-400'
-          onClick={incrementClick}
-        >
-            Increment
-        </button>
-        <button
-          className='p-4 bg-green-400'
-          onClick={decrementClick}
-        >
-            Decrement
-        </button>
-        <button
-          className='p-4 bg-green-400'
-          onClick={resetClick}
-        >
-            Reset
-        </button> 
+    <>
+      <button
+        onClick={plusHandleClick}
+        className='px-8 py-2 bg-green-400'
+      >
+        <p>+</p>
+      </button>
+      <button
+        onClick={minusHandleClick}
+        className='px-8 py-2 bg-red-400'
+      >
+        <p>-</p>
+      </button>
 
-        <p>counter: {state}</p>
-      </>
-    );
+      <p>counter: { state } </p>
+      <button
+        onClick={resetHandleClick}
+        className='px-8 py-2 bg-red-400'
+      >
+        <p>reset</p>
+      </button>
+    </>
+);
 };
+
+export default Counter ;
