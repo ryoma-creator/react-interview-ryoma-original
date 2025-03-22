@@ -2,6 +2,7 @@ import Counter from "@/components/practice/Counter"
 import Toggle from "@/components/practice/Toggle"
 import Form from "@/components/practice/Form"
 import TodoList from "@/components/practice/ToDoList"
+import SimpleUserList from "@/components/practice/DataFetch"
 
 export default function PracticePage() {
  return (
@@ -10,7 +11,10 @@ export default function PracticePage() {
         {/* <Counter />
         <Toggle />
         <Form /> */}
-        <TodoList/>
+        {/* <TodoList/> */}
+
+        <SimpleUserList/>
+
     </div>
  )
 }
