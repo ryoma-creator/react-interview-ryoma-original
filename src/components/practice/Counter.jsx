@@ -14,7 +14,7 @@ const Counter = () => {
 
   const handleDecrement = () => {
     setCount(
-      ()=>(math.Max(0, count - 1))
+      ()=>(Math.max(0, count - 1))
     );
   };
 
