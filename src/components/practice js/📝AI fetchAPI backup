@@ -6337,9 +6337,119 @@ console.log(result); // formattedDataが表示される
 
 関数ってよく文字列操作とかhackerrankとかでやるの習うけど、あれってどこで使えるんだ？そもそも関数の流れとか仕組みがよくわからん
 
+        
 
+        return formattedData;
 
+    } catch (error) {
 
+        console.error('データ取得エラー:', error);
+
+        return [];
+
+このreturnはどこへいくの？
+
+    <!-- ローディング表示（後で使用） -->
+
+    <div id="loading" style="display: none;">
+
+        データを読み込み中...
+
+    </div>
+
+    <!-- エラー表示（後で使用） -->
+
+    <div id="error" style="display: none;">
+
+        データの読み込みに失敗しました
+
+    </div>
+
+// === 問題4: ローディング表示 ===
+
+// 問題4-1: ローディング表示の制御
+
+function showLoading() {
+
+    document.getElementById('loading').style.display = 'block';
+
+    document.getElementById('dataTable').style.display = 'none';
+
+}
+
+function hideLoading() {
+
+    document.getElementById('loading').style.display = 'none';
+
+    document.getElementById('dataTable').style.display = 'table';
+
+}
+
+// テスト用（必要に応じて解除）
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    console.log('ローディングテスト開始');
+
+    showLoading();
+
+    
+
+    setTimeout(() => {
+
+        hideLoading();
+
+        console.log('ローディングテスト完了');
+
+    }, 2000);
+
+});
+
+上記のだけど、初めからhtmlにdisplay noneがあるけど、これってローディング中っていう文字は表示されないんじゃない？また関数もnoneにしていて、どちらにしても表示されないから意味わからなくない？違う？
+
+成功時：apiDataにformattedDataが入る
+
+エラー時：apiDataに[]（空配列）が入る
+
+apiDataって何？何これ？
+
+<!-- 最初は非表示、JavaScriptで必要な時に表示 --> <div id="loading" style="display: none;"> データを読み込み中... </div> <div id="error" style="display: none;"> データの読み込みに失敗しました </div>
+
+これだけど、データを読み込み中っていうのをフェッチしている時に表示するようにするんだよね？
+
+displayの表示というのは、blockなの？俺、ここinnerHTML、もしくはtextContentを書く方法の方で習ったけど。そっちでもいい？
+
+return formattedData; // ←これはfetchUserData()を呼び出した場所に返される
+
+意味がよくわからない。わかりやすく流れ書いてくれる？
+
+     // APIデータを我々の形式に変換
+
+        const formattedData = users.slice(0, 5).map(user => ({
+
+            id: user.id,
+
+            name: user.name,
+
+            email: user.email,
+
+            department: user.company.name
+
+        }));
+
+これか。取得したデータを扱いやすい形にobjectの中へ入れたのか。
+
+そしてこれを、渡したのか。returnで
+
+そして何もない時、catchの時はreturnでからの配列渡せば、何もないのを渡せるってことか。
+
+const apiData = await fetchUserData(); // ←これ！
+
+ただ、この関数を渡した変数っていうのかな。この関数にもちゃんとawaitとかつけるのか。
+
+, async function() {
+
+大枠もそうだな。fetchしたものはこれをつけないといけないのか。そして、呼び出しの関数には、awaitつけるのか。やば、忘れるわ。もし、promisechainならどうなっていた？
 
 
 
