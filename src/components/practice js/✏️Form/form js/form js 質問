@@ -1,0 +1,58 @@
+むしろ、reactではidより、nameとvalueか？
+
+Edit
+<input type="checkbox" id="agree" value="yes"> <input type="radio" id="male" name="gender" value="male">
+
+これvalueってどうなるの？自分で入力じゃないから、ここで固定ってことか？valueって書いたもので
+
+方法2: form の submit をキャンセル
+
+html
+
+<form onsubmit="handleSubmit(event)">
+    <input type="text" id="myInput">
+    <button type="submit">送信</button>
+</form>
+
+<script>
+function handleSubmit(event) {
+    event.preventDefault();  // ←ページリロードを防ぐ
+    // 処理をここに書く
+}
+</script>
+これはreact？onsubmitっていうのはvanila jsでもあるの？
+あれ、
+onとかは全部addEventListenerとかで書くんじゃなかった？そこに、"submit"とか書くんじゃなかったっけ？要素取得して？
+
+HTML に直接書く方法：
+
+html
+
+<!-- これも動くけど、推奨されない -->
+<form onsubmit="handleSubmit(event)">
+この場合は、どうやって書くんだ？でもaddEventListenrで覚えるよ。
+
+じゃあ、formにonsubmitは書かなくていいのか。idだけでいいね。気をつけるのは。
+
+それと、
+3. JavaScript 基本テンプレート
+javascript// DOM要素の取得
+const dataForm = document.getElementById('dataForm');
+const dataInput = document.getElementById('dataInput');
+const dataList = document.getElementById('dataList');
+
+// データ保存用の配列
+let items = [];
+
+// ページ読み込み時の処理
+document.addEventListener('DOMContentLoaded', function() {
+  // 保存されたデータを読み込む
+  loadItems();
+  
+  // フォーム送信イベントの設定
+  dataForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // フォームのデフォルト送信を防止
+    addItem();
+  });
+});
+これだけど変数に入れている要素は関数内ではなくて外に書くべき？なんか関数の呼び出しの中に書いても他で使えるからそうした方がいいとも聞いてどっちがいいのかわからんのだが。
