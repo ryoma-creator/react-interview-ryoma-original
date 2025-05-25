@@ -56,3 +56,213 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 これだけど変数に入れている要素は関数内ではなくて外に書くべき？なんか関数の呼び出しの中に書いても他で使えるからそうした方がいいとも聞いてどっちがいいのかわからんのだが。
+
+classはわかるが、<button class="delete-btn" data-id="${item.id}">削除</button> `;
+
+data-idがよくわからない。そしてここへitem.idってobjectかな？追加時の。それを入れておくのか。これ、dataーidがわからなかったら、classに入れちゃダメ？もしくはただのid属性に入れちゃダメ？
+
+可能な限り暗記量を減らしたいが。
+
+2. Escapeキーって？
+
+キーボードの「Esc」キーです
+
+javascript
+
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {  // Escキーを押したら
+        cancelEdit();          // 編集をキャンセル
+    }
+});
+
+よくある使い方：
+
+へー。じゃあ、e.key ===  "α"だったら aを押したら、ってなるの？ゲームとかもし作ったら、選択肢とかにするのにいいかもね。面白いかも。
+
+でもエスケープ押さないでどこかクリックして解除とかは？めんどいか。
+
+filteredItemsとdisplayのやつがいつも意味がよくわからんのよね。
+
+Itemsっていうのは最初のuseStateにあたる箱みたいなやつだろ？
+
+fitereddItemもからの箱作って何かするのか？reactでもそうなの？こいつが本当にわからない。簡単だって思わせるように教えてくれる？
+
+あのさ、バーっと一気にコード見せられても時間がかかるし、理解できない。
+疲れるし。嫌になってやめちゃうよ。どうやったらいい？これじゃ学習やめちゃうよ。嫌いになっちゃいそう。楽しくないから。
+
+// 削除ボタン作成時 button.addEventListener('click', () => deleteItem(id)); }
+こういうaddeventlistenerっていうのは作ったら、
+ deleteItem(id)); }
+こいつに引数渡して呼び出すのはどこに設置すればいいの？
+
+編集キャンセル
+javascript
+// ESCキーで戻す
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        cancelEdit();
+    }
+何escapeって？
+
+5. 検索の表示制御
+javascript// 一時的な表示用配列を作る
+let filteredItems = items; // 表示用
+
+function search(keyword) {
+    filteredItems = items.filter(item => 
+        item.text.toLowerCase().includes(keyword.toLowerCase())
+    );
+    renderItems(); // filteredItemsを表示
+}
+これなんでrenderItemsが必要なの？これがないと表示されないの？
+
+あのさ、
+コードを書かないで言葉で言っていく。そしてそれで作る手順あっているか、発想あっているか、教えてほしい。それとコードでお願い。
+
+例えば、to do listを作るとする。
+
+適当にform, input,buttonタグがあって、
+まず、jsのファイルで、
+
+submitというか、エンターボタンすると、作られる、event listnnerを作る。
+
+そしてその中に、
+入力した値を箱に入れるように、する。
+
+そして、それを表示するように、innerHTMLか何かで表示。その際に、削除ボタンと編集のbuttonをclassかidか何か入れて作っておく。
+つまりaddの中に表示でいいのか？表示のための関数を作っているのもどこかで見たが、、
+
+そいで、別の関数で
+適当にdelete関数とか作って、
+さっき表示させた時に作ったbuttonに対して、
+idかclassから辿って、その要素へ
+まず、もし作った、やつのidがあるなら、
+id　!＝=って感じで、同じにならないやつだけをfilterで残す形にする。そうすれば消えるはずだ。
+それで、それをreturnするのかな？
+それでその関数をどこかで発動しないといけないな。。うん。。？ここがよくわからん
+
+あとは、編集か。編集は、また編集のボタンをクリックすると、
+innerHTMLか何かで、input表示する感じにして inputにclassNameか何か入れて指定できるように・
+ってことは基本classかidがあればいいのか。もっと覚えやすくするためにidでいいのかな？
+
+そこへ入力すると、
+入力したやつが、さっき入力したのに入れ替わる形にしたいな。。。でもこのさっき入力したやつっていうのはどうしたらいいんだろう。。ここがさっきからわからない。
+
+それと、
+入力中のやつは、もしやっぱいいやって編集やめたら、表示から消えるようにしない解けないが、どうしたらいいんだろう。。これ用のaddeventlistenrがあるんだろうか？
+
+うーん。reactだったらどうなんだろうな。うまく、記憶にどっちもごちゃごちゃになるんじゃなくてリンクさせて覚えられたらいんだが。考え方は同じであと指示を少ないパターンでちょっとreactとかちょっとdom用にするだけでうまくいったらいんだが。。
+
+あのさ、それとコード書かないで実際にこういうの作りたいって感じで、発想を言って、考えるのって、あり？これコード書くより早いしイメージトレーニングしているんだ。
+実際こういうのってするのかな？
+
+それと、あとは、
+検索があるな。
+
+検索は
+入力すると、
+ inputタグかな？これを入れたキーワードと同じかどうかだから、
+inputのvalueを取りたいよね。
+発動条件は、なんだろう。submitとかかな。keyupは古いって聞いた。
+submitならボタンが必要だな。
+もしくはenterとかあるのかな。
+
+大文字か、小文字の問題があるから、入力したものを小文字にしよう。
+そして、小文字で確定したやつを、
+実際のデータ、ここでは、
+to do listのデータだから、to do list作成時に入力したものかな？
+入力したものと検索した字が同じかどうかをチェックする。
+
+同じだったら、おそらく、cssのstyleを変えるようにするのかな
+どうすればいいかな。display noneを他の入力したものにするには。
+うーん、他のやつは表示させないようにするってどうすればいいんだ？
+でも、mapとかfilter使ったら、一時的じゃなくて完全に変えちゃうよね？
+それかそれでもいいのかな。複雑かな。
+
+これで検索までできるイメージはこんな感じ。エラーハンドリングはしてないな。まあ、複雑になるからここまでだ。どうかな？
+俺言ったやつを実際どうなるのか、小分けしてそれぞれ解説しながら見せてくれない？間違ってもコード書いてそれを説明と勘違いしないで。できる？
+
+ok　じゃあ、表示、または追加までのところまでで一回見せて。コードで。
+一気にやらないで。jsのみでいいから。
+一気にコード見せられるとすぐ学習やめたくなるから
+
+取得方法：
+
+javascript
+
+// 方法1: data-id
+const id = button.dataset.id;  // "123"
+
+// 方法2: id属性  
+const id = button.id.replace('delete-', '');  // "123"
+
+// 方法3: class
+const id = button.className.match(/item-(\d+)/)[1];  // "123"
+取得方法が方法１のdataーidじゃないと難しすぎる！！覚えられんよ。取得方法っていうのは、このidのやつを発見して、行うこと？deleteとか編集とか？filterとかで？ここがわからんのよ。加えたやつを見つける方法が。
+
+reactだと、keyにそれぞれidを入れたよね？あれ、どうやって発見するんだっけ？
+
+
+キーについて
+その通りです！
+javascriptif (e.key === 'a') {        // aキー
+if (e.key === 'Enter') {    // エンターキー  
+if (e.key === 'Space') {    // スペースキー
+ふーん、じゃあ、これでもaddEventListenrの条件にできるのかな？
+例えば、エンター押してsubmit扱いにするとかもあるかな？ないか。。まず入力してないといけないし、複雑になりそうか。
+
+     if (!e.target.closest('.edit-area')) {
+一応、やり方はあるのか。。？.closest_?めんどくさそうだな。。覚えるの増えそうだ。。
+ 
+filteredItems を簡単に
+めちゃくちゃ簡単です！
+🎯 2つの箱だけ
+javascriptlet items = ['りんご', 'みかん', 'ばなな'];          // 全データ
+let filteredItems = ['りんご', 'みかん', 'ばなな'];  // 表示用
+この表示用っていうのは、itemsのコピーを入れて、こいつで表示させて、
+もし、検索とかフィルターするなら、こいつでかえるってことか。。？
+でも一度、mapとかfilterで変えたら、もう表示戻せなくなるよね？実際はそうじゃないはずだ。ここはどうすればいいんだ？
+
+🔥 検索の流れ
+javascript// 1. 「り」で検索
+filteredItems = items.filter(item => item.includes('り'));
+// → filteredItems = ['りんご']  （みかん・ばななは消える）
+
+// 2. 画面には filteredItems だけ表示
+// → 「りんご」だけ見える
+でも見えても、けんさくのinputを入力やめた時、元に戻って欲しいけど、どうするんだ、それは？
+
+
+エラーハンドリングとか細かいのって、後でいいかな？ようはこの機能があるのをコーディングテストで作れればいんだろ？最低ライン。
+
+🎯 React でも同じ
+🎯 React でも同じ
+javascriptconst [items, setItems] = useState(['りんご', 'みかん', 'ばなな']);
+const [filteredItems, setFilteredItems] = useState(['りんご', 'みかん', 'ばなな']);
+
+// 検索
+setFilteredItems(items.filter(item => item.includes('り')));
+要するに：
+
+items = 全部のデータ
+filteredItems = 今見せたいデータ
+
+ん？filter昔作ったけど、これやったかな？ここの発想というか考え方を忘れている。超簡単と思わせるように教えて”
+
+const todoList = document.getElementById('todoList');
+
+このidはulからきているの? liからきているの？
+
+// データ管理（箱） let items = [];
+
+まあ、useStateみたいなものだな。
+
+document.addEventListener('DOMContentLoaded', function() { // フォーム送信イベント
+
+reactだと、この要素の指定ってあるんだっけ？
+
+onClickとか直接要素に書くからいらないんだっけ？
+
+// 画面表示更新 renderItems(); } // 画面に表示 function renderItems() { todoList.innerHTML = ''; // 一旦クリア items.forEach(item => { const div = document.createElement('div'); div.innerHTML = <span>${item.text}</span>; todoList.appendChild(div); });
+
+このrender itemsのやつが一元管理というか、こいつを通せば表示できるようになるんだろ？これがわからんのよ。filteredとかいうやつでも別の関数なのに、なんでこいつと押すと表示できるようにできるのか。ここの考え、超簡単て思えるように教えてくれる？
