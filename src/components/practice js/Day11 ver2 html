@@ -1,0 +1,121 @@
+; あなたが提示したDay 11の問題は基本的なDOM操作をカバーしていますが、
+; IBMのコーディングテスト対策としては一部足りない部分があります。
+; 特に以下の重要な要素が不足しています：
+
+; 不足している重要なDOM操作スキル
+
+; 1 テーブル操作（重要）
+; テーブルの動的な生成
+; テーブル内データのソート
+; テーブル内データの検索/フィルタリング
+
+
+; 2 入力検証（バリデーション）
+; フォーム入力の検証
+; エラーメッセージの表示
+
+
+; 3 APIデータ表示に関連するDOM操作
+; ローディング表示の制御
+; エラー表示の制御
+; データを表形式で表示
+
+
+
+; パート1から順番に進めていくことで、
+; 基本的なDOM操作から、テーブル操作、検証、検索・ソートといった
+; IBMのコーディングテストで問われる可能性が高い要素を段階的に学ぶことができます。
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM操作練習 - IBM対策</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .highlight { 
+      background-color: yellow; 
+    }
+    .hidden { 
+      display: none; 
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+      cursor: pointer;
+    }
+    button {
+      padding: 5px 10px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      font-size: 0.8em;
+    }
+    #searchInput {
+      padding: 5px;
+      margin: 10px 0;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="title">DOM操作練習</h1>
+  
+  <div id="container">
+    <p class="text">段落1</p>
+    <p class="text">段落2</p>
+    <p class="text">段落3</p>
+  </div>
+  
+  <ul id="list">
+    <li>アイテム1</li>
+    <li>アイテム2</li>
+    <li>アイテム3</li>
+  </ul>
+  
+  <button id="add-button">追加</button>
+  <button id="remove-button">削除</button>
+  
+  <div id="output"></div>
+  
+  <form id="user-form">
+    <div>
+      <label for="name-input">名前:</label>
+      <input type="text" id="name-input" placeholder="名前">
+      <div id="name-error" class="error"></div>
+    </div>
+    <div>
+      <label for="email-input">メール:</label>
+      <input type="email" id="email-input" placeholder="メール">
+      <div id="email-error" class="error"></div>
+    </div>
+    <button type="submit">送信</button>
+  </form>
+  
+  <h2>ユーザーテーブル</h2>
+  <input type="text" id="searchInput" placeholder="名前で検索...">
+  <div id="user-table-container">
+    <!-- ここにテーブルが動的に追加されます -->
+  </div>
+  
+  <!-- 外部JavaScriptファイルの読み込み -->
+  <script src="script.js"></script>
+</body>
+</html>

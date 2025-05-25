@@ -1,0 +1,185 @@
+// JavaScript 日次練習問題 - Day 5 (オブジェクト操作)
+// 以下の問題を解いて、JavaScriptのオブジェクト操作に慣れましょう。
+
+// 問題1: オブジェクトから特定のプロパティを取得する
+// 入力例: { name: "John", age: 30, city: "New York" }, ["name", "city"]
+// 出力例: { name: "John", city: "New York" }
+function pickProperties(obj, props) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(pickProperties({ name: "John", age: 30, city: "New York" }, ["name", "city"]));
+// { name: "John", city: "New York" }
+
+// 問題2: オブジェクトの値だけを配列として取得
+// 入力例: { a: 1, b: 2, c: 3 }
+// 出力例: [1, 2, 3]
+function getValues(obj) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(getValues({ a: 1, b: 2, c: 3 })); // [1, 2, 3]
+
+// 問題3: 2つのオブジェクトをマージする
+// 入力例: { a: 1, b: 2 }, { c: 3, d: 4 }
+// 出力例: { a: 1, b: 2, c: 3, d: 4 }
+function mergeObjects(obj1, obj2) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(mergeObjects({ a: 1, b: 2 }, { c: 3, d: 4 }));
+// { a: 1, b: 2, c: 3, d: 4 }
+
+// 問題4: オブジェクト内の数値をすべて2倍にする
+// 入力例: { a: 1, b: 2, c: "hello" }
+// 出力例: { a: 2, b: 4, c: "hello" }
+function doubleNumbers(obj) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(doubleNumbers({ a: 1, b: 2, c: "hello" }));
+// { a: 2, b: 4, c: "hello" }
+
+// 問題5: 文字列内の文字の出現回数をカウントしてオブジェクトで返す
+// 入力例: "hello"
+// 出力例: { h: 1, e: 1, l: 2, o: 1 }
+function countChars(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(countChars("hello")); // { h: 1, e: 1, l: 2, o: 1 }
+
+// 問題6: 配列内のオブジェクトから特定のプロパティの値だけを抽出
+// 入力例: [{ name: "Alice", age: 25 }, { name: "Bob", age: 30 }], "name"
+// 出力例: ["Alice", "Bob"]
+function pluck(arr, property) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+const people = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 }
+];
+console.log(pluck(people, "name")); // ["Alice", "Bob"]
+
+// 問題7: ドメイン集計
+// メールアドレスの配列を受け取り、ドメインごとの出現回数を集計
+// 入力例: ["user1@gmail.com", "user2@yahoo.com", "user3@gmail.com", "user4@outlook.com"]
+// 出力例: { "gmail.com": 2, "yahoo.com": 1, "outlook.com": 1 }
+function countDomains(emails) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+const emails = [
+  "user1@gmail.com",
+  "user2@yahoo.com",
+  "user3@gmail.com",
+  "user4@outlook.com"
+];
+console.log(countDomains(emails));
+// { "gmail.com": 2, "yahoo.com": 1, "outlook.com": 1 }
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: オブジェクトから特定のプロパティを取得する
+function pickProperties(obj, props) {
+  const result = {};
+  props.forEach(prop => {
+    if (obj.hasOwnProperty(prop)) {
+      result[prop] = obj[prop];
+    }
+  });
+  return result;
+  
+  // 別解: Object.fromEntries と filter を使う
+  // return Object.fromEntries(
+  //   Object.entries(obj).filter(([key]) => props.includes(key))
+  // );
+}
+
+// 問題2: オブジェクトの値だけを配列として取得
+function getValues(obj) {
+  return Object.values(obj);
+}
+
+// 問題3: 2つのオブジェクトをマージする
+function mergeObjects(obj1, obj2) {
+  return { ...obj1, ...obj2 };
+  
+  // 別解: Object.assign を使う
+  // return Object.assign({}, obj1, obj2);
+}
+
+// 問題4: オブジェクト内の数値をすべて2倍にする
+function doubleNumbers(obj) {
+  const result = {};
+  for (const key in obj) {
+    if (typeof obj[key] === 'number') {
+      result[key] = obj[key] * 2;
+    } else {
+      result[key] = obj[key];
+    }
+  }
+  return result;
+  
+  // 別解: Object.entries と Object.fromEntries を使う
+  // return Object.fromEntries(
+  //   Object.entries(obj).map(([key, value]) => 
+  //     typeof value === 'number' ? [key, value * 2] : [key, value]
+  //   )
+  // );
+}
+
+// 問題5: 文字列内の文字の出現回数をカウントしてオブジェクトで返す
+function countChars(str) {
+  const result = {};
+  for (const char of str) {
+    result[char] = (result[char] || 0) + 1;
+  }
+  return result;
+  
+  // 別解: reduce を使う
+  // return str.split('').reduce((acc, char) => {
+  //   acc[char] = (acc[char] || 0) + 1;
+  //   return acc;
+  // }, {});
+}
+
+// 問題6: 配列内のオブジェクトから特定のプロパティの値だけを抽出
+function pluck(arr, property) {
+  return arr.map(item => item[property]);
+}
+
+// 問題7: ドメイン集計
+function countDomains(emails) {
+  const result = {};
+  
+  emails.forEach(email => {
+    const domain = email.slice(email.indexOf('@') + 1);
+    result[domain] = (result[domain] || 0) + 1;
+  });
+  
+  return result;
+  
+  // 別解: reduce を使う
+  // return emails.reduce((acc, email) => {
+  //   const domain = email.slice(email.indexOf('@') + 1);
+  //   acc[domain] = (acc[domain] || 0) + 1;
+  //   return acc;
+  // }, {});
+}
+*/

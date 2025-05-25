@@ -1,0 +1,107 @@
+// 分割代入（Destructuring）の基本と練習問題
+
+// 1. 配列の分割代入
+// 基本形
+const colors = ['red', 'green', 'blue'];
+const [first, second, third] = colors;
+console.log(first);  // 'red'
+console.log(second); // 'green'
+console.log(third);  // 'blue'
+
+// 一部の要素だけを取得
+const [primary, , tertiary] = colors; // 真ん中の要素をスキップ
+console.log(primary);  // 'red'
+console.log(tertiary); // 'blue'
+
+// デフォルト値を設定
+const [a, b, c, d = 'yellow'] = colors;
+console.log(d); // 'yellow' (配列に4番目の要素がないためデフォルト値が使用される)
+
+// 残りの要素をまとめて取得（レスト構文）
+const numbers = [1, 2, 3, 4, 5];
+const [first_num, ...rest] = numbers;
+console.log(first_num); // 1
+console.log(rest);      // [2, 3, 4, 5]
+
+// 変数の交換
+let x = 10;
+let y = 20;
+[x, y] = [y, x];
+console.log(x); // 20
+console.log(y); // 10
+
+// 2. オブジェクトの分割代入
+// 基本形
+const person = { name: 'Alice', age: 30, job: 'Engineer' };
+const { name, age } = person;
+console.log(name); // 'Alice'
+console.log(age);  // 30
+
+// 変数名を変更
+const { name: userName, age: userAge } = person;
+console.log(userName); // 'Alice'
+console.log(userAge);  // 30
+
+// デフォルト値を設定
+const { name: n, country = 'Unknown' } = person;
+console.log(n);       // 'Alice'
+console.log(country); // 'Unknown' (personにcountryプロパティがないためデフォルト値が使用される)
+
+// ネストされたオブジェクトの分割代入
+const user = {
+  id: 1,
+  name: 'Bob',
+  address: {
+    city: 'Tokyo',
+    zip: '100-0001'
+  }
+};
+const { address: { city, zip } } = user;
+console.log(city); // 'Tokyo'
+console.log(zip);  // '100-0001'
+
+// 3. 関数パラメータでの分割代入
+// オブジェクトパラメータ
+function printUserInfo({ name, age, country = 'Japan' }) {
+  console.log(`Name: ${name}, Age: ${age}, Country: ${country}`);
+}
+printUserInfo(person); // 'Name: Alice, Age: 30, Country: Japan'
+
+// 配列パラメータ
+function printCoordinates([x, y, z = 0]) {
+  console.log(`X: ${x}, Y: ${y}, Z: ${z}`);
+}
+printCoordinates([10, 20]); // 'X: 10, Y: 20, Z: 0'
+
+// 練習問題1: 以下の配列から、最初の要素を「first」、2番目の要素を「second」、残りをまとめて「others」という変数に代入してください
+const fruits = ['apple', 'banana', 'orange', 'grape', 'kiwi'];
+// 解答
+const [first_fruit, second_fruit, ...others] = fruits;
+console.log(first_fruit); // 'apple'
+console.log(second_fruit); // 'banana'
+console.log(others); // ['orange', 'grape', 'kiwi']
+
+// 練習問題2: 以下のオブジェクトから、nameを「userName」、ageを「userAge」という変数に代入し、
+// jobがない場合はデフォルト値として'Student'を設定してください
+const profile = { name: 'Charlie', age: 25 };
+// 解答
+const { name: userName2, age: userAge2, job: userJob = 'Student' } = profile;
+console.log(userName2); // 'Charlie'
+console.log(userAge2);  // 25
+console.log(userJob);   // 'Student'
+
+// 練習問題3: 次のネストされたオブジェクトから、name、city、country（デフォルト値は'Unknown'）を抽出してください
+const employee = {
+  personal: {
+    name: 'David',
+    age: 35
+  },
+  location: {
+    city: 'Osaka'
+  }
+};
+// 解答
+const { personal: { name: employeeName }, location: { city: employeeCity, country: employeeCountry = 'Unknown' } } = employee;
+console.log(employeeName);    // 'David'
+console.log(employeeCity);    // 'Osaka'
+console.log(employeeCountry); // 'Unknown'

@@ -1,0 +1,163 @@
+問題 1-3まで
+
+日付操作の基礎レベルについての質問ですね。
+JavaScriptの日付操作は、フロントエンド開発において頻繁に使われる機能です。
+ただし、IBMのオンラインコーディング評価で出題される可能性という観点からは、優先度は若干下がります。
+あなたが提示した日付操作の問題（問題3〜6）について考えると：
+
+基礎的な知識としては重要です（特に問題3の現在日付の取得と書式設定）
+しかし、非同期処理やDOM操作に比べると出題頻度は低いと考えられます
+
+時間が限られている場合の優先順位としては：
+
+最優先:
+
+JavaScript基本構文（Day 1-4）
+非同期処理（Day 10の問題1-3, 6-9）
+DOM操作（Day 11の問題1-7）
+
+
+時間があれば:
+
+基本的な日付操作（Day 6の問題3のみ）
+オブジェクト操作（Day 5の問題1-3）
+
+
+後回しにしても問題ない:
+
+複雑な日付操作（Day 6の問題4-6）
+高度なオブジェクト操作（Day 5の問題4-7）
+Promise.all/race（Day 10の問題4-5）
+イベント委譲（Day 11の問題8）
+
+
+
+特に日付操作については、面接で基本的な日付の取得や書式設定が出題される可能性はあるものの、
+タイムスタンプの変換や日数差の計算などはより専門的で、エントリーレベルの評価では優先度が低いでしょう。
+効率的に準備を進めるなら、基本的な日付操作（現在日付の取得と書式設定）だけを押さえておき、
+残りの時間を非同期処理とDOM操作の学習に充てることをお勧めします。
+
+
+
+// JavaScript 日次練習問題 - Day 6 (JSON と日付操作)
+// 以下の問題を解いて、JavaScriptのJSONと日付操作に慣れましょう。
+
+// 問題1: JSONオブジェクトを文字列に変換
+// 入力例: { name: "John", age: 30 }
+// 出力例: '{"name":"John","age":30}'
+function convertToJSONString(obj) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(convertToJSONString({ name: "John", age: 30 }));
+// '{"name":"John","age":30}'
+
+// 問題2: JSON文字列をオブジェクトに変換
+// 入力例: '{"name":"John","age":30}'
+// 出力例: { name: "John", age: 30 }
+function parseJSON(jsonString) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(parseJSON('{"name":"John","age":30}'));
+// { name: "John", age: 30 }
+
+// 問題3: 現在の日付を「YYYY-MM-DD」形式で返す
+// 出力例: "2023-04-10"
+function getCurrentDate() {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(getCurrentDate());
+// 例: "2023-04-10" (実行日による)
+
+// 問題4: 日付をフォーマットする
+// 入力例: new Date(2023, 3, 10)
+// 出力例: "2023年4月10日"
+function formatDate(date) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(formatDate(new Date(2023, 3, 10)));
+// "2023年4月10日"
+
+// 問題5: 2つの日付の日数差を計算
+// 入力例: new Date(2023, 3, 10), new Date(2023, 3, 15)
+// 出力例: 5
+function getDaysDifference(date1, date2) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(getDaysDifference(
+  new Date(2023, 3, 10),
+  new Date(2023, 3, 15)
+)); // 5
+
+// 問題6: タイムスタンプを「HH:MM:SS」形式に変換
+// 入力例: 1618047623000 (2021-04-10 12:13:43 のタイムスタンプ)
+// 出力例: "12:13:43"
+function formatTime(timestamp) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(formatTime(1618047623000));
+// "12:13:43" (タイムゾーンによって異なる場合があります)
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: JSONオブジェクトを文字列に変換
+function convertToJSONString(obj) {
+  return JSON.stringify(obj);
+}
+
+// 問題2: JSON文字列をオブジェクトに変換
+function parseJSON(jsonString) {
+  return JSON.parse(jsonString);
+}
+
+// 問題3: 現在の日付を「YYYY-MM-DD」形式で返す
+function getCurrentDate() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+// 問題4: 日付をフォーマットする
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1; // getMonth()は0から始まるので+1
+  const day = date.getDate();
+  return `${year}年${month}月${day}日`;
+}
+
+// 問題5: 2つの日付の日数差を計算
+function getDaysDifference(date1, date2) {
+  // ミリ秒を日数に変換
+  const oneDayMs = 24 * 60 * 60 * 1000; // 1日のミリ秒数
+  const diffMs = Math.abs(date2 - date1);
+  return Math.round(diffMs / oneDayMs);
+}
+
+// 問題6: タイムスタンプを「HH:MM:SS」形式に変換
+function formatTime(timestamp) {
+  const date = new Date(timestamp);
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+  return `${hours}:${minutes}:${seconds}`;
+}
+*/

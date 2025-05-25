@@ -1,0 +1,107 @@
+/* CSS 基礎練習 - Day 2: ボックスモデル (5分で復習) */
+
+/*
+HTMLコード（CodePenのHTMLに貼り付け）:
+
+<div class="container">
+  <div class="box1">ボックス1</div>
+  <div class="box2">ボックス2</div>
+  <div class="box3">ボックス3</div>
+</div>
+*/
+
+/* CSS 基礎練習 - Day 2: ボックスモデル (5分で復習) */
+
+/*
+HTMLコード（CodePenのHTMLに貼り付け）:
+
+<div class="container">
+  <div class="box1">ボックス1</div>
+  <div class="box2">ボックス2</div>
+  <div class="box3">ボックス3</div>
+</div>
+*/
+
+/* 基本リセット */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* 共通スタイル */
+.container { padding: 20px; }
+.box1, .box2, .box3 { 
+  background-color: #e0e0e0; 
+  margin-bottom: 20px; 
+  text-align: center;
+  padding: 10px;
+}
+
+/* === 問題1: padding, margin, border === */
+/* コメントアウトを解除して練習 */
+
+/* 問題1-1: .box1に内側余白20px、外側余白10px、境界線2px solid #333 */
+/* .box1 { padding: 20px; margin: 10px; border: 2px solid #333; } */
+
+/* 問題1-2: .box2に上下余白のみ15px */
+/* .box2 { margin-top: 15px; margin-bottom: 15px; } */
+/* .box2 { margin: 15px 0; } */
+/* 書き方の注意が必要。0pxとかくと❌　省略の際は必ずpxを抜く 15pxの方のpxは書く*/
+
+/* 問題1-3: .box3に左右のパディングのみ30px */
+/* .box3 { padding-left: 30px; padding-right: 30px; } */
+
+/* === 問題2: box-sizing（面接頻出）=== */
+
+/* 問題2-1: .box1を幅300pxでborder含む全体幅に設定 */
+/* .box1 { width: 300px; box-sizing: border-box; } */
+
+/* === 問題3: border-radius, box-shadow === */
+
+/* 問題3-1: .box2に角丸10pxと影を設定 */
+/* .box2 { border-radius: 10px; box-shadow: 3px 3px 5px rgba(0,0,0,0.3); } */
+/* 1番目の3px: 水平方向のずれ（右に3px）
+2番目の3px: 垂直方向のずれ（下に3px）
+3番目の15px: ぼかしの強さ
+４番目: 影の色
+/* 色の書き方いろいろ */
+box-shadow: 3px 3px 15px red;
+box-shadow: 3px 3px 15px #ff0000;
+box-shadow: 3px 3px 15px rgb(255, 0, 0);
+box-shadow: 3px 3px 15px rgba(255, 0, 0, 0.5); /* 透明度付き */
+redのような色名では透明度は指定できません。
+*/
+
+
+/* 問題3-2: .box3に楕円形の角丸を設定 */
+/* .box3 { border-radius: 20px / 10px; } */
+
+/* === 模範解答（練習後に確認）=== */
+/*
+.box1 { 
+  padding: 20px; 
+  margin: 10px; 
+  border: 2px solid #333; 
+  width: 300px; 
+  box-sizing: border-box; 
+}
+.box2 { 
+  margin-top: 15px; 
+  margin-bottom: 15px; 
+  border-radius: 10px; 
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.3); 
+}
+.box3 { 
+  padding-left: 30px; 
+  padding-right: 30px; 
+  border-radius: 20px / 10px; 
+}
+*/
+
+/* === 復習チェックリスト === */
+/*
+✓ padding（内側余白）
+✓ margin（外側余白）
+✓ border（境界線）
+✓ box-sizing: border-box
+✓ border-radius（角丸）
+✓ box-shadow（影）
+✓ 個別指定（top, bottom, left, right）
+*/

@@ -1,0 +1,338 @@
+配列操作とオブジェクト操作は、JavaScriptの基本的なデータ構造操作としてどちらも重要です。
+配列操作が多いコーディングテストを受ける場合、配列メソッド（map, filter, reduce, forEachなど）に加えて、
+オブジェクト操作の基本も理解しておくと役立つでしょう。オブジェクトと配列は密接に関連していることが多く、両方の知識が必要になることが多いです。
+
+objは配列と違って2つ
+key 値
+
+key = 値
+
+obj[key名]　＝　値
+
+keyが変数みたいなもの
+obj[key名]この形は 変数へ入れるように
+{key:  } = 値？
+ってこと
+
+
+---
+配列の中身は、
+forEachとかmapとかで個別対応は行なっていく
+filterとか
+
+// 問題7: 配列内の数値の平均を計算する
+// 入力例: [1, 2, 3, 4, 5]
+// 出力例: 3
+function calculateAverage(arr) {
+  // ここにコードを書いてください
+  
+}
+例えば上の問題とかそう。
+
+// テスト
+console.log(calculateAverage([1, 2, 3, 4, 5])); // 3
+console.log(calculateAverage([10, 20, 30, 40, 50])); // 30
+
+
+🔺いつも理解できないところ
+
+
+
+添付された日本語のコーディング問題集を見ると、確かに問題6以降は高度なオブジェクト操作（フィルタリング、ネストしたプロパティの取得、グループ化など）を要求しています。
+これらの操作は、特に大規模なフロントエンド開発では役立ちますが、面接の初期段階では基本的な理解が優先されることが多いです。
+IBM の面接では、基本的なオブジェクト操作（問題1〜5程度の難易度）は確実に理解しておくべきですが、時間に制約があるなら、
+まずはJavaScriptの基本概念、DOM操作、非同期処理（Promise）、Reactの基本コンセプトなどを優先した方が効果的かもしれません。
+▶︎問題5まで
+
+結論
+問題6以降の高度なオブジェクト操作は、もし時間に余裕があれば学習することをお勧めしますが、
+他の基本的な分野に比べると優先度は低いと言えるでしょう。
+
+
+// ================ ブラケット記法 練習問題集 ================
+// ブラケット記法を徹底的に練習するための問題集です。
+// 初めに自分で解いてみて、その後で回答例を確認してください。
+
+// ===== 基本問題 =====
+
+// 問題1: 空のオブジェクトに情報を追加
+// 空のオブジェクトに、name, age, jobのプロパティを追加してください。
+// 必ずブラケット記法を使用してください。
+function createPerson() {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+// const person = createPerson();
+// console.log(person); // { name: "山田", age: 30, job: "教師" }
+
+// 問題2: 商品情報の作成
+// 商品名、価格、在庫数を持つオブジェクトを作成する関数を書いてください。
+// 必ずブラケット記法を使用してください。
+function createProduct(name, price, stock) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+// console.log(createProduct("ノートパソコン", 80000, 5));
+// { name: "ノートパソコン", price: 80000, stock: 5 }
+
+// 問題3: プロパティ値の取得
+// 与えられたオブジェクトから、指定したプロパティの値を取得する関数を書いてください。
+// 必ずブラケット記法を使用してください。
+function getPropertyValue(obj, propertyName) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+// const book = { title: "JavaScript入門", price: 2800, author: "山田太郎" };
+// console.log(getPropertyValue(book, "title")); // "JavaScript入門"
+// console.log(getPropertyValue(book, "author")); // "山田太郎"
+
+// 問題4: プロパティの更新
+// オブジェクトの特定のプロパティを更新する関数を書いてください。
+// 必ずブラケット記法を使用してください。
+function updateProperty(obj, propertyName, newValue) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+// const product = { name: "スマートフォン", price: 60000, stock: 10 };
+// updateProperty(product, "price", 55000);
+// console.log(product); // { name: "スマートフォン", price: 55000, stock: 10 }
+
+// ===== 中級問題 =====
+
+// 問題5: 動的なプロパティ名
+// IDに基づいて、ユーザー情報を格納するオブジェクトを作成する関数を書いてください。
+// キーは "user" + ID で、値はユーザーの名前です。
+function createUserRegistry(users) {
+  // ここにコードを書いてください
+  // users は [{ id: 1, name: "田中" }, { id: 2, name: "鈴木" }, ...] という形式
+  
+}
+
+// テスト
+// const users = [
+//   { id: 1, name: "田中" },
+//   { id: 2, name: "鈴木" },
+//   { id: 3, name: "佐藤" }
+// ];
+// console.log(createUserRegistry(users));
+// { user1: "田中", user2: "鈴木", user3: "佐藤" }
+
+// 問題6: オブジェクトのフィルタリング
+// オブジェクトから、特定の接頭辞を持つプロパティだけを取り出す関数を書いてください。
+function filterProperties(obj, prefix) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+// const data = {
+//   user_name: "山田",
+//   user_age: 30,
+//   product_id: 123,
+//   product_price: 5000
+// };
+// console.log(filterProperties(data, "user_"));
+// { user_name: "山田", user_age: 30 }
+
+// 問題7: ネストしたプロパティの取得
+// ネストしたオブジェクトから、指定したパスのプロパティを取得する関数を書いてください。
+// パスは配列として与えられます。
+function getNestedProperty(obj, path) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+// const data = {
+//   user: {
+//     name: "山田",
+//     address: {
+//       city: "東京",
+//       zipcode: "123-4567"
+//     }
+//   }
+// };
+// console.log(getNestedProperty(data, ["user", "name"])); // "山田"
+// console.log(getNestedProperty(data, ["user", "address", "city"])); // "東京"
+
+// 問題8: 単語の出現回数をカウント
+// 文章内の各単語の出現回数を数えて、オブジェクトとして返す関数を書いてください。
+function countWords(text) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+// const text = "りんご バナナ りんご オレンジ バナナ りんご";
+// console.log(countWords(text));
+// { りんご: 3, バナナ: 2, オレンジ: 1 }
+
+// ===== 上級問題 =====
+
+// 問題9: オブジェクトのマージ
+// 複数のオブジェクトをマージする関数を書いてください。
+// 同じプロパティがある場合は、後のオブジェクトの値で上書きされます。
+function mergeObjects(...objects) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+// const obj1 = { a: 1, b: 2 };
+// const obj2 = { b: 3, c: 4 };
+// const obj3 = { d: 5 };
+// console.log(mergeObjects(obj1, obj2, obj3));
+// { a: 1, b: 3, c: 4, d: 5 }
+
+// 問題10: グループ化
+// オブジェクトの配列を特定のプロパティでグループ化する関数を書いてください。
+function groupBy(array, property) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+// const people = [
+//   { name: "田中", age: 25, job: "教師" },
+//   { name: "鈴木", age: 30, job: "エンジニア" },
+//   { name: "佐藤", age: 25, job: "デザイナー" },
+//   { name: "高橋", age: 30, job: "教師" }
+// ];
+// console.log(groupBy(people, "age"));
+// {
+//   "25": [
+//     { name: "田中", age: 25, job: "教師" },
+//     { name: "佐藤", age: 25, job: "デザイナー" }
+//   ],
+//   "30": [
+//     { name: "鈴木", age: 30, job: "エンジニア" },
+//     { name: "高橋", age: 30, job: "教師" }
+//   ]
+// }
+
+// 回答例
+/*
+// 問題1: 空のオブジェクトに情報を追加
+function createPerson() {
+  const person = {};
+  person["name"] = "山田";
+  person["age"] = 30;
+  person["job"] = "教師";
+  return person;
+}
+
+// 問題2: 商品情報の作成
+function createProduct(name, price, stock) {
+  const product = {};
+  product["name"] = name;
+  product["price"] = price;
+  product["stock"] = stock;
+  return product;
+}
+
+// 問題3: プロパティ値の取得
+function getPropertyValue(obj, propertyName) {
+  return obj[propertyName];
+}
+
+// 問題4: プロパティの更新
+function updateProperty(obj, propertyName, newValue) {
+  obj[propertyName] = newValue;
+}
+
+// 問題5: 動的なプロパティ名
+function createUserRegistry(users) {
+  const registry = {};
+  
+  for (const user of users) {
+    const key = "user" + user.id;
+    registry[key] = user.name;
+  }
+  
+  return registry;
+}
+
+// 問題6: オブジェクトのフィルタリング
+function filterProperties(obj, prefix) {
+  const result = {};
+  
+  for (const key in obj) {
+    if (key.startsWith(prefix)) {
+      result[key] = obj[key];
+    }
+  }
+  
+  return result;
+}
+
+// 問題7: ネストしたプロパティの取得
+function getNestedProperty(obj, path) {
+  let current = obj;
+  
+  for (const key of path) {
+    if (current === undefined) {
+      return undefined;
+    }
+    current = current[key];
+  }
+  
+  return current;
+}
+
+// 問題8: 単語の出現回数をカウント
+function countWords(text) {
+  const words = text.split(" ");
+  const counts = {};
+  
+  for (const word of words) {
+    if (counts[word]) {
+      counts[word]++;
+    } else {
+      counts[word] = 1;
+    }
+  }
+  
+  return counts;
+}
+
+// 問題9: オブジェクトのマージ
+function mergeObjects(...objects) {
+  const result = {};
+  
+  for (const obj of objects) {
+    for (const key in obj) {
+      result[key] = obj[key];
+    }
+  }
+  
+  return result;
+  
+  // または、スプレッド構文を使った方法:
+  // return Object.assign({}, ...objects);
+}
+
+// 問題10: グループ化
+function groupBy(array, property) {
+  const result = {};
+  
+  for (const item of array) {
+    const key = item[property];
+    
+    if (!result[key]) {
+      result[key] = [];
+    }
+    
+    result[key].push(item);
+  }
+  
+  return result;
+}
+*/

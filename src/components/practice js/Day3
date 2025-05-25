@@ -1,0 +1,143 @@
+// JavaScript 日次練習問題 - Day 3 (エラー処理と型変換)
+// 以下の問題を解いて、JavaScriptのエラー処理と型変換に慣れましょう。
+
+// 問題1: 安全な数値変換
+// 文字列を数値に変換し、変換できない場合はデフォルト値を返す
+// 入力例: convertToNumberSafely("42", 0) → 42
+// 入力例: convertToNumberSafely("abc", 0) → 0
+function convertToNumberSafely(str, defaultValue) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(convertToNumberSafely("42", 0)); // 42
+console.log(convertToNumberSafely("abc", 0)); // 0
+
+// 問題2: 配列内の文字列を数値に変換
+// 配列内の文字列を数値に変換し、変換できないものはフィルタリングする
+// 入力例: ["1", "2", "three", "4", "five"]
+// 出力例: [1, 2, 4]
+function convertArrayToNumbers(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(convertArrayToNumbers(["1", "2", "three", "4", "five"])); // [1, 2, 4]
+
+// 問題3: 正の数値かチェックする
+// 引数が正の数値であれば "YES" を返し、
+// 引数が 0 の場合は "Zero Error" というメッセージを持つエラーをスロー
+// 引数が負の数値の場合は "Negative Error" というメッセージを持つエラーをスロー
+// 入力例: 5
+// 出力例: "YES"
+function isPositive(num) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+try {
+  console.log(isPositive(5)); // "YES"
+} catch (e) {
+  console.log(e.message);
+}
+
+try {
+  console.log(isPositive(0)); // Zero Error
+} catch (e) {
+  console.log(e.message);
+}
+
+try {
+  console.log(isPositive(-5)); // Negative Error
+} catch (e) {
+  console.log(e.message);
+}
+
+// 問題4: 安全な割り算
+// 2つの数値の商を返す関数。ゼロ除算の場合はエラーをスロー
+// 入力例: divide(10, 2)
+// 出力例: 5
+function divide(a, b) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+try {
+  console.log(divide(10, 2)); // 5
+} catch (e) {
+  console.log(e.message);
+}
+
+try {
+  console.log(divide(10, 0)); // エラーメッセージ
+} catch (e) {
+  console.log(e.message);
+}
+
+// 問題5: JSONの安全なパース
+// JSON文字列をパースする関数。無効なJSONの場合はデフォルト値を返す
+// 入力例: '{"name":"John", "age":30}'
+// 出力例: {name: "John", age: 30}
+function parseJSONSafely(jsonString, defaultValue) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(parseJSONSafely('{"name":"John", "age":30}', {})); // {name: "John", age: 30}
+console.log(parseJSONSafely('invalid json', {})); // {}
+
+
+
+
+
+
+
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: 安全な数値変換
+function convertToNumberSafely(str, defaultValue) {
+  const num = Number(str);
+  return isNaN(num) ? defaultValue : num;
+}
+
+// 問題2: 配列内の文字列を数値に変換
+function convertArrayToNumbers(arr) {
+  return arr
+    .map(item => Number(item))
+    .filter(item => !isNaN(item));
+}
+
+// 問題3: 正の数値かチェックする
+function isPositive(num) {
+  if (num > 0) {
+    return "YES";
+  } else if (num === 0) {
+    throw new Error("Zero Error");
+  } else {
+    throw new Error("Negative Error");
+  }
+}
+
+// 問題4: 安全な割り算
+function divide(a, b) {
+  if (b === 0) {
+    throw new Error("0で割ることはできません");
+  }
+  return a / b;
+}
+
+// 問題5: JSONの安全なパース
+function parseJSONSafely(jsonString, defaultValue) {
+  try {
+    return JSON.parse(jsonString);
+  } catch (e) {
+    return defaultValue;
+  }
+}
+*/

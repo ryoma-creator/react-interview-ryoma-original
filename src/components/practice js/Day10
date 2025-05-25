@@ -1,0 +1,245 @@
+
+; Glassdoorなどの情報によると、IBMのフロントエンド面接では、特に以下が重要視されています：
+
+; Promise と async/await の使い方（Day 10の問題2, 3, 6, 7が該当）
+; 基本的な非同期処理の理解（Day 10の問題1〜3が該当）
+; エラーハンドリング（Day 10の問題7が該当）
+
+; Day 10の問題セットは、これらの重要な概念をカバーしています。
+; 特に問題1〜3, 6, 7に集中すれば、
+; IBMの面接で問われる可能性の高い非同期処理の基本はマスターできるでしょう。
+
+;💡 問題4, 5（Promise.all, Promise.race）は、時間があれば取り組むと良いです。
+
+; IBMの面接レベル
+; 「基本が問われる」というのは、Day 10の問題セットが、
+; IBMの面接で実際に出題される可能性のある基本的な内容をカバーしているという意味です。
+; これらの問題を理解していれば、IBMのコーディングテストに十分対応できるレベルになります。
+; 特に重要なのは：
+
+; コールバック関数の基本（問題1）
+; Promiseの基本（問題2, 3）
+; async/awaitの使い方（問題6）
+; エラーハンドリング（問題7）
+
+; Promise.allとPromise.raceは発展的な内容ですが、時間があれば学習しておくと良いでしょう。
+; これらの基本的な非同期処理の概念を理解し、簡単な実装ができるようになれば、
+; IBMのフロントエンド面接の非同期処理の部分は十分に対応できるでしょう。
+
+
+// 日次練習問題 - Day 10 (非同期処理)
+// 以下の問題を解いて、JavaScriptの非同期処理（Promise, async/await）に慣れましょう。
+
+// 問題1: コールバック関数
+// 数値を受け取り、1秒後にその数値を2倍にして返すコールバック関数を作成してください
+function doubleAfterDelay(number, callback) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題1: 開始");
+doubleAfterDelay(5, function(result) {
+  console.log("5の2倍は " + result);
+});
+console.log("処理を続行...");
+// 期待される出力:
+// 問題1: 開始
+// 処理を続行...
+// (1秒後) 5の2倍は 10
+
+// 問題2: Promiseの基本
+// 数値を受け取り、1秒後にその数値を2倍にして返すPromiseを作成してください
+function doubleAfterDelayPromise(number) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題2: 開始");
+doubleAfterDelayPromise(10)
+  .then(result => {
+    console.log("10の2倍は " + result);
+  })
+  .catch(error => {
+    console.error("エラー:", error);
+  });
+console.log("処理を続行...");
+// 期待される出力:
+// 問題2: 開始
+// 処理を続行...
+// (1秒後) 10の2倍は 20
+
+// 問題3: Promiseチェーン
+// 数値を受け取り、各ステップで以下の操作を行うPromiseチェーンを作成してください:
+// 1. 数値を2倍にする
+// 2. 結果に10を加える
+// 3. 結果を2で割る
+// 4. 最終結果を返す
+function processNumber(number) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+processNumber(5)
+  .then(result => {
+    console.log("問題3: 最終結果 = " + result); // (5*2 + 10)/2 = 10
+  });
+
+// 問題4: Promise.all
+// 3つの非同期操作を同時に実行し、全ての結果を配列で取得する関数を作成してください
+function runParallel(value1, value2, value3) {
+  // ここにコードを書いてください
+  
+}
+
+// 各値を倍にする非同期関数
+function asyncDouble(value) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(value * 2);
+    }, Math.random() * 1000); // 0~1秒のランダムな遅延
+  });
+}
+
+// テスト
+runParallel(5, 10, 15)
+  .then(results => {
+    console.log("問題4: 全ての結果:", results); // [10, 20, 30]
+  });
+
+// 問題5: Promise.race
+// 2つの非同期操作のうち、最初に完了した結果を返す関数を作成してください
+function runRace(value1, value2) {
+  // ここにコードを書いてください
+  
+}
+
+// 値を指定した秒数後に返す非同期関数
+function delayedValue(value, seconds) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(value);
+    }, seconds * 1000);
+  });
+}
+
+// テスト
+runRace(
+  delayedValue("速い処理", 1),
+  delayedValue("遅い処理", 2)
+).then(result => {
+  console.log("問題5: 最初の結果:", result); // "速い処理"
+});
+
+// 問題6: async/await の基本
+// 問題2と同じ機能をasync/awaitを使って実装してください
+// 数値を受け取り、1秒後にその数値を2倍にして返すPromiseを作成してください
+async function doubleAfterDelayAsync(number) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題6: 開始");
+doubleAfterDelayAsync(20)
+  .then(result => {
+    console.log("20の2倍は " + result);
+  });
+console.log("処理を続行...");
+
+// 問題7: try/catchによるエラーハンドリング
+// 以下の関数を完成させて、エラーが発生した場合に適切に処理してください
+async function divideNumbers(a, b) {
+  // ここにコードを書いてください
+  // bが0の場合はエラーをスローすること
+  
+}
+
+// テスト
+divideNumbers(10, 2)
+  .then(result => {
+    console.log("問題7: 10 ÷ 2 =", result); // 5
+  })
+  .catch(error => {
+    console.error("エラー:", error.message);
+  });
+
+divideNumbers(10, 0)
+  .then(result => {
+    console.log("10 ÷ 0 =", result); // 実行されない
+  })
+  .catch(error => {
+    console.error("問題7: エラー:", error.message); // "0で割ることはできません"
+  });
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: コールバック関数
+function doubleAfterDelay(number, callback) {
+  setTimeout(() => {
+    const result = number * 2;
+    callback(result);
+  }, 1000);
+}
+
+// 問題2: Promiseの基本
+function doubleAfterDelayPromise(number) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const result = number * 2;
+      resolve(result);
+    }, 1000);
+  });
+}
+
+// 問題3: Promiseチェーン
+function processNumber(number) {
+  return Promise.resolve(number)
+    .then(num => num * 2)
+    .then(num => num + 10)
+    .then(num => num / 2);
+}
+
+// 問題4: Promise.all
+function runParallel(value1, value2, value3) {
+  const promise1 = asyncDouble(value1);
+  const promise2 = asyncDouble(value2);
+  const promise3 = asyncDouble(value3);
+  
+  return Promise.all([promise1, promise2, promise3]);
+}
+
+// 問題5: Promise.race
+function runRace(value1, value2) {
+  return Promise.race([value1, value2]);
+}
+
+// 問題6: async/await の基本
+async function doubleAfterDelayAsync(number) {
+  // Promiseを返す関数を作成
+  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+  
+  // 1秒待機
+  await delay(1000);
+  
+  // 値を返す
+  return number * 2;
+}
+
+// 問題7: try/catchによるエラーハンドリング
+async function divideNumbers(a, b) {
+  try {
+    if (b === 0) {
+      throw new Error("0で割ることはできません");
+    }
+    
+    const result = a / b;
+    return result;
+  } catch (error) {
+    // エラーを再スロー
+    throw error;
+  }
+}
+*/

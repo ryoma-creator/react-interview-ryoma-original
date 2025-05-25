@@ -1,0 +1,168 @@
+// JavaScript async/await - 追加練習問題
+// async/awaitの基本的な使い方を練習するための追加問題です。
+
+// 問題A1: 基本的なasync/await - 名前と挨拶
+// 名前を受け取り、1.5秒後に「こんにちは、[名前]さん」というメッセージを返すasync関数を作成してください
+async function greetAfterDelay(name) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題A1: 開始");
+greetAfterDelay("田中")
+  .then(result => {
+    console.log(result); // "こんにちは、田中さん"
+  });
+console.log("処理を続行...");
+
+// 問題A2: 待機時間が異なるasync/await
+// 数値を受け取り、その数値が10以上なら3秒後に2倍にした値を返し、
+// 10未満なら1秒後に3倍にした値を返すasync関数を作成してください
+async function multiplyBasedOnValue(number) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題A2: 開始");
+multiplyBasedOnValue(15)
+  .then(result => {
+    console.log("15の計算結果: " + result); // 30 (15*2)
+  });
+
+multiplyBasedOnValue(5)
+  .then(result => {
+    console.log("5の計算結果: " + result); // 15 (5*3)
+  });
+console.log("処理を続行...");
+
+// 問題A3: 連続した計算処理
+// 数値を受け取り、以下の操作を順番に行うasync関数を作成してください:
+// 1. 1秒後に数値を2倍にする
+// 2. さらに1秒後にその結果に10を足す
+// 3. さらに1秒後にその結果を3で割る（小数点以下も保持）
+// 4. 最終結果を返す
+async function sequentialCalculations(number) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題A3: 開始");
+sequentialCalculations(6)
+  .then(result => {
+    console.log("6の一連の計算結果: " + result); // ((6*2)+10)/3 = 22/3 = 7.333...
+  });
+console.log("処理を続行...");
+
+// 問題A4: 文字列の加工処理
+// 文字列を受け取り、以下の操作を順番に行うasync関数を作成してください:
+// 1. 1.5秒後に文字列の先頭に「開始: 」を追加
+// 2. さらに1秒後にその文字列の末尾に「: 終了」を追加
+// 3. 最終結果を返す
+async function processTextWithDelays(text) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題A4: 開始");
+processTextWithDelays("非同期処理")
+  .then(result => {
+    console.log(result); // "開始: 非同期処理: 終了"
+  });
+console.log("処理を続行...");
+
+// 問題A5: ランダム待機
+// 関数を呼び出すたびにランダムな時間（1〜3秒）待機した後、
+// 待機した秒数と「お待たせしました！」というメッセージを返すasync関数を作成してください
+async function randomWait() {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題A5: 開始");
+randomWait()
+  .then(result => {
+    console.log(result); // 例: "2.1秒お待たせしました！"
+  });
+console.log("処理を続行...");
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題A1: 基本的なasync/await - 名前と挨拶
+async function greetAfterDelay(name) {
+  // Promise を使った待機処理
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  
+  // 挨拶文を返す
+  return `こんにちは、${name}さん`;
+}
+
+// 問題A2: 待機時間が異なるasync/await
+async function multiplyBasedOnValue(number) {
+  if (number >= 10) {
+    // 10以上の場合は3秒待機して2倍
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    return number * 2;
+  } else {
+    // 10未満の場合は1秒待機して3倍
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    return number * 3;
+  }
+}
+
+// 問題A3: 連続した計算処理
+async function sequentialCalculations(number) {
+  // 遅延処理を行う関数
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+  
+  // 1. 1秒後に数値を2倍にする
+  await delay(1000);
+  let result = number * 2;
+  
+  // 2. さらに1秒後にその結果に10を足す
+  await delay(1000);
+  result = result + 10;
+  
+  // 3. さらに1秒後にその結果を3で割る
+  await delay(1000);
+  result = result / 3;
+  
+  // 4. 最終結果を返す
+  return result;
+}
+
+// 問題A4: 文字列の加工処理
+async function processTextWithDelays(text) {
+  // 遅延処理を行う関数
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+  
+  // 1. 1.5秒後に文字列の先頭に「開始: 」を追加
+  await delay(1500);
+  let processedText = `開始: ${text}`;
+  
+  // 2. さらに1秒後にその文字列の末尾に「: 終了」を追加
+  await delay(1000);
+  processedText = `${processedText}: 終了`;
+  
+  // 3. 最終結果を返す
+  return processedText;
+}
+
+// 問題A5: ランダム待機
+async function randomWait() {
+  // ランダムな待機時間を生成（1〜3秒）
+  const waitTime = 1 + Math.random() * 2;
+  const waitTimeInMs = waitTime * 1000;
+  
+  // 指定した時間だけ待機
+  await new Promise(resolve => setTimeout(resolve, waitTimeInMs));
+  
+  // 待機時間を小数点第1位までに丸めて結果を返す
+  const roundedTime = Math.round(waitTime * 10) / 10;
+  return `${roundedTime}秒お待たせしました！`;
+}
+*/

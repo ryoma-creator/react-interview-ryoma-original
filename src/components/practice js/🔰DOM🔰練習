@@ -1,0 +1,457 @@
+問題6,７は特にやって！
+削除からのどう子要素の最後にアクセスするのか、と、
+コンパクトにどう配列のdataからtableへ入れるのか習えるから。
+
+弱点特化型のDOM以前の練習問題は回答より下にある。基礎の欠如をこれで補える。
+
+;  DOM 練習問題 - 基本操作
+; HTML部分 (CodePenに貼り付ける)
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM練習問題</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .active {
+      background-color: yellow;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    button {
+      padding: 5px 10px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 問題1用の要素 -->
+  <h1 id="main-title">こんにちは、世界！</h1>
+  
+  <!-- 問題2用の要素 -->
+  <div id="output">ここに出力されます</div>
+  
+  <!-- 問題3用の要素 -->
+  <div id="highlight-box">ハイライトボックス</div>
+  
+  <!-- 問題4と5用の要素 -->
+  <ul id="item-list">
+    <li>リスト項目1</li>
+    <li>リスト項目2</li>
+    <li>リスト項目3</li>
+  </ul>
+  
+  <!-- 問題6用の要素 -->
+  <button id="click-button">クリックしてください</button>
+  <div id="result"></div>
+  
+  <!-- 問題7用の要素 -->
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>年齢</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- ここにデータが追加されます -->
+    </tbody>
+  </table>
+
+  <!-- JS部分は別に記述します -->
+</body>
+</html>
+
+
+
+; 部分 (CodePenに貼り付ける)
+; ------------------------------------------
+
+
+//  DOM 練習問題 - 基本操作
+// 以下の問題を解いて、DOM操作の基本スキルを習得しましょう。
+
+// 問題1: 要素の取得
+// id="main-title"の要素のテキスト内容を取得して返す関数を作成してください
+// <h1 id="main-title">こんにちは、世界！</h1> から "こんにちは、世界！" を取得
+function getElementText() {
+  // ここにコードを書いてください
+  
+}
+
+// 関数を実行してコンソールに結果を表示
+console.log("問題1の結果:", getElementText());
+
+// 問題2: 要素の内容変更
+// id="output"の要素に指定されたテキストを設定する関数を作成してください
+function setElementText(text) {
+  // ここにコードを書いてください
+  
+}
+
+// 関数を実行してDOMを更新
+setElementText("新しいテキストが設定されました！");
+
+// 問題3: クラスの追加と削除
+// id="highlight-box"の要素に"active"クラスを追加または削除する関数を作成してください
+// 現在activeクラスがあれば削除し、なければ追加します
+function toggleActiveClass() {
+  // ここにコードを書いてください
+  
+}
+
+// ボタンを作成してトグル機能をテスト
+const toggleButton = document.createElement('button');
+toggleButton.textContent = 'ハイライト切替';
+toggleButton.onclick = toggleActiveClass;
+document.body.insertBefore(toggleButton, document.getElementById('highlight-box').nextSibling);
+
+// 問題4: 要素の作成と追加
+// 新しいリスト項目(<li>)を作成し、id="item-list"のul要素に追加する関数を作成してください
+function addListItem(text) {
+  // ここにコードを書いてください
+  
+}
+
+// ボタンを作成して追加機能をテスト
+const addButton = document.createElement('button');
+addButton.textContent = '項目を追加';
+addButton.onclick = function() {
+  addListItem("新しく追加された項目");
+};
+document.body.insertBefore(addButton, document.getElementById('item-list').nextSibling);
+
+// 問題5: 要素の削除
+// id="item-list"のリストから最後の項目を削除する関数を作成してください
+function removeLastItem() {
+  // ここにコードを書いてください
+  
+}
+
+// ボタンを作成して削除機能をテスト
+const removeButton = document.createElement('button');
+removeButton.textContent = '最後の項目を削除';
+removeButton.onclick = removeLastItem;
+document.body.insertBefore(removeButton, addButton.nextSibling);
+
+// 問題6: イベントリスナーの追加
+// id="click-button"のボタンがクリックされたとき、
+// id="result"の要素に"ボタンがクリックされました"と表示する関数を作成してください
+function setupButtonListener() {
+  // ここにコードを書いてください
+  
+}
+
+// 関数を実行してイベントリスナーを設定
+setupButtonListener();
+
+// 問題7: テーブル行の動的生成
+// データの配列からテーブルの行を作成し、id="data-table"のテーブルに追加する関数を作成してください
+function createTableRows(dataArray) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト用データ
+const userData = [
+  { id: 1, name: "山田太郎", age: 28 },
+  { id: 2, name: "佐藤花子", age: 24 },
+  { id: 3, name: "鈴木一郎", age: 32 }
+];
+
+// 関数を実行してテーブルにデータを追加
+createTableRows(userData);
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: 要素の取得
+function getElementText() {
+  const element = document.getElementById('main-title');
+  return element.textContent;
+  // または return element.innerText;
+}
+
+// 問題2: 要素の内容変更
+function setElementText(text) {
+  const element = document.getElementById('output');
+  element.textContent = text;
+  // または element.innerText = text;
+}
+
+// 問題3: クラスの追加と削除
+function toggleActiveClass() {
+  const element = document.getElementById('highlight-box');
+  element.classList.toggle('active');
+}
+
+// 問題4: 要素の作成と追加
+function addListItem(text) {
+  // 新しいli要素を作成
+  const newItem = document.createElement('li');
+  // テキスト内容を設定
+  newItem.textContent = text;
+  // リストに追加
+  const list = document.getElementById('item-list');
+  list.appendChild(newItem);
+}
+
+// 問題5: 要素の削除
+function removeLastItem() {
+  const list = document.getElementById('item-list');
+  const items = list.getElementsByTagName('li');
+  
+  if (items.length > 0) {
+    list.removeChild(items[items.length - 1]);
+  }
+}
+
+// 問題6: イベントリスナーの追加
+function setupButtonListener() {
+  const button = document.getElementById('click-button');
+  const resultElement = document.getElementById('result');
+  
+  button.addEventListener('click', function() {
+    resultElement.textContent = "ボタンがクリックされました";
+  });
+}
+
+// 問題7: テーブル行の動的生成
+function createTableRows(dataArray) {
+  const table = document.getElementById('data-table');
+  const tbody = table.querySelector('tbody') || table;
+  
+  dataArray.forEach(data => {
+    // 新しい行を作成
+    const row = document.createElement('tr');
+    
+    // IDセル
+    const idCell = document.createElement('td');
+    idCell.textContent = data.id;
+    row.appendChild(idCell);
+    
+    // 名前セル
+    const nameCell = document.createElement('td');
+    nameCell.textContent = data.name;
+    row.appendChild(nameCell);
+    
+    // 年齢セル
+    const ageCell = document.createElement('td');
+    ageCell.textContent = data.age;
+    row.appendChild(ageCell);
+    
+    // 行をテーブルに追加
+    tbody.appendChild(row);
+  });
+}
+
+// 問題7-別回答: テーブル行の動的生成
+function createTableRows(dataArray) {
+  const tableElement = document.getElementById("data-table");
+  const tbodyElement = tableElement.querySelector("tbody");
+  
+  for (let item of dataArray) {
+    const newTr = document.createElement("tr");
+    
+    // オブジェクトの各フィールド（id, name, age）に対してもループを使用
+    const fields = ["id", "name", "age"];
+    for (let field of fields) {
+      const cell = document.createElement("td");
+      cell.textContent = item[field];
+      newTr.appendChild(cell);
+    }
+    
+    tbodyElement.appendChild(newTr);
+  }
+}
+
+const userData = [
+  { id: 1, name: "山田太郎", age: 28 },
+  { id: 2, name: "佐藤花子", age: 24 },
+  { id: 3, name: "鈴木一郎", age: 32 }
+];
+
+
+*/
+
+
+;🔻 上記の問題を通じて弱点だったものを特化型集中講義練習問題は以下
+
+// 練習問題1: 基本的なオブジェクトアクセス
+// 以下のオブジェクトを使って練習しましょう
+const student = {
+  id: 123,
+  name: "鈴木一郎",
+  grade: "A",
+  subjects: ["数学", "英語", "科学"]
+};
+
+// 問題1-1: ドット記法で name プロパティの値を取得してください
+
+
+
+// 解答例:
+console.log(student.name);
+
+// 問題1-2: ブラケット記法で grade プロパティの値を取得してください
+
+
+
+// 解答例:
+console.log(student["grade"]);
+
+// 問題1-3: 変数を使ってブラケット記法でアクセスしてください
+const prop = "subjects";
+
+
+
+// 解答例:
+console.log(student[prop]);
+
+
+// 練習問題2: for...of ループの基本
+// 以下の配列を使って練習しましょう
+const fruits = ["りんご", "バナナ", "オレンジ", "ぶどう"];
+
+// 問題2-1: for...of ループを使って、fruits の各要素を表示してください
+
+
+
+// 解答例:
+for (let fruit of fruits) {
+  console.log(fruit);
+}
+
+// 問題2-2: for...of ループを使って、各フルーツに「は美味しいです」を追加して表示してください
+
+
+
+// 解答例:
+for (let fruit of fruits) {
+  console.log(`${fruit}は美味しいです`);
+}
+
+
+// 練習問題3: 配列内のオブジェクトと for...of
+// 以下の配列を使って練習しましょう
+const products = [
+  { id: 1, name: "ノートパソコン", price: 80000 },
+  { id: 2, name: "スマートフォン", price: 60000 },
+  { id: 3, name: "タブレット", price: 40000 }
+];
+
+// 問題3-1: for...of ループを使って、各製品の名前を表示してください
+
+
+
+// 解答例:
+for (let product of products) {
+  console.log(product.name);
+}
+
+// 問題3-2: for...of ループを使って、各製品の名前と価格を「製品名: 価格円」の形式で表示してください
+
+
+
+// 解答例:
+for (let product of products) {
+  console.log(`${product.name}: ${product.price}円`);
+}
+
+
+// 練習問題4: 変数を使ったプロパティアクセス（ダブルアクセス）
+// 以下のデータを使って練習しましょう
+const users = [
+  { id: 1, name: "田中", skills: ["HTML", "CSS", ""] },
+  { id: 2, name: "佐藤", skills: ["Python", "Java", "SQL"] },
+  { id: 3, name: "鈴木", skills: ["PHP", "Ruby", "C#"] }
+];
+
+// 問題4-1: 最初のユーザーの2番目のスキルを表示してください
+
+
+
+// 解答例:
+console.log(users[0].skills[1]);
+
+// 問題4-2: for...of ループと配列を使って、すべてのユーザーの名前とIDを表示してください
+
+
+
+// 解答例:
+const properties = ["id", "name"];
+for (let user of users) {
+  for (let prop of properties) {
+    console.log(`${prop}: ${user[prop]}`);
+  }
+  console.log("---"); // 区切り線
+}
+
+// 問題4-3: 「鈴木」ユーザーのすべてのスキルを表示してください
+
+
+
+// 解答例:
+const suzuki = users.find(user => user.name === "鈴木");
+for (let skill of suzuki.skills) {
+  console.log(skill);
+}
+
+
+
+// これらの練習問題を通じて、オブジェクトのプロパティにアクセスする方法とfor...ofループの使い方を学べます。
+// 特に問題4と5では、変数を使ったプロパティアクセス（ダブルアクセス）を練習できます。
+
+
+; whileを覚えてしまおう。
+
+// whileループの練習問題
+// 練習問題5: whileループの基本
+
+// 練習問題1: whileループの基本
+// 1から10までの数字を表示するwhileループを作成してください
+
+// ここにコードを書く
+
+
+// 練習問題2: 条件付きwhile
+// 100から始めて、3で割るたびに、その数が10より小さくなるまで繰り返すwhileループを作成してください
+// ヒント: 各ステップで数値を表示し、3で割ってください
+
+// ここにコードを書く
+
+
+// 練習問題3: 配列とwhile
+// 与えられた配列の中から偶数のみを表示するwhileループを作成してください
+const numbers = [7, 12, 5, 8, 9, 22, 3, 14];
+
+// ここにコードを書く
+
+
+// 練習問題4: while + break
+// 1から100までループし、初めて13で割り切れる数字を見つけたらその数字を表示して終了するwhileループを作成してください
+
+// ここにコードを書く
+
+
+// 練習問題5: 累積計算
+// 1から10までの数字の積を計算するwhileループを作成してください
+
+// ここにコードを書く

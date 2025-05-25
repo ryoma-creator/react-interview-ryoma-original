@@ -1,0 +1,240 @@
+// JavaScript 日次練習問題 - Day 3.5 (オブジェクトアクセスと分割代入)
+// 以下の問題を解いて、オブジェクトのブラケット記法と分割代入の使い方に慣れましょう。
+
+// -------------------- オブジェクトのブラケット記法アクセス --------------------
+
+// 問題1: ブラケット記法を使ってオブジェクトのプロパティにアクセスする
+// 入力例: { name: "田中", age: 25 }, "name"
+// 出力例: "田中"
+function getPropertyByName(obj, propName) {
+  // propName変数を使ってobjからプロパティの値を取得してください
+  
+}
+
+// テスト
+console.log("問題1のテスト:");
+console.log(getPropertyByName({ name: "田中", age: 25 }, "name")); // "田中"
+console.log(getPropertyByName({ name: "田中", age: 25 }, "age")); // 25
+
+// 問題2: 動的なプロパティ名でオブジェクトを作成する
+// 入力例: "name", "田中"
+// 出力例: { name: "田中" }
+function createDynamicObject(key, value) {
+  // keyとvalueを使って新しいオブジェクトを作成してください
+  
+}
+
+// テスト
+console.log("問題2のテスト:");
+console.log(createDynamicObject("name", "田中")); // { name: "田中" }
+console.log(createDynamicObject("age", 30)); // { age: 30 }
+
+// 問題3: オブジェクトから指定されたプロパティを削除する
+// 入力例: { name: "田中", age: 25, city: "東京" }, "age"
+// 出力例: { name: "田中", city: "東京" }
+function removeProperty(obj, propName) {
+  // ブラケット記法を使って、指定されたプロパティを削除してください
+  
+}
+
+// テスト
+console.log("問題3のテスト:");
+const person = { name: "田中", age: 25, city: "東京" };
+console.log(removeProperty(person, "age")); // { name: "田中", city: "東京" }
+
+// 問題4: 複数のプロパティを動的に追加する
+// 入力例: {}, ["name", "age"], ["田中", 25]
+// 出力例: { name: "田中", age: 25 }
+function addMultipleProperties(obj, keys, values) {
+  // keysとvaluesの配列を使って、オブジェクトに複数のプロパティを追加してください
+  
+}
+
+// テスト
+console.log("問題4のテスト:");
+console.log(addMultipleProperties({}, ["name", "age"], ["田中", 25])); // { name: "田中", age: 25 }
+console.log(addMultipleProperties({}, ["a", "b", "c"], [1, 2, 3])); // { a: 1, b: 2, c: 3 }
+
+// 問題5: オブジェクトのプロパティ名が有効かどうかを確認する
+// 入力例: { name: "田中", age: 25 }, "city"
+// 出力例: false
+function hasProperty(obj, propName) {
+  // ブラケット記法を使って、オブジェクトに指定されたプロパティが存在するかを確認してください
+  
+}
+
+// テスト
+console.log("問題5のテスト:");
+console.log(hasProperty({ name: "田中", age: 25 }, "name")); // true
+console.log(hasProperty({ name: "田中", age: 25 }, "city")); // false
+
+// -------------------- 分割代入 --------------------
+
+// 問題6: オブジェクトの分割代入を使って変数を抽出する
+// 入力例: { name: "田中", age: 25, city: "東京" }
+// 出力例: "田中は25歳で東京に住んでいます"
+function extractPersonInfo(person) {
+  // 分割代入を使って、nameとageとcityを抽出してください
+  
+}
+
+// テスト
+console.log("問題6のテスト:");
+console.log(extractPersonInfo({ name: "田中", age: 25, city: "東京" })); // "田中は25歳で東京に住んでいます"
+
+// 問題7: 配列の分割代入を使って値を交換する
+// 入力例: [1, 2]
+// 出力例: [2, 1]
+function swapValues(arr) {
+  // 分割代入を使って配列の最初の2つの要素を交換してください
+  
+}
+
+// テスト
+console.log("問題7のテスト:");
+console.log(swapValues([1, 2])); // [2, 1]
+console.log(swapValues(["a", "b"])); // ["b", "a"]
+
+// 問題8: ネストされたオブジェクトから特定のプロパティを抽出する
+// 入力例: { name: "田中", details: { age: 25, job: "エンジニア" } }
+// 出力例: "田中（25歳）はエンジニアです"
+function extractNestedInfo(person) {
+  // ネストされたオブジェクトからデータを抽出するために分割代入を使ってください
+  
+}
+
+// テスト
+console.log("問題8のテスト:");
+console.log(extractNestedInfo({ name: "田中", details: { age: 25, job: "エンジニア" } })); // "田中（25歳）はエンジニアです"
+
+// 問題9: 関数パラメータでの分割代入
+// 入力例: { x: 10, y: 20 }
+// 出力例: 30
+function addCoordinates(/* ここで分割代入を使う */) {
+  // xとyを足した結果を返す
+  
+}
+
+// テスト
+console.log("問題9のテスト:");
+console.log(addCoordinates({ x: 10, y: 20 })); // 30
+console.log(addCoordinates({ x: 5, y: 7 })); // 12
+
+// 問題10: 分割代入とブラケット記法を組み合わせる
+// 入力例: { name: "田中", scores: [85, 90, 78] }, 1
+// 出力例: "田中の2番目のスコアは90点です"
+function getStudentScore(student, index) {
+  // 分割代入とブラケット記法を使って、指定されたインデックスのスコアを取得してください
+  
+}
+
+// テスト
+console.log("問題10のテスト:");
+console.log(getStudentScore({ name: "田中", scores: [85, 90, 78] }, 1)); // "田中の2番目のスコアは90点です"
+console.log(getStudentScore({ name: "佐藤", scores: [92, 88, 95] }, 2)); // "佐藤の3番目のスコアは95点です"
+
+// ----------------------- おまけ: 少し応用的な問題 -----------------------
+
+// 問題11: 複数のオブジェクトから特定のプロパティだけを抽出して新しい配列を作る
+// 入力例: [{ id: 1, name: "田中" }, { id: 2, name: "佐藤" }], "name"
+// 出力例: ["田中", "佐藤"]
+function extractProperty(objects, propName) {
+  // ブラケット記法を使って、各オブジェクトから指定されたプロパティの値を抽出してください
+  
+}
+
+// テスト
+console.log("問題11のテスト:");
+console.log(extractProperty([{ id: 1, name: "田中" }, { id: 2, name: "佐藤" }], "name")); // ["田中", "佐藤"]
+
+// 問題12: オブジェクトのプロパティ名と値を入れ替える
+// 入力例: { a: "x", b: "y", c: "z" }
+// 出力例: { x: "a", y: "b", z: "c" }
+function swapKeysAndValues(obj) {
+  // オブジェクトのキーと値を入れ替えてください
+  
+}
+
+// テスト
+console.log("問題12のテスト:");
+console.log(swapKeysAndValues({ a: "x", b: "y", c: "z" })); // { x: "a", y: "b", z: "c" }
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: ブラケット記法を使ってオブジェクトのプロパティにアクセスする
+function getPropertyByName(obj, propName) {
+  return obj[propName];
+}
+
+// 問題2: 動的なプロパティ名でオブジェクトを作成する
+function createDynamicObject(key, value) {
+  const obj = {};
+  obj[key] = value;
+  return obj;
+}
+
+// 問題3: オブジェクトから指定されたプロパティを削除する
+function removeProperty(obj, propName) {
+  const newObj = { ...obj }; // オブジェクトをコピー
+  delete newObj[propName];
+  return newObj;
+}
+
+// 問題4: 複数のプロパティを動的に追加する
+function addMultipleProperties(obj, keys, values) {
+  const newObj = { ...obj };
+  for (let i = 0; i < keys.length; i++) {
+    newObj[keys[i]] = values[i];
+  }
+  return newObj;
+}
+
+// 問題5: オブジェクトのプロパティ名が有効かどうかを確認する
+function hasProperty(obj, propName) {
+  return propName in obj; // in演算子を使用
+  // または return obj[propName] !== undefined;
+}
+
+// 問題6: オブジェクトの分割代入を使って変数を抽出する
+function extractPersonInfo(person) {
+  const { name, age, city } = person;
+  return `${name}は${age}歳で${city}に住んでいます`;
+}
+
+// 問題7: 配列の分割代入を使って値を交換する
+function swapValues(arr) {
+  let [a, b] = arr;
+  return [b, a];
+}
+
+// 問題8: ネストされたオブジェクトから特定のプロパティを抽出する
+function extractNestedInfo(person) {
+  const { name, details: { age, job } } = person;
+  return `${name}（${age}歳）は${job}です`;
+}
+
+// 問題9: 関数パラメータでの分割代入
+function addCoordinates({ x, y }) {
+  return x + y;
+}
+
+// 問題10: 分割代入とブラケット記法を組み合わせる
+function getStudentScore(student, index) {
+  const { name, scores } = student;
+  return `${name}の${index + 1}番目のスコアは${scores[index]}点です`;
+}
+
+// 問題11: 複数のオブジェクトから特定のプロパティだけを抽出して新しい配列を作る
+function extractProperty(objects, propName) {
+  return objects.map(obj => obj[propName]);
+}
+
+// 問題12: オブジェクトのプロパティ名と値を入れ替える
+function swapKeysAndValues(obj) {
+  const result = {};
+  for (let key in obj) {
+    result[obj[key]] = key;
+  }
+  return result;
+}
+*/

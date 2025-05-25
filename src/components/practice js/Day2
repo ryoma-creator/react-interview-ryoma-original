@@ -1,0 +1,149 @@
+// JavaScript 日次練習問題 - Day 2 (数値と数学関数)
+// 以下の問題を解いて、JavaScriptの数値処理と数学関数に慣れましょう。
+
+// 問題1: 文字列を数値に変換する
+// 入力例: "42"
+// 出力例: 42 (数値型)
+function convertToNumber(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(convertToNumber("42")); // 42 (数値型)
+console.log(typeof convertToNumber("42")); // "number"
+
+// 問題2: 小数点以下を切り捨てる
+// 入力例: 3.7
+// 出力例: 3
+function floorNumber(num) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(floorNumber(3.7)); // 3
+console.log(floorNumber(9.99)); // 9
+
+// 問題3: 小数点以下を四捨五入する
+// 入力例: 3.7
+// 出力例: 4
+function roundNumber(num) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(roundNumber(3.7)); // 4
+console.log(roundNumber(3.2)); // 3
+
+// 問題4: 引数の2乗を返す関数
+// 入力例: 4
+// 出力例: 16
+function square(num) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(square(4)); // 16
+console.log(square(10)); // 100
+
+// 問題5: 円の面積を計算する関数
+// Ex ▶︎　小数点以下2桁までの桁数を固定してみて。
+// 入力例: 半径 5
+// 出力例: 78.54... (π * r^2)
+function calculateCircleArea(radius) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(calculateCircleArea(5)); // 約78.54
+console.log(calculateCircleArea(3)); // 約28.27
+
+// 問題6: 1から指定された数までの合計を計算する
+// 入力例: 5
+// 出力例: 15 (1+2+3+4+5)
+function sumUpTo(n) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(sumUpTo(5)); // 15
+console.log(sumUpTo(10)); // 55
+
+// 問題7: 配列内の数値の平均を計算する
+// 入力例: [1, 2, 3, 4, 5]
+// 出力例: 3
+function calculateAverage(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(calculateAverage([1, 2, 3, 4, 5])); // 3
+console.log(calculateAverage([10, 20, 30, 40, 50])); // 30
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: 文字列を数値に変換する
+function convertToNumber(str) {
+  return Number(str);
+  // または return parseInt(str);
+}
+
+// 問題2: 小数点以下を切り捨てる
+function floorNumber(num) {
+  return Math.floor(num);
+}
+
+// 問題3: 小数点以下を四捨五入する
+function roundNumber(num) {
+  return Math.round(num);
+}
+
+// 問題4: 引数の2乗を返す関数
+function square(num) {
+  return num * num;
+  // または return Math.pow(num, 2);
+}
+
+// 問題5: 円の面積を計算する関数
+function calculateCircleArea(radius) {
+  return Math.PI * radius * radius;
+  // または return Math.PI * Math.pow(radius, 2).toFixed(2);
+}
+
+// 問題6: 1から指定された数までの合計を計算する
+function sumUpTo(n) {
+  let sum = 0;
+  for(let i = 1; i <= n; i++) {
+    sum += i;
+  }
+  return sum;
+  
+  // より効率的な方法：
+  // return n * (n + 1) / 2;
+}
+
+// 問題7: 配列内の数値の平均を計算する
+function calculateAverage(arr) {
+  const sum = arr.reduce((acc, curr) => acc + curr, 0);
+  return sum / arr.length;
+}
+*/
+
+; function calculateAverage(arr) {
+;   // ここにコードを書いてください
+;   let sum = 0;
+;   for(let i = 0; i < arr.length; i++){
+;     sum += arr[i];
+;   }
+;   return sum/arr.length;  
+; }
+
+
+Complete Count from May 10
+May 10, May 19

@@ -1,0 +1,106 @@
+// JavaScript 日次練習問題 - Day 1 (基本操作)
+// 以下の問題を解いて、JavaScriptの基本的な操作に慣れましょう。
+
+// 問題1: 文字列の最後の文字を取得する
+// 入力例: "Hello"
+// 出力例: "o"
+function getLastChar(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(getLastChar("Hello")); // "o"
+console.log(getLastChar("JavaScript")); // "t"
+
+// 問題2: 文字列を逆順にする
+// 入力例: "Hello"
+// 出力例: "olleH"
+function reverseString(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(reverseString("Hello")); // "olleH"
+console.log(reverseString("JavaScript")); // "tpircSavaJ"
+
+// 問題3: 与えられた数値が偶数か奇数かを判定する
+// 入力例: 5
+// 出力例: "奇数"
+function isEvenOrOdd(num) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(isEvenOrOdd(5)); // "奇数"
+console.log(isEvenOrOdd(10)); // "偶数"
+
+// 問題4: 配列内の最大値を見つける
+// 入力例: [3, 7, 2, 9, 1]
+// 出力例: 9
+function findMax(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(findMax([3, 7, 2, 9, 1])); // 9
+console.log(findMax([10, 20, 5, 15])); // 20
+
+// 問題5: 配列内の特定の値の出現回数をカウントする
+// 入力例: [1, 2, 3, 2, 4, 2], 2
+// 出力例: 3
+function countOccurrences(arr, value) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(countOccurrences([1, 2, 3, 2, 4, 2], 2)); // 3
+console.log(countOccurrences([5, 7, 9, 5, 3, 5], 5)); // 3
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: 文字列の最後の文字を取得する
+function getLastChar(str) {
+  return str[str.length - 1];
+  // または return str.charAt(str.length - 1);
+}
+
+// 問題2: 文字列を逆順にする
+function reverseString(str) {
+  return str.split('').reverse().join('');
+}
+
+// 問題3: 与えられた数値が偶数か奇数かを判定する
+function isEvenOrOdd(num) {
+  return num % 2 === 0 ? "偶数" : "奇数";
+}
+
+// 問題4: 配列内の最大値を見つける
+function findMax(arr) {
+  return Math.max(...arr);
+  // または return arr.reduce((max, current) => current > max ? current : max, arr[0]);
+}
+
+// 問題5: 配列内の特定の値の出現回数をカウントする
+function countOccurrences(arr, value) {
+  return arr.filter(item => item === value).length;
+  // または
+  // let count = 0;
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (arr[i] === value) {
+  //     count++;
+  //   }
+  // }
+  // return count;
+}
+*/
+
+
+
+
+Complete Count from May 10
+May 10, May 19

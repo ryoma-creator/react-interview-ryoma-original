@@ -1,0 +1,36 @@
+; 理解を深めるために、非同期処理とAPIリクエストの基本概念を分解して、段階的に学習できる小さな問題を用意します。
+; 非同期処理とAPIリクエスト - 基礎から理解する
+; パート1: querySelector と getElementById の基本
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM要素の取得</title>
+</head>
+<body>
+  <div id="result">ここに結果が表示されます</div>
+  <div class="output">クラスを使った要素</div>
+  
+  <button id="changeButton">テキスト変更</button>
+  
+  <script>
+    // ボタンをクリックするとresult要素のテキストを変更する
+    document.getElementById('changeButton').addEventListener('click', function() {
+      // getElementById を使って要素を取得
+      const resultDiv = document.getElementById('result');
+      
+      // テキストを変更
+      resultDiv.textContent = '新しいテキスト!';
+    });
+  </script>
+</body>
+</html>
+
+; 解説:
+
+; document.getElementById('result') は、HTML内のid="result"を持つ要素を取得します
+; これは空のdivである必要はなく、初期テキストを持っていても問題ありません
+; 取得した要素に対して、textContentやinnerHTMLでコンテンツを変更できます
+
+
+

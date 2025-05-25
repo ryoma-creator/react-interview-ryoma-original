@@ -1,0 +1,200 @@
+<table>
+  <thead>
+    <tr> <!-- テーブルの行 -->
+      <th>ID</th> <!-- テーブルのヘッダーセル -->
+      <th>名前</th>
+      <th>メール</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td> <!-- テーブルのデータセル -->
+      <td>山田太郎</td>
+      <td>yamada@example.com</td>
+    </tr>
+  </tbody>
+</table>
+
+
+レベル1: テーブルの基本構造を理解する
+テーブルとは何か？
+テーブルはデータを行と列の形式で表示するためのHTML要素です。Excelのシートのようなグリッド（格子）構造を作ります。
+テーブル要素の覚え方
+
+<table> - テーブル全体（Table - テーブル全体）
+    <thead> - ヘッダー部分（Table Head - 表の頭部分）
+    <tbody> - 本体部分（Table Body - 表の本体部分）
+        <tr> - テーブルの行（Table Row - 横一列のデータ）
+            <th> - ヘッダーセル（Table Header - 表の見出し）
+            <td> - 通常のセル（Table Data - データを入れる箱）
+
+
+
+覚え方のコツ:
+
+tr = Table Row = 横一行
+th = Table Header = 見出しセル（太字・中央寄せになる）
+td = Table Data = 通常のデータセル
+
+-------
+
+テーブル操作の基本は3ステップです：
+
+要素取得: getElementById()やquerySelector()で既存の要素にアクセス
+要素作成: createElement()で新しい要素を作成、textContentでテキスト設定
+要素追加: appendChild()で作成した要素を親要素に追加
+
+この3ステップのパターンを覚えておけば、ほとんどのDOM操作タスクに対応できます。
+
+
+-------
+テーブルのDOM構造を可視化
+<table id="myTable">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>名前</th>
+      <th>年齢</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>山田太郎</td>
+      <td>30</td>
+    </tr>
+  </tbody>
+</table>
+このHTMLをJavaScriptオブジェクトとして可視化すると：
+
+// table要素
+{
+  id: "myTable",
+  tagName: "TABLE",
+  children: [
+    // thead要素
+    {
+      tagName: "THEAD",
+      children: [
+        // tr要素（ヘッダー行）
+        {
+          tagName: "TR",
+          children: [
+            // th要素（ヘッダーセル）
+            {
+              tagName: "TH",
+              textContent: "ID"
+            },
+            {
+              tagName: "TH",
+              textContent: "名前"
+            },
+            {
+              tagName: "TH",
+              textContent: "年齢"
+            }
+          ]
+        }
+      ]
+    },
+    // tbody要素
+    {
+      tagName: "TBODY",
+      children: [
+        // tr要素（データ行）
+        {
+          tagName: "TR",
+          children: [
+            // td要素（データセル）
+            {
+              tagName: "TD",
+              textContent: "1"
+            },
+            {
+              tagName: "TD",
+              textContent: "山田太郎"
+            },
+            {
+              tagName: "TD",
+              textContent: "30"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+
+-----------------
+
+IBMがtableを使う理由って。。？
+
+
+テーブルの利点
+IBMのコーディングテストでテーブルを使うのは、おそらく以下の理由からです：
+
+構造化された表示: 行と列で情報が整理され、どのデータがどの項目かが明確
+見やすさ: ヘッダーがあるので、各列が何を表しているかが一目瞭然
+ソート機能の追加: JavaScriptでテーブルにソート機能を追加しやすい
+フィルタリング: テーブルデータを動的にフィルタリングする機能を追加しやすい
+
+実際の表示例
+テーブル形式だと、このように表示されます：
+|    名前                  |       メール             |     会社名        |
+|-------------------------|--------------------------|-------------------|
+| Leanne Graham           | Sincere@april.biz        | Romaguera-Crona   |
+| Ervin Howell            | Shanna@melissa.tv        | Deckow-Crist      |
+| Clementine Bauch        | Nathan@yesenia.net       | Romaguera-Jacobson|
+| ...                     | ...                      | ...               |
+これなら、各ユーザーの情報が行ごとに整理され、各列が何の情報を表しているかも明確でとても見やすくなります。
+実務では、さらに高度なテーブルライブラリ（DataTablesなど）を使って、
+ソート、フィルタリング、ページネーションなどの機能を追加することも多いです。これがIBMのコーディングテストでテーブルを使う理由かもしれません。
+
+試しに、tableじゃないdivとかで、作ったら、
+🔻
+fetchDataHTML += `
+          <div>${user.name}</div>
+          <div>${user.email}</div>
+          <div>${user.company.name}</div>
+
+この書き方での表示だと、
+
+Leanne Graham
+Sincere@april.biz
+Romaguera-Crona
+Ervin Howell
+Shanna@melissa.tv
+Deckow-Crist
+Clementine Bauch
+Nathan@yesenia.net
+Romaguera-Jacobson
+Patricia Lebsack
+Julianne.OConner@kory.org
+Robel-Corkery
+Chelsey Dietrich
+Lucio_Hettinger@annie.ca
+Keebler LLC
+Mrs. Dennis Schulist
+Karley_Dach@jasper.info
+Considine-Lockman
+Kurtis Weissnat
+Telly.Hoeger@billy.biz
+Johns Group
+Nicholas Runolfsdottir V
+Sherwood@rosamond.me
+Abernathy Group
+Glenna Reichert
+Chaim_McDermott@dana.io
+Yost and Sons
+Clementina DuBuque
+Rey.Padberg@karina.biz
+Hoeger LLC
+分かりずらいね。。。項目とかで一緒になっていないから、
+なんだろう、問題を解くためならいいのか。これがもし、tableとかだと分かりやすいってことか。。
+？俺のIBMのコーディングテストは、tableをこういったfetchした後使うことがあるらしんだが、表示しやすくするためだからなんだろうか？
+
+って感じになり疑問になったため。
+
+-----------------------
+
+通常は、配列の中の、objectへアクセスするには[]がいるけど、forEachとかmapなら、
+それぞれのindexにアクセスした状態から始まるから[]でアクセスするプロセスが免除になるのか。

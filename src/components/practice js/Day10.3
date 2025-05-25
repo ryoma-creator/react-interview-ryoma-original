@@ -1,0 +1,484 @@
+
+
+// JavaScript 非同期処理 - 反復練習問題集
+// 各テーマ（コールバック関数、Promise、async/await、エラーハンドリング）ごとに複数の練習問題を提供します。
+
+// ============== コールバック関数 ==============
+
+// 問題1-1: 基本的なコールバック関数
+// 文字列を受け取り、2秒後にその文字列を大文字に変換して返すコールバック関数を作成してください
+function convertToUpperAfterDelay(str, callback) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題1-1: 開始");
+convertToUpperAfterDelay("hello world", function(result) {
+  console.log("変換結果: " + result); // "HELLO WORLD"
+});
+console.log("処理を続行...");
+
+// 問題1-2: 数値を処理するコールバック関数
+// 数値を受け取り、3秒後にその数値の2乗を計算して返すコールバック関数を作成してください
+function squareAfterDelay(number, callback) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題1-2: 開始");
+squareAfterDelay(5, function(result) {
+  console.log("5の2乗は " + result); // 25
+});
+console.log("処理を続行...");
+
+// 問題1-3: 複数のパラメータを持つコールバック関数
+// 2つの数値を受け取り、1秒後にそれらの合計と積を計算して返すコールバック関数を作成してください
+function calculateAfterDelay(a, b, callback) {
+  // ここにコードを書いてください
+  // callback関数には合計と積の両方を渡す
+  
+}
+
+// テスト
+console.log("問題1-3: 開始");
+calculateAfterDelay(3, 4, function(sum, product) {
+  console.log("合計: " + sum + ", 積: " + product); // "合計: 7, 積: 12"
+});
+console.log("処理を続行...");
+
+// ============== Promiseの基本 ==============
+
+// 問題2-1: 基本的なPromise
+// 温度を摂氏（℃）で受け取り、2秒後にその温度を華氏（℉）に変換して返すPromiseを作成してください
+// 変換式: 華氏 = 摂氏 × 9/5 + 32
+function convertToFahrenheitPromise(celsius) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題2-1: 開始");
+convertToFahrenheitPromise(25)
+  .then(result => {
+    console.log("摂氏25度は華氏 " + result + " 度です");  // 77度
+  })
+  .catch(error => {
+    console.error("エラー:", error);
+  });
+console.log("処理を続行...");
+
+// 問題2-2: 条件によって結果が変わるPromise
+// 文字列を受け取り、その長さが5文字以上なら1.5秒後に文字列をそのまま返し、
+// 5文字未満なら"文字列が短すぎます"というエラーを返すPromiseを作成してください
+function validateStringLength(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題2-2: 開始");
+validateStringLength("Hello World")
+  .then(result => {
+    console.log("有効な文字列:", result); // "Hello World"
+  })
+  .catch(error => {
+    console.error("このエラーは表示されないはずです");
+  });
+
+validateStringLength("Hi")
+  .then(result => {
+    console.log("このメッセージは表示されないはずです");
+  })
+  .catch(error => {
+    console.error("エラー:", error); // "文字列が短すぎます"
+  });
+console.log("処理を続行...");
+
+// 問題2-3: 複数の値を返すPromise
+// 配列を受け取り、2秒後にその配列の合計、平均、最大値、最小値を含むオブジェクトを返すPromiseを作成してください
+function analyzeArrayPromise(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題2-3: 開始");
+analyzeArrayPromise([1, 2, 3, 4, 5])
+  .then(result => {
+    console.log("配列の分析結果:", result);
+    // { sum: 15, average: 3, max: 5, min: 1 }
+  })
+  .catch(error => {
+    console.error("エラー:", error);
+  });
+console.log("処理を続行...");
+
+// ============== Promiseチェーン ==============
+
+// 問題3-1: 基本的なPromiseチェーン
+// 文字列を受け取り、各ステップで以下の操作を行うPromiseチェーンを作成してください:
+// 1. 文字列をすべて小文字に変換する
+// 2. 文字列内のスペースをすべて削除する
+// 3. 文字列を逆順にする
+// 4. 最終結果を返す
+function processString(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+processString("Hello World")
+  .then(result => {
+    console.log("問題3-1: 最終結果 = " + result); // "dlrowolleh"
+  });
+
+// 問題3-2: 数値処理のPromiseチェーン
+// 数値を受け取り、以下の操作を順番に行うPromiseチェーンを作成してください:
+// 1. 数値を2倍にする
+// 2. 結果に10を加える
+// 3. 結果を3で割る
+// 4. 結果を四捨五入する
+// 5. 最終結果を返す
+function processNumber(number) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+processNumber(5)
+  .then(result => {
+    console.log("問題3-2: 最終結果 = " + result); // (5*2 + 10)/3 = 6.67 → 7
+  });
+
+// 問題3-3: 配列処理のPromiseチェーン
+// 数値の配列を受け取り、以下の操作を順番に行うPromiseチェーンを作成してください:
+// 1. 配列内の偶数のみをフィルタリングする
+// 2. 結果の各要素を3倍にする
+// 3. 結果を昇順にソートする
+// 4. 最終結果を返す
+function processArray(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+processArray([5, 2, 9, 4, 7, 6, 3, 8])
+  .then(result => {
+    console.log("問題3-3: 最終結果 =", result);
+    // [2, 4, 6, 8] → [6, 12, 18, 24] → [6, 12, 18, 24] (すでにソート済み)
+  });
+
+// ============== async/await の基本 ==============
+
+// 問題6-1: 基本的なasync/await
+// 問題2-1と同じ機能をasync/awaitを使って実装してください
+async function convertToFahrenheitAsync(celsius) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題6-1: 開始");
+convertToFahrenheitAsync(30)
+  .then(result => {
+    console.log("摂氏30度は華氏 " + result + " 度です"); // 86度
+  });
+console.log("処理を続行...");
+
+// 問題6-2: 複数の非同期処理を順番に実行するasync/await
+// 文字列を受け取り、1秒後にその文字列を大文字に変換し、さらに1秒後にその文字列の長さを返すasync関数を作成してください
+async function processStringAsync(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題6-2: 開始");
+processStringAsync("hello world")
+  .then(result => {
+    console.log("文字列の長さ: " + result); // 11 (HELLO WORLDの長さ)
+  });
+console.log("処理を続行...");
+
+// 問題6-3: 条件分岐を含むasync/await
+// 数値を受け取り、その数値が偶数なら2秒後に「偶数です」というメッセージを返し、
+// 奇数なら1.5秒後に「奇数です」というメッセージを返すasync関数を作成してください
+async function checkParityAsync(number) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題6-3: 開始");
+checkParityAsync(42)
+  .then(result => {
+    console.log("42の判定: " + result); // "偶数です"
+  });
+
+checkParityAsync(7)
+  .then(result => {
+    console.log("7の判定: " + result); // "奇数です"
+  });
+console.log("処理を続行...");
+
+// ============== エラーハンドリング ==============
+
+// 問題7-1: try/catchによる基本的なエラーハンドリング
+// 文字列をJSONとしてパースするasync関数を作成してください
+// 有効なJSONならパースしたオブジェクトを返し、無効なJSON文字列ならエラーメッセージを返します
+async function safelyParseJSON(jsonString) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+safelyParseJSON('{"name": "John", "age": 30}')
+  .then(result => {
+    console.log("問題7-1 有効なJSON:", result); // {name: "John", age: 30}
+  });
+
+safelyParseJSON('{name: "John", age: 30}') // 無効なJSON
+  .then(result => {
+    console.log("問題7-1 無効なJSON:", result); // "JSONパースエラー: 有効なJSONではありません"
+  });
+
+// 問題7-2: 条件に基づくエラーハンドリング
+// 年齢を受け取り、18歳以上なら「成人です」というメッセージを返し、
+// 18歳未満なら「未成年です」というエラーをスローするasync関数を作成してください
+async function checkAge(age) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+checkAge(25)
+  .then(result => {
+    console.log("問題7-2 成人:", result); // "成人です"
+  })
+  .catch(error => {
+    console.error("このエラーは表示されないはずです");
+  });
+
+checkAge(15)
+  .then(result => {
+    console.log("このメッセージは表示されないはずです");
+  })
+  .catch(error => {
+    console.error("問題7-2 未成年:", error.message); // "未成年です"
+  });
+
+// 問題7-3: 複数の非同期処理のエラーハンドリング
+// 2つの数値を受け取り、最初の数値を2番目の数値で割る非同期関数を作成してください
+// 2番目の数値が0の場合は「0で割ることはできません」というエラーメッセージを返します
+async function safeDivision(a, b) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+safeDivision(10, 2)
+  .then(result => {
+    console.log("問題7-3 正常な割り算:", result); // 5
+  })
+  .catch(error => {
+    console.error("このエラーは表示されないはずです");
+  });
+
+safeDivision(10, 0)
+  .then(result => {
+    console.log("このメッセージは表示されないはずです");
+  })
+  .catch(error => {
+    console.error("問題7-3 0除算:", error.message); // "0で割ることはできません"
+  });
+
+// 模範解答 (練習後に確認してください)
+/*
+// ============== コールバック関数 ==============
+
+// 問題1-1: 基本的なコールバック関数
+function convertToUpperAfterDelay(str, callback) {
+  setTimeout(() => {
+    const result = str.toUpperCase();
+    callback(result);
+  }, 2000);
+}
+
+// 問題1-2: 数値を処理するコールバック関数
+function squareAfterDelay(number, callback) {
+  setTimeout(() => {
+    const result = number * number;
+    callback(result);
+  }, 3000);
+}
+
+// 問題1-3: 複数のパラメータを持つコールバック関数
+function calculateAfterDelay(a, b, callback) {
+  setTimeout(() => {
+    const sum = a + b;
+    const product = a * b;
+    callback(sum, product);
+  }, 1000);
+}
+
+// ============== Promiseの基本 ==============
+
+// 問題2-1: 基本的なPromise
+function convertToFahrenheitPromise(celsius) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const fahrenheit = celsius * 9/5 + 32;
+      resolve(fahrenheit);
+    }, 2000);
+  });
+}
+
+// 問題2-2: 条件によって結果が変わるPromise
+function validateStringLength(str) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (str.length >= 5) {
+        resolve(str);
+      } else {
+        reject("文字列が短すぎます");
+      }
+    }, 1500);
+  });
+}
+
+// 問題2-3: 複数の値を返すPromise
+function analyzeArrayPromise(arr) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (!Array.isArray(arr) || arr.length === 0) {
+        reject("有効な配列ではありません");
+        return;
+      }
+      
+      const sum = arr.reduce((total, num) => total + num, 0);
+      const average = sum / arr.length;
+      const max = Math.max(...arr);
+      const min = Math.min(...arr);
+      
+      resolve({
+        sum,
+        average,
+        max,
+        min
+      });
+    }, 2000);
+  });
+}
+
+// ============== Promiseチェーン ==============
+
+// 問題3-1: 基本的なPromiseチェーン
+function processString(str) {
+  return Promise.resolve(str)
+    .then(s => s.toLowerCase())
+    .then(s => s.replace(/\s/g, ''))
+    .then(s => s.split('').reverse().join(''));
+}
+
+// 問題3-2: 数値処理のPromiseチェーン
+function processNumber(number) {
+  return Promise.resolve(number)
+    .then(num => num * 2)
+    .then(num => num + 10)
+    .then(num => num / 3)
+    .then(num => Math.round(num));
+}
+
+// 問題3-3: 配列処理のPromiseチェーン
+function processArray(arr) {
+  return Promise.resolve(arr)
+    .then(array => array.filter(num => num % 2 === 0))
+    .then(array => array.map(num => num * 3))
+    .then(array => array.sort((a, b) => a - b));
+}
+
+// ============== async/await の基本 ==============
+
+// 問題6-1: 基本的なasync/await
+async function convertToFahrenheitAsync(celsius) {
+  // 遅延関数
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+  
+  // 2秒待機
+  await delay(2000);
+  
+  // 摂氏から華氏に変換
+  return celsius * 9/5 + 32;
+}
+
+// 問題6-2: 複数の非同期処理を順番に実行するasync/await
+async function processStringAsync(str) {
+  // 遅延関数
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+  
+  // 1秒待機
+  await delay(1000);
+  
+  // 文字列を大文字に変換
+  const upperStr = str.toUpperCase();
+  
+  // さらに1秒待機
+  await delay(1000);
+  
+  // 文字列の長さを返す
+  return upperStr.length;
+}
+
+// 問題6-3: 条件分岐を含むasync/await
+async function checkParityAsync(number) {
+  // 遅延関数
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+  
+  if (number % 2 === 0) {
+    // 2秒待機
+    await delay(2000);
+    return "偶数です";
+  } else {
+    // 1.5秒待機
+    await delay(1500);
+    return "奇数です";
+  }
+}
+
+// ============== エラーハンドリング ==============
+
+// 問題7-1: try/catchによる基本的なエラーハンドリング
+async function safelyParseJSON(jsonString) {
+  try {
+    return JSON.parse(jsonString);
+  } catch (error) {
+    return "JSONパースエラー: 有効なJSONではありません";
+  }
+}
+
+// 問題7-2: 条件に基づくエラーハンドリング
+async function checkAge(age) {
+  if (age >= 18) {
+    return "成人です";
+  } else {
+    throw new Error("未成年です");
+  }
+}
+
+// 問題7-3: 複数の非同期処理のエラーハンドリング
+async function safeDivision(a, b) {
+  // 遅延関数
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+  
+  // 少し待機
+  await delay(1000);
+  
+  if (b === 0) {
+    throw new Error("0で割ることはできません");
+  }
+  
+  return a / b;
+}
+*/

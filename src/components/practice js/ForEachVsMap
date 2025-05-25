@@ -1,0 +1,49 @@
+もっと明確に説明します：
+map と forEach の基本的な違い
+
+forEach: 配列の各要素に対して関数を実行するだけで、新しい配列を作りません
+map: 配列の各要素に対して関数を実行し、その結果から新しい配列を作ります
+
+例を見てみましょう：
+javascript// forEach の例
+const numbers = [1, 2, 3];
+const result1 = numbers.forEach(num => num * 2);
+console.log(result1);  // undefined (何も返さない)
+
+// map の例
+const numbers = [1, 2, 3];
+const result2 = numbers.map(num => num * 2);
+console.log(result2);  // [2, 4, 6] (新しい配列を返す)
+今回の問題での使い方
+今回の問題の目的は「オブジェクトを作ること」であって、「配列を作ること」ではありません。
+javascriptfunction createUserRegistry(users) {
+  const registry = {};  // 空のオブジェクトを作成
+  
+  users.forEach(user => {
+    registry["user" + user.id] = user.name;  // オブジェクトを修正
+  });
+  
+  return registry;  // このオブジェクトを返す
+}
+もし map を使うとしたら：
+javascriptfunction createUserRegistry(users) {
+  const registry = {};  // 空のオブジェクトを作成
+  
+  // map は新しい配列を作るが、その配列は使わない
+  users.map(user => {
+    registry["user" + user.id] = user.name;  // オブジェクトを修正
+  });
+  
+  return registry;  // このオブジェクトを返す
+}
+map の場合、新しい配列が作られますが、その配列は使わず捨てています（これが「副作用だけを利用」という意味です）。これは無駄なので、forEach の方が適切です。
+要するに：
+
+新しい配列が必要なら → map を使う
+単に各要素に対して処理を行うだけなら → forEach を使う
+
+正確に言うと：
+
+元の配列から新しい配列を作りたい → map
+元の配列を使って何か別のことをしたい（例：オブジェクトを作る、画面に表示する）→ forEach
+

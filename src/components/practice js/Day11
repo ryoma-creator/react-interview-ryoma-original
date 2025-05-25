@@ -1,0 +1,136 @@
+// 日次練習問題 - Day 11 (DOM操作)
+// 以下の問題を解いて、JavaScriptのDOM操作に慣れましょう。
+// 注意: これらの問題はブラウザ環境で実行する必要があります。
+
+// ----- HTML構造の例 -----
+/*
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM操作練習</title>
+  <style>
+    .highlight { background-color: yellow; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h1 id="title">DOM操作練習</h1>
+  
+  <div id="container">
+    <p class="text">段落1</p>
+    <p class="text">段落2</p>
+    <p class="text">段落3</p>
+  </div>
+  
+  <ul id="list">
+    <li>アイテム1</li>
+    <li>アイテム2</li>
+    <li>アイテム3</li>
+  </ul>
+  
+  <button id="add-button">追加</button>
+  <button id="remove-button">削除</button>
+  
+  <div id="output"></div>
+  
+  <form id="user-form">
+    <input type="text" id="name-input" placeholder="名前">
+    <input type="email" id="email-input" placeholder="メール">
+    <button type="submit">送信</button>
+  </form>
+  
+  <script src="script.js"></script>
+</body>
+</html>
+*/
+
+// 問題1: 要素の選択と内容の変更
+// id="title"の要素のテキストを「DOMマスター」に変更してください
+function changeTitle() {
+  // ここにコードを書いてください
+  
+}
+
+// 問題2: 複数要素の選択と操作
+// class="text"の要素全てに"highlight"クラスを追加してください
+function highlightTexts() {
+  // ここにコードを書いてください
+  
+}
+
+// 問題3: 要素の作成と追加
+// id="list"のリストに新しいリストアイテム"アイテム4"を追加してください
+function addListItem() {
+  // ここにコードを書いてください
+  
+}
+
+// 問題4: 要素の削除
+// id="list"のリストから最後のリストアイテムを削除してください
+function removeLastItem() {
+  // ここにコードを書いてください
+  
+}
+
+// 問題5: イベントリスナーの追加
+// id="add-button"のボタンがクリックされたらaddListItem関数を実行し、
+// id="remove-button"のボタンがクリックされたらremoveLastItem関数を実行するように
+// イベントリスナーを設定してください
+function setupButtonListeners() {
+  // ここにコードを書いてください
+  
+}
+
+// 問題6: フォーム送信の処理
+// id="user-form"のフォームが送信されたとき、デフォルトの送信動作を防ぎ、
+// 入力された名前とメールアドレスをid="output"の要素に表示してください
+function handleFormSubmit() {
+  // ここにコードを書いてください
+  
+}
+
+// 問題7: 要素の表示/非表示の切り替え
+// id="title"の要素をクリックするたびに表示/非表示を切り替えるようにしてください
+// （ヒント: "hidden"クラスの追加/削除）
+function toggleTitleVisibility() {
+  // ここにコードを書いてください
+  
+}
+
+// ブラウザ環境で実行する場合のイベントリスナー
+// window.onload = function() {
+//   changeTitle();
+//   highlightTexts();
+//   setupButtonListeners();
+//   handleFormSubmit();
+//   toggleTitleVisibility();
+// };
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: 要素の選択と内容の変更
+function changeTitle() {
+  const titleElement = document.getElementById('title');
+  titleElement.textContent = 'DOMマスター';
+  // または titleElement.innerText = 'DOMマスター';
+}
+
+// 問題2: 複数要素の選択と操作
+function highlightTexts() {
+  const textElements = document.querySelectorAll('.text');
+  textElements.forEach(element => {
+    element.classList.add('highlight');
+  });
+  
+  // または
+  // const textElements = document.getElementsByClassName('text');
+  // for (let i = 0; i < textElements.length; i++) {
+  //   textElements[i].classList.add('highlight');
+  // }
+}
+
+// 問題3: 要素の作成と追加
+function addListItem() {
+  const list = document.getElementById('list');
+  const newItem = document.createElement('li');
+  newItem.textContent = 'アイ

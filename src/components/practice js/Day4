@@ -1,0 +1,185 @@
+//  日次練習問題 - Day 4 (配列とSet操作)
+// 以下の問題を解いて、の配列とSet操作に慣れましょう。
+
+// 問題1: Set を使って配列の重複を削除する
+// 入力例: [1, 2, 2, 3, 4, 4, 5]
+// 出力例: [1, 2, 3, 4, 5]
+function removeDuplicates(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5])); // [1, 2, 3, 4, 5]
+console.log(removeDuplicates([5, 5, 5, 5, 5])); // [5]
+
+
+
+// 問題1.5: 文字列から重複する文字を削除する
+// 入力例: "mississippi"
+// 出力例: "misp"
+function removeDuplicateChars(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(removeDuplicateChars("mississippi")); // "misp"
+console.log(removeDuplicateChars("hello")); // "helo"
+console.log(removeDuplicateChars("aaaaaa")); // "a"
+
+
+// 問題2: 2つの配列の和集合を作成
+// 入力例: [1, 2, 3], [2, 3, 4, 5]
+// 出力例: [1, 2, 3, 4, 5]
+function union(arr1, arr2) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(union([1, 2, 3], [2, 3, 4, 5])); // [1, 2, 3, 4, 5]
+console.log(union([1, 1, 2, 3], [3, 4, 4, 5])); // [1, 2, 3, 4, 5]
+
+// 問題3: 2つの配列の積集合を作成 
+// 入力例: [1, 2, 3], [2, 3, 4, 5]
+// 出力例: [2, 3]
+function intersection(arr1, arr2) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(intersection([1, 2, 3], [2, 3, 4, 5])); // [2, 3]
+console.log(intersection([1, 2, 3], [4, 5, 6])); // []
+
+// 問題4: 2つの配列の差集合を作成 (arr1にあってarr2にない要素)　▶︎ できれば .hasのやり方で
+// 入力例: [1, 2, 3, 4], [2, 3, 5]
+// 出力例: [1, 4]
+function difference(arr1, arr2) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(difference([1, 2, 3, 4], [2, 3, 5])); // [1, 4]
+console.log(difference([1, 2, 3], [1, 2, 3])); // []
+
+// 問題5: 配列内で指定された値以上の要素だけを取得
+// 入力例: [1, 4, 7, 2, 9, 3], 5
+// 出力例: [7, 9]
+function getElementsGreaterThan(arr, threshold) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(getElementsGreaterThan([1, 4, 7, 2, 9, 3], 5)); // [7, 9]
+console.log(getElementsGreaterThan([10, 20, 30, 40], 25)); // [30, 40]
+
+// 問題6: 配列をシャッフル (Fisher-Yates アルゴリズム)
+// 入力例: [1, 2, 3, 4, 5]
+// 出力例: ランダムな順序の配列 (例: [3, 1, 5, 2, 4])
+function shuffleArray(arr) {
+  // ここにコードを書いてください
+  // 元の配列を変更せず、新しい配列を返す
+  
+}
+
+// テスト
+console.log(shuffleArray([1, 2, 3, 4, 5])); // ランダムな順序の配列
+// 注: 結果はランダムなので、実行するたびに異なる結果が出ます
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: Set を使って配列の重複を削除する
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
+}
+
+// 問題2: 2つの配列の和集合を作成
+function union(arr1, arr2) {
+  return [...new Set([...arr1, ...arr2])];
+}
+
+// 問題3: 2つの配列の積集合を作成
+function intersection(arr1, arr2) {
+  const set2 = new Set(arr2);
+  return [...new Set(arr1)].filter(item => set2.has(item));
+}
+
+// 問題4: 2つの配列の差集合を作成
+function difference(arr1, arr2) {
+  const set2 = new Set(arr2);
+  return [...new Set(arr1)].filter(item => !set2.has(item));
+}
+
+// 問題5: 配列内で指定された値以上の要素だけを取得
+function getElementsGreaterThan(arr, threshold) {
+  return arr.filter(item => item > threshold);
+}
+
+// 問題6: 配列をシャッフル
+function shuffleArray(arr) {
+  // 配列のコピーを作成
+  const result = [...arr];
+  
+  // Fisher-Yates アルゴリズム
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    // 要素を交換
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  
+  return result;
+}
+*/
+
+
+; 参考: Setを使った全ての集合演算
+; // 和集合 (Union) A ∪ B
+; function union(arr1, arr2) {
+;   return [...new Set([...arr1, ...arr2])];
+; }
+
+; // 積集合 (Intersection) A ∩ B
+; function intersection(arr1, arr2) {
+;   const set2 = new Set(arr2);
+;   return arr1.filter(item => set2.has(item));
+; }
+
+; // 差集合 (Difference) A - B
+; function difference(arr1, arr2) {
+;   const set2 = new Set(arr2);
+;   return arr1.filter(item => !set2.has(item));
+; }
+
+; // 対称差 (Symmetric Difference) (A - B) ∪ (B - A)
+; function symmetricDifference(arr1, arr2) {
+;   const set1 = new Set(arr1);
+;   const set2 = new Set(arr2);
+  
+;   const diff1 = arr1.filter(item => !set2.has(item));
+;   const diff2 = arr2.filter(item => !set1.has(item));
+  
+;   return [...diff1, ...diff2];
+; }
+; これらの集合演算はデータ処理でよく使われるパターンです。
+
+Set.has() について
+const set2 = new Set(arr2);
+return arr1.filter(item => !set2.has(item));
+Set.has() はSetオブジェクトが特定の値を持っているかどうかをチェックするメソッドです。
+
+includes()と似ていますが、大きな配列ではSet.has()の方がはるかに高速です。🔥
+
+const set = new Set([1, 2, 3]);
+set.has(2);  // true
+set.has(5);  // false
+なぜSet.has()が速いのか：
+
+配列のincludes()：全要素を順番にチェック (O(n)の時間)
+Set.has()：ハッシュテーブルを使用して直接アクセス (O(1)の時間)
+
+大量のデータを扱う場合、数千倍の速度差が出ることもあります。
+

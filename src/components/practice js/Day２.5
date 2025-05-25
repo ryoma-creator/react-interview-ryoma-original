@@ -1,0 +1,271 @@
+// JavaScript 日次練習問題 - Day 2.5 (for...of と for...in の基礎)
+// 以下の問題を解いて、for...of と for...in の使い方に慣れましょう。
+
+// -------------------- for...of の基礎 --------------------
+
+// 問題1: for...of を使って配列の要素を表示する
+// 入力例: [1, 2, 3, 4, 5]
+// 出力例: 配列の各要素を1行ずつ表示する
+function displayArrayElements(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題1のテスト:");
+displayArrayElements([1, 2, 3, 4, 5]);
+// 期待される出力:
+// 1
+// 2
+// 3
+// 4
+// 5
+
+// 問題2: for...of を使って文字列の各文字を逆順に連結する
+// 入力例: "Hello"
+// 出力例: "olleH"
+function reverseString(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題2のテスト:");
+console.log(reverseString("Hello")); // "olleH"
+console.log(reverseString("JavaScript")); // "tpircSavaJ"
+
+// 問題3: for...of を使って配列内の数値の合計を計算する
+// 入力例: [10, 20, 30, 40]
+// 出力例: 100
+function sumArray(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題3のテスト:");
+console.log(sumArray([10, 20, 30, 40])); // 100
+console.log(sumArray([5, 10, 15])); // 30
+
+// 問題4: for...of を使って配列内の最大値を見つける
+// 入力例: [3, 7, 2, 9, 1]
+// 出力例: 9
+function findMax(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題4のテスト:");
+console.log(findMax([3, 7, 2, 9, 1])); // 9
+console.log(findMax([10, 5, 20, 15])); // 20
+
+// -------------------- for...in の基礎 --------------------
+
+// 問題5: for...in を使ってオブジェクトのすべてのキーを表示する
+// 入力例: {name: "田中", age: 25, city: "東京"}
+// 出力例: すべてのキーを1行ずつ表示する
+function displayObjectKeys(obj) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題5のテスト:");
+displayObjectKeys({name: "田中", age: 25, city: "東京"});
+// 期待される出力:
+// name
+// age
+// city
+
+// 問題6: for...in を使ってオブジェクトのすべての値を配列として返す
+// 入力例: {a: 10, b: 20, c: 30}
+// 出力例: [10, 20, 30]
+function getObjectValues(obj) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題6のテスト:");
+console.log(getObjectValues({a: 10, b: 20, c: 30})); // [10, 20, 30]
+console.log(getObjectValues({x: 1, y: 2})); // [1, 2]
+
+// 問題7: for...in を使ってオブジェクトの値の合計を計算する
+// 入力例: {a: 10, b: 20, c: 30}
+// 出力例: 60
+function sumObjectValues(obj) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題7のテスト:");
+console.log(sumObjectValues({a: 10, b: 20, c: 30})); // 60
+console.log(sumObjectValues({x: 5, y: 10, z: 15})); // 30
+
+// 問題8: for...in を使ってオブジェクトを別のオブジェクトにコピーする
+// 入力例: {a: 1, b: 2}
+// 出力例: {a: 1, b: 2} (新しいオブジェクト)
+function copyObject(obj) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題8のテスト:");
+const original = {a: 1, b: 2};
+const copy = copyObject(original);
+console.log(copy); // {a: 1, b: 2}
+console.log(copy === original); // false (別のオブジェクトであることを確認)
+
+// -------------------- for...of と for...in の比較 --------------------
+
+// 問題9: 配列に対して for...of と for...in の違いを示す
+// 配列 [10, 20, 30] に対して、for...of と for...in の結果の違いを示す
+function compareLoopsWithArray() {
+  const arr = [10, 20, 30];
+  
+  console.log("for...of での結果:");
+  // ここにコードを書いてください
+  
+  console.log("for...in での結果:");
+  // ここにコードを書いてください
+}
+
+// テスト
+console.log("問題9のテスト:");
+compareLoopsWithArray();
+// 期待される出力:
+// for...of での結果:
+// 10
+// 20
+// 30
+// for...in での結果:
+// 0
+// 1
+// 2
+
+// 問題10: for...of と for...in を使って文字の出現回数をカウントする関数を作成
+// 入力例: "hello"
+// 出力例: {h: 1, e: 1, l: 2, o: 1}
+function countCharacters(str) {
+  // ここにコードを書いてください
+  // ヒント: for...of で文字をループし、結果オブジェクトを作成
+  // ボーナス: 作成した結果オブジェクトを for...in でループして表示
+  
+}
+
+// テスト
+console.log("問題10のテスト:");
+console.log(countCharacters("hello")); // {h: 1, e: 1, l: 2, o: 1}
+console.log(countCharacters("programming")); // {p: 1, r: 2, o: 1, g: 2, a: 1, m: 2, i: 1, n: 1}
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: for...of を使って配列の要素を表示する
+function displayArrayElements(arr) {
+  for (let element of arr) {
+    console.log(element);
+  }
+}
+
+// 問題2: for...of を使って文字列の各文字を逆順に連結する
+function reverseString(str) {
+  let reversed = '';
+  for (let char of str) {
+    reversed = char + reversed; // 各文字を結果の前に追加
+  }
+  return reversed;
+}
+
+// 問題3: for...of を使って配列内の数値の合計を計算する
+function sumArray(arr) {
+  let sum = 0;
+  for (let num of arr) {
+    sum += num;
+  }
+  return sum;
+}
+
+// 問題4: for...of を使って配列内の最大値を見つける
+function findMax(arr) {
+  let max = arr[0]; // 最初の要素を初期値とする
+  for (let num of arr) {
+    if (num > max) {
+      max = num;
+    }
+  }
+  return max;
+}
+
+// 問題5: for...in を使ってオブジェクトのすべてのキーを表示する
+function displayObjectKeys(obj) {
+  for (let key in obj) {
+    console.log(key);
+  }
+}
+
+// 問題6: for...in を使ってオブジェクトのすべての値を配列として返す
+function getObjectValues(obj) {
+  const values = [];
+  for (let key in obj) {
+    values.push(obj[key]);
+  }
+  return values;
+}
+
+// 問題7: for...in を使ってオブジェクトの値の合計を計算する
+function sumObjectValues(obj) {
+  let sum = 0;
+  for (let key in obj) {
+    sum += obj[key];
+  }
+  return sum;
+}
+
+// 問題8: for...in を使ってオブジェクトを別のオブジェクトにコピーする
+function copyObject(obj) {
+  const copy = {};
+  for (let key in obj) {
+    copy[key] = obj[key];
+  }
+  return copy;
+}
+
+// 問題9: 配列に対して for...of と for...in の違いを示す
+function compareLoopsWithArray() {
+  const arr = [10, 20, 30];
+  
+  console.log("for...of での結果:");
+  for (let value of arr) {
+    console.log(value);
+  }
+  
+  console.log("for...in での結果:");
+  for (let index in arr) {
+    console.log(index);
+  }
+}
+
+// 問題10: for...of と for...in を使って文字の出現回数をカウントする関数を作成
+function countCharacters(str) {
+  const counts = {};
+  
+  // for...of で各文字をカウント
+  for (let char of str) {
+    if (counts[char]) {
+      counts[char]++;
+    } else {
+      counts[char] = 1;
+    }
+  }
+  
+  // ボーナス: for...in でカウント結果を表示
+  for (let char in counts) {
+    console.log(`${char}: ${counts[char]}回`);
+  }
+  
+  return counts;
+}
+*/

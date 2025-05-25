@@ -1,0 +1,159 @@
+// JavaScript 日次練習問題 - Day 1.5 (追加の配列メソッド)
+// 以下の問題を解いて、JavaScriptの重要な配列メソッドに慣れましょう。
+
+// 問題1: 特定の条件を満たす最初の要素を見つける
+// 与えられた配列から、10より大きい最初の数値を見つけてください
+// 入力例: [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+// 出力例: 12
+function findFirstLargeNumber(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(findFirstLargeNumber([2, 5, 8, 12, 16, 23, 38, 56, 72, 91])); // 12
+console.log(findFirstLargeNumber([1, 3, 5, 7, 9, 11])); // 11
+
+// 問題2: 特定のプロパティで最初のオブジェクトを見つける
+// 与えられたユーザー配列から、指定されたIDを持つユーザーを見つけてください
+// 入力例: [{id: 1, name: "Alice"}, {id: 2, name: "Bob"}, {id: 3, name: "Charlie"}], 2
+// 出力例: {id: 2, name: "Bob"}
+function findUserById(users, id) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+const users = [
+  {id: 1, name: "Alice"},
+  {id: 2, name: "Bob"},
+  {id: 3, name: "Charlie"}
+];
+console.log(findUserById(users, 2)); // {id: 2, name: "Bob"}
+console.log(findUserById(users, 4)); // undefined
+
+// 問題3: 配列内の全ての要素が条件を満たすかチェックする
+// 与えられた配列の全ての要素が正の数かどうかをチェックしてください
+// 入力例: [1, 2, 3, 4, 5]
+// 出力例: true
+function areAllPositive(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(areAllPositive([1, 2, 3, 4, 5])); // true
+console.log(areAllPositive([1, -2, 3, 4, 5])); // false
+
+// 問題4: 配列内の少なくとも1つの要素が条件を満たすかチェックする
+// 与えられた配列に100より大きい数値が1つ以上あるかどうかをチェックしてください
+// 入力例: [5, 15, 25, 35, 45, 55]
+// 出力例: false
+function hasLargeNumber(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(hasLargeNumber([5, 15, 25, 35, 45, 55])); // false
+console.log(hasLargeNumber([5, 15, 25, 35, 145, 55])); // true
+
+// 問題5: 配列を数値の昇順に並べ替える
+// 与えられた数値配列を小さい順に並べ替えてください
+// 入力例: [3, 1, 4, 1, 5, 9, 2, 6]
+// 出力例: [1, 1, 2, 3, 4, 5, 6, 9]
+function sortNumbersAscending(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(sortNumbersAscending([3, 1, 4, 1, 5, 9, 2, 6])); // [1, 1, 2, 3, 4, 5, 6, 9]
+console.log(sortNumbersAscending([10, 5, 8, 3])); // [3, 5, 8, 10]
+
+// 問題6: 配列を数値の降順に並べ替える
+// 与えられた数値配列を大きい順に並べ替えてください
+// 入力例: [3, 1, 4, 1, 5, 9, 2, 6]
+// 出力例: [9, 6, 5, 4, 3, 2, 1, 1]
+function sortNumbersDescending(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(sortNumbersDescending([3, 1, 4, 1, 5, 9, 2, 6])); // [9, 6, 5, 4, 3, 2, 1, 1]
+console.log(sortNumbersDescending([10, 5, 8, 3])); // [10, 8, 5, 3]
+
+// 問題7: オブジェクト配列をプロパティに基づいて並べ替える
+// 与えられたユーザー配列を年齢順に並べ替えてください
+// 入力例: [{name: "Alice", age: 25}, {name: "Bob", age: 30}, {name: "Charlie", age: 20}]
+// 出力例: [{name: "Charlie", age: 20}, {name: "Alice", age: 25}, {name: "Bob", age: 30}]
+function sortUsersByAge(users) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+const userList = [
+  {name: "Alice", age: 25},
+  {name: "Bob", age: 30},
+  {name: "Charlie", age: 20}
+];
+console.log(sortUsersByAge(userList));
+// [{name: "Charlie", age: 20}, {name: "Alice", age: 25}, {name: "Bob", age: 30}]
+
+// 問題8: 文字列配列を長さ順に並べ替える
+// 与えられた文字列配列を、文字列の長さの昇順に並べ替えてください
+// 入力例: ["apple", "banana", "cherry", "date", "elderberry"]
+// 出力例: ["date", "apple", "banana", "cherry", "elderberry"]
+function sortStringsByLength(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(sortStringsByLength(["apple", "banana", "cherry", "date", "elderberry"]));
+// ["date", "apple", "banana", "cherry", "elderberry"]
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: 特定の条件を満たす最初の要素を見つける
+function findFirstLargeNumber(arr) {
+  return arr.find(num => num > 10);
+}
+
+// 問題2: 特定のプロパティで最初のオブジェクトを見つける
+function findUserById(users, id) {
+  return users.find(user => user.id === id);
+}
+
+// 問題3: 配列内の全ての要素が条件を満たすかチェックする
+function areAllPositive(arr) {
+  return arr.every(num => num > 0);
+}
+
+// 問題4: 配列内の少なくとも1つの要素が条件を満たすかチェックする
+function hasLargeNumber(arr) {
+  return arr.some(num => num > 100);
+}
+
+// 問題5: 配列を数値の昇順に並べ替える
+function sortNumbersAscending(arr) {
+  return [...arr].sort((a, b) => a - b);
+}
+
+// 問題6: 配列を数値の降順に並べ替える
+function sortNumbersDescending(arr) {
+  return [...arr].sort((a, b) => b - a);
+}
+
+// 問題7: オブジェクト配列をプロパティに基づいて並べ替える
+function sortUsersByAge(users) {
+  return [...users].sort((a, b) => a.age - b.age);
+}
+
+// 問題8: 文字列配列を長さ順に並べ替える
+function sortStringsByLength(arr) {
+  return [...arr].sort((a, b) => a.length - b.length);
+}
+*/

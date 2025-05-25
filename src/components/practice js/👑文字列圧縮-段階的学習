@@ -1,0 +1,195 @@
+// Eng
+
+// Level 1: Basic String Manipulation
+// Problem 1-1: String Reversal
+// Write a function that takes a string and returns the reversed version of it.
+function reverseString(str) {
+  // Write your code here
+}
+
+// Example: "hello" → "olleh"
+console.log(reverseString("hello"));
+
+// // ................
+
+// Problem 1-2: Counting Vowels
+// Write a function that counts the number of vowels (a, e, i, o, u) in a given string.
+
+function countVowels(str) {
+  // Write your code here
+}
+
+// Example: "javascript" → 3
+console.log(countVowels("javascript"));
+
+
+// .................
+
+// Level 2: Character Frequency
+// Problem 2-1: Character Count
+// Write a function that counts the occurrences of each character in a string and returns an object with the counts.
+
+function charCount(str) {
+  // Write your code here
+}
+
+// Example: "hello" → { h: 1, e: 1, l: 2, o: 1 }
+console.log(charCount("hello"));
+
+// Problem 2-2: Most Frequent Character
+// Write a function that returns the most frequently occurring character in a string along with its count.
+
+function mostFrequentChar(str) {
+  // Write your code here
+}
+
+// Example: "javascript" → { char: 'a', count: 2 }
+console.log(mostFrequentChar("javascript"));
+
+
+// .................
+// 文字列圧縮問題の練習問題
+// IBMで頻出の文字列圧縮問題を段階的に学べる練習問題を用意しました：
+// 練習1: 基本的な文字列圧縮
+// 連続する文字を数えて圧縮する関数
+// 例: "aabcccccaaa" → "a2bc5a3"
+function compressString(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(compressString("aabcccccaaa")); // "a2bc5a3"
+console.log(compressString("abcdef")); // "abcdef" (圧縮後も同じ長さの場合は元の文字列)
+// 練習2: 改良版文字列圧縮
+// 連続する文字を数えて圧縮する関数（1文字の場合は数字なし）
+// 例: "aabcccccaaa" → "a2bc5a3"
+// 例: "aabcc" → "a2bc2"
+function compressStringImproved(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(compressStringImproved("aabcccccaaa")); // "a2bc5a3"
+console.log(compressStringImproved("abcdef")); // "abcdef"
+// 練習3: 完全な文字列圧縮
+// 連続する文字を圧縮し、元の文字列より短い場合のみ圧縮結果を返す
+// 例: "aabcccccaaa" → "a2bc5a3"
+// 例: "abcdef" → "abcdef" (圧縮しない)
+function compressBetter(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(compressBetter("aabcccccaaa")); // "a2bc5a3"
+console.log(compressBetter("abcdef")); // "abcdef"
+
+// ................
+
+// ; 文字列圧縮のアルゴリズムを理解するのは最初は難しく感じますね。
+// ; これを小分けにして段階的に学べる練習問題を作りましょう。各問題の回答は問題の後に分けて記載します。
+
+
+// ; 文字列圧縮アルゴリズム - 段階的学習
+// ; 問題1: 文字のカウント
+// ; 文字列の中で特定の文字が何回出現するかを数える関数を作成してください。
+
+// 問題1: 文字列内の特定の文字の出現回数をカウントする
+// 例: countChar("hello", "l") -> 2
+function countChar(str, char) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(countChar("hello", "l")); // 2
+console.log(countChar("programming", "m")); // 2
+
+// ; 問題2: 連続する同じ文字をカウント
+// ; 文字列の先頭から連続する同じ文字の数をカウントする関数を作成してください。
+
+// 問題2: 先頭から連続する同じ文字の数をカウントする
+// 例: countConsecutiveChars("aaabbc") -> 3 (aが3つ連続)
+function countConsecutiveChars(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(countConsecutiveChars("aaabbc")); // 3
+console.log(countConsecutiveChars("xyyyz")); // 1
+
+// ; 問題3: 文字と出現回数のペアを作成
+// ; 先頭の文字とその連続出現回数のペアを文字列で返す関数を作成してください。
+
+// 問題3: 先頭の文字とその連続出現回数のペアを文字列で返す
+// 例: charCountPair("aaabbc") -> "a3"
+function charCountPair(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(charCountPair("aaabbc")); // "a3"
+console.log(charCountPair("xyyyz")); // "x1"
+
+
+// ; 問題4: 先頭の連続文字を処理した残りの文字列を返す
+// ; 先頭の連続する同じ文字を除いた残りの文字列を返す関数を作成してください。
+
+// 問題4: 先頭の連続する同じ文字を除いた残りの文字列を返す
+// 例: remainingString("aaabbc") -> "bbc"
+function remainingString(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(remainingString("aaabbc")); // "bbc"
+console.log(remainingString("xyyyz")); // "yyyz"
+
+// ; 問題5: 文字列の最初の部分を圧縮
+// ; 文字列の先頭部分だけを圧縮する関数を作成してください。
+
+// 問題5: 文字列の先頭部分だけを圧縮する
+// 例: compressFirstPart("aaabbc") -> "a3bbc"
+function compressFirstPart(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(compressFirstPart("aaabbc")); // "a3bbc"
+console.log(compressFirstPart("xyyyz")); // "x1yyyz"
+
+// ; 問題6: 文字列全体を圧縮
+// ; 文字列全体を少しずつ圧縮していく関数を作成してください。
+
+// 問題6: 再帰を使って文字列全体を少しずつ圧縮する
+// 例: compressRecursive("aaabbc") -> "a3b2c1"
+function compressRecursive(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(compressRecursive("aaabbc")); // "a3b2c1"
+console.log(compressRecursive("xyyyz")); // "x1y3z1"
+
+// ; 問題7: ループを使って文字列全体を圧縮
+// ; ループを使って文字列全体を圧縮する関数を作成してください。これが最終的な文字列圧縮関数です。
+
+// 問題7: ループを使って文字列全体を圧縮する
+// 例: compressString("aaabbc") -> "a3b2c1"
+function compressString(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(compressString("aaabbc")); // "a3b2c1"
+console.log(compressString("aabcccccaaa")); // "a2b1c5a3"
+console.log(compressString("abcdef")); // "a1b1c1d1e1f1"
+

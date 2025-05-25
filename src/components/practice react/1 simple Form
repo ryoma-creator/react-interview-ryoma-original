@@ -1,0 +1,627 @@
+import React, { useState } from 'react';
+
+// React フォーム作成 段階的練習
+// 各問題のコメントアウトを解除して段階的に完成させよう！
+
+const FormPractice = () => {
+  
+  // === 問題1: 基本状態管理 ===
+  // コメントアウトを解除して練習
+  
+  // 問題1-1: フォームデータの状態を作成
+  /*
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
+  */
+  
+  // 問題1-2: エラーと送信状態を管理
+  /*
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  */
+
+  // === 問題2: 入力変更ハンドラー ===
+  
+  // 問題2-1: 入力変更時の処理（全フィールド共通）
+  /*
+  const handleChange = (e) => {
+    const { name, value } = e.target;  // 分割代入
+    
+    setFormData({
+      ...formData,    // 他のフィールド保持
+      [name]: value   // 動的プロパティで更新
+    });
+    
+    // エラーがあれば入力時にクリア
+    if (error) setError('');
+  };
+  */
+
+  // === 問題3: バリデーション ===
+  
+  // 問題3-1: フォーム送信時のバリデーション
+  /*
+  const handleSubmit = (e) => {
+    e.preventDefault();  // ページリロード防止
+    setIsSubmitting(true);
+
+    // 名前チェック
+    if (!formData.name.trim()) {
+      setError('名前は必須です');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // メールチェック
+    if (!formData.email.includes('@')) {
+      setError('正しいメールアドレスを入力してください');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // パスワードチェック
+    if (formData.password.length < 6) {
+      setError('パスワードは6文字以上必要です');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // 送信処理シミュレーション
+    setTimeout(() => {
+      setIsSubmitted(true);
+      setIsSubmitting(false);
+      console.log('送信データ:', formData);
+    }, 1500);
+  };
+  */
+
+  // === 問題4: 送信完了画面 ===
+  
+  // 問題4-1: 送信完了時の表示
+  /*
+  if (isSubmitted) {
+    return (
+      <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px' }}>
+        <h2>✅ 送信完了！</h2>
+        <p>ありがとうございました。</p>
+        <button 
+          onClick={() => {
+            setIsSubmitted(false);
+            setFormData({ name: '', email: '', password: '' });
+          }}
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#28a745',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          新しいフォームを作成
+        </button>
+      </div>
+    );
+  }
+  */
+
+  // === 問題5: メインフォーム表示 ===
+  
+import React, { useState } from 'react';
+
+// React フォーム作成 段階的練習
+// 各問題のコメントアウトを解除して段階的に完成させよう！
+
+const FormPractice = () => {
+  
+  // === 問題1: 基本状態管理 ===
+  // コメントアウトを解除して練習
+  
+  // 問題1-1: フォームデータの状態を作成
+  /*
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
+  */
+  
+  // 問題1-2: エラーと送信状態を管理
+  /*
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  */
+
+  // === 問題2: 入力変更ハンドラー ===
+  
+  // 問題2-1: 入力変更時の処理（全フィールド共通）
+  /*
+  const handleChange = (e) => {
+    const { name, value } = e.target;  // 分割代入
+    
+    setFormData({
+      ...formData,    // 他のフィールド保持
+      [name]: value   // 動的プロパティで更新
+    });
+    
+    // エラーがあれば入力時にクリア
+    if (error) setError('');
+  };
+  */
+
+  // === 問題3: バリデーション ===
+  
+  // 問題3-1: フォーム送信時のバリデーション
+  /*
+  const handleSubmit = (e) => {
+    e.preventDefault();  // ページリロード防止
+
+    // 名前チェック
+    if (!formData.name.trim()) {
+      setError('名前は必須です');
+      return;
+    }
+
+    // メールチェック
+    if (!formData.email.includes('@')) {
+      setError('正しいメールアドレスを入力してください');
+      return;
+    }
+
+    // パスワードチェック
+    if (formData.password.length < 6) {
+      setError('パスワードは6文字以上必要です');
+      return;
+    }
+
+    // 送信処理シミュレーション
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitted(true);
+      setIsSubmitting(false);
+      console.log('送信データ:', formData);
+    }, 1500);
+  };
+  */
+
+  // === 問題4: 送信完了画面 ===
+  
+  // 問題4-1: 送信完了時の表示
+  /*
+  if (isSubmitted) {
+    return (
+      <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px' }}>
+        <h2>✅ 送信完了！</h2>
+        <p>ありがとうございました。</p>
+        <button 
+          onClick={() => {
+            setIsSubmitted(false);
+            setFormData({ name: '', email: '', password: '' });
+          }}
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#28a745',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          新しいフォームを作成
+        </button>
+      </div>
+    );
+  }
+  */
+
+  // === 問題5: メインフォーム表示 ===
+  
+  return (
+    <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px' }}>
+      <h2>📝 お問い合わせフォーム練習</h2>
+      
+      {/* 問題5-1: フォーム基本構造とonSubmit */}
+      <div>
+        
+        {/* 問題5-2: 名前フィールド */}
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ display: 'block', marginBottom: '5px' }}>
+            名前
+          </label>
+          {/*
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px'
+            }}
+          />
+          */}
+          <input
+            type="text"
+            name="name"
+            placeholder="名前を入力してください"
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px'
+            }}
+          />
+        </div>
+
+        {/* 問題5-3: メールフィールド */}
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ display: 'block', marginBottom: '5px' }}>
+            メールアドレス
+          </label>
+          {/*
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px'
+            }}
+          />
+          */}
+          <input
+            type="email"
+            name="email"
+            placeholder="email@example.com"
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px'
+            }}
+          />
+        </div>
+
+        {/* 問題5-4: パスワードフィールド */}
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ display: 'block', marginBottom: '5px' }}>
+            パスワード
+          </label>
+          {/*
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px'
+            }}
+          />
+          */}
+          <input
+            type="password"
+            name="password"
+            placeholder="6文字以上"
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px'
+            }}
+          />
+        </div>
+
+        {/* 問題5-5: エラーメッセージ表示 */}
+        {/*
+        {error && (
+          <div style={{
+            color: 'red',
+            marginBottom: '15px',
+            padding: '8px',
+            backgroundColor: '#ffe6e6',
+            border: '1px solid #ffcccc',
+            borderRadius: '4px'
+          }}>
+            {error}
+          </div>
+        )}
+        */}
+
+        {/* 問題5-6: 送信ボタン */}
+        {/*
+        <button
+          onClick={handleSubmit}
+          disabled={isSubmitting}
+          style={{
+            width: '100%',
+            padding: '12px',
+            backgroundColor: isSubmitting ? '#ccc' : '#007bff',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: isSubmitting ? 'not-allowed' : 'pointer',
+            fontSize: '16px'
+          }}
+        >
+          {isSubmitting ? '送信中...' : '送信'}
+        </button>
+        */}
+        <button
+          type="button"
+          style={{
+            width: '100%',
+            padding: '12px',
+            backgroundColor: '#007bff',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontSize: '16px'
+          }}
+        >
+          送信（まだ動作しません）
+        </button>
+      </div>
+
+      {/* 学習進度表示 */}
+      <div style={{ 
+        marginTop: '30px', 
+        padding: '15px', 
+        backgroundColor: '#f8f9fa', 
+        borderRadius: '8px' 
+      }}>
+        <h3>📚 学習進度</h3>
+        <div style={{ fontSize: '14px', lineHeight: '1.6' }}>
+          <div>⏳ 問題1: useState基礎</div>
+          <div>⏳ 問題2: handleChange関数</div>
+          <div>⏳ 問題3: バリデーション</div>
+          <div>⏳ 問題4: 送信完了画面</div>
+          <div>⏳ 問題5: フォーム統合</div>
+        </div>
+      </div>
+
+      {/* ヒント表示 */}
+      <div style={{ 
+        marginTop: '20px', 
+        padding: '15px', 
+        backgroundColor: '#e8f5e8', 
+        borderRadius: '8px',
+        border: '1px solid #4caf50'
+      }}>
+        <h4>💡 今日のヒント</h4>
+        <p style={{ fontSize: '14px', margin: '5px 0' }}>
+          <strong>分割代入:</strong> <code>const &#123;name, value&#125; = e.target;</code>
+        </p>
+        <p style={{ fontSize: '14px', margin: '5px 0' }}>
+          <strong>動的プロパティ:</strong> <code>[name]: value</code>
+        </p>
+        <p style={{ fontSize: '14px', margin: '5px 0' }}>
+          <strong>スプレッド演算子:</strong> <code>...formData</code>
+        </p>
+      </div>
+
+      {/* 完成版プレビュー */}
+      <div style={{ 
+        marginTop: '20px', 
+        padding: '15px', 
+        backgroundColor: '#fff3cd', 
+        borderRadius: '8px',
+        border: '1px solid #ffc107'
+      }}>
+        <h4>🎯 完成すると...</h4>
+        <ul style={{ fontSize: '14px', margin: '10px 0' }}>
+          <li>✅ 入力値がリアルタイムで保存される</li>
+          <li>✅ バリデーションエラーが表示される</li>
+          <li>✅ 送信中はボタンが無効化される</li>
+          <li>✅ 送信完了画面が表示される</li>
+          <li>✅ フォームリセット機能付き</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default FormPractice;
+        
+        {/* 問題5-2: 名前フィールド */}
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ display: 'block', marginBottom: '5px' }}>
+            名前
+          </label>
+          {/*
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px'
+            }}
+          />
+          */}
+          <input
+            type="text"
+            name="name"
+            placeholder="名前を入力してください"
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px'
+            }}
+          />
+        </div>
+
+        {/* 問題5-3: メールフィールド */}
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ display: 'block', marginBottom: '5px' }}>
+            メールアドレス
+          </label>
+          {/*
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px'
+            }}
+          />
+          */}
+          <input
+            type="email"
+            name="email"
+            placeholder="email@example.com"
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px'
+            }}
+          />
+        </div>
+
+        {/* 問題5-4: パスワードフィールド */}
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ display: 'block', marginBottom: '5px' }}>
+            パスワード
+          </label>
+          {/*
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px'
+            }}
+          />
+          */}
+          <input
+            type="password"
+            name="password"
+            placeholder="6文字以上"
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px'
+            }}
+          />
+        </div>
+
+        {/* 問題5-5: エラーメッセージ表示 */}
+        {/*
+        {error && (
+          <div style={{
+            color: 'red',
+            marginBottom: '15px',
+            padding: '8px',
+            backgroundColor: '#ffe6e6',
+            border: '1px solid #ffcccc',
+            borderRadius: '4px'
+          }}>
+            {error}
+          </div>
+        )}
+        */}
+
+        {/* 問題5-6: 送信ボタン */}
+        {/*
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          style={{
+            width: '100%',
+            padding: '12px',
+            backgroundColor: isSubmitting ? '#ccc' : '#007bff',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: isSubmitting ? 'not-allowed' : 'pointer',
+            fontSize: '16px'
+          }}
+        >
+          {isSubmitting ? '送信中...' : '送信'}
+        </button>
+        */}
+        <button
+          type="button"
+          style={{
+            width: '100%',
+            padding: '12px',
+            backgroundColor: '#007bff',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontSize: '16px'
+          }}
+        >
+          送信（まだ動作しません）
+        </button>
+      </form>
+
+      {/* 学習進度表示 */}
+      <div style={{ 
+        marginTop: '30px', 
+        padding: '15px', 
+        backgroundColor: '#f8f9fa', 
+        borderRadius: '8px' 
+      }}>
+        <h3>📚 学習進度</h3>
+        <div style={{ fontSize: '14px', lineHeight: '1.6' }}>
+          <div>✅ 問題1: useState基礎</div>
+          <div>⏳ 問題2: handleChange関数</div>
+          <div>⏳ 問題3: バリデーション</div>
+          <div>⏳ 問題4: 送信完了画面</div>
+          <div>⏳ 問題5: フォーム統合</div>
+        </div>
+      </div>
+
+      {/* ヒント表示 */}
+      <div style={{ 
+        marginTop: '20px', 
+        padding: '15px', 
+        backgroundColor: '#e8f5e8', 
+        borderRadius: '8px',
+        border: '1px solid #4caf50'
+      }}>
+        <h4>💡 今日のヒント</h4>
+        <p style={{ fontSize: '14px', margin: '5px 0' }}>
+          <strong>分割代入:</strong> <code>const &#123;name, value&#125; = e.target;</code>
+        </p>
+        <p style={{ fontSize: '14px', margin: '5px 0' }}>
+          <strong>動的プロパティ:</strong> <code>[name]: value</code>
+        </p>
+        <p style={{ fontSize: '14px', margin: '5px 0' }}>
+          <strong>スプレッド演算子:</strong> <code>...formData</code>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default FormPractice;

@@ -1,0 +1,393 @@
+# JavaScript 基本アルゴリズム問題集 - IBM面接対策
+
+; このセットは配列操作と文字列操作を中心に、IBM面接で頻出する基本的なアルゴリズム問題をカバーしています。
+; 各問題は実践的で、IBMのコーディングテストに出題される可能性が高い内容です。
+
+## パート1: 文字列操作
+
+### 問題1-1: 文字列圧縮
+; 連続する文字をカウントして圧縮する関数を実装してください。
+
+
+// 問題1-1: 文字列圧縮
+// 例: "aaabbbccc" → "a3b3c3"
+function compressString(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(compressString("aaabbbccc")); // "a3b3c3"
+console.log(compressString("abcdef")); // "a1b1c1d1e1f1" または "abcdef"
+
+
+### 問題1-2: 回文チェック
+; 文字列が回文（前から読んでも後ろから読んでも同じ）かどうかをチェックする関数を実装してください。
+
+
+; // 問題1-2: 回文チェック
+; // 例: "racecar" → true, "hello" → false
+function isPalindrome(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(isPalindrome("racecar")); // true
+console.log(isPalindrome("hello")); // false
+
+
+### 問題1-3: 文字列のアナグラムチェック
+; 2つの文字列がアナグラム（文字の並べ替え）かどうかをチェックする関数を実装してください。
+
+
+; // 問題1-3: アナグラムチェック
+; // 例: "listen", "silent" → true
+function areAnagrams(str1, str2) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(areAnagrams("listen", "silent")); // true
+console.log(areAnagrams("hello", "world")); // false
+
+
+## パート2: 配列操作
+
+### 問題2-1: 重複要素の削除
+; 配列から重複する要素を削除する関数を実装してください。
+
+
+; // 問題2-1: 重複要素の削除
+; // 例: [1, 2, 2, 3, 4, 4, 5] → [1, 2, 3, 4, 5]
+function removeDuplicates(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5])); // [1, 2, 3, 4, 5]
+console.log(removeDuplicates(["a", "b", "a", "c", "c"])); // ["a", "b", "c"]
+
+
+### 問題2-2: 配列の要素変換
+; 配列の各要素を2倍にする関数を実装してください。
+
+
+; // 問題2-2: 配列の要素を2倍にする
+; // 例: [1, 2, 3, 4] → [2, 4, 6, 8]
+function doubleValues(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(doubleValues([1, 2, 3, 4])); // [2, 4, 6, 8]
+console.log(doubleValues([5, 10, 15])); // [10, 20, 30]
+
+
+### 問題2-3: 配列のフィルタリング
+; 配列から偶数だけを抽出する関数を実装してください。
+
+
+; // 問題2-3: 偶数のフィルタリング
+; // 例: [1, 2, 3, 4, 5, 6] → [2, 4, 6]
+function filterEvenNumbers(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(filterEvenNumbers([1, 2, 3, 4, 5, 6])); // [2, 4, 6]
+console.log(filterEvenNumbers([7, 8, 9, 10])); // [8, 10]
+
+
+## パート3: 応用問題
+
+### 問題3-1: 最長の共通プレフィックス
+; 文字列の配列から最長の共通プレフィックスを見つける関数を実装してください。
+
+
+; // 問題3-1: 最長の共通プレフィックス
+; // 例: ["flower", "flow", "flight"] → "fl"
+function longestCommonPrefix(strs) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(longestCommonPrefix(["flower", "flow", "flight"])); // "fl"
+console.log(longestCommonPrefix(["dog", "car", "race"])); // ""
+
+
+### 問題3-2: 括弧のバランスチェック
+文字列内の括弧が適切にバランスしているかチェックする関数を実装してください。
+
+
+// 問題3-2: 括弧のバランスチェック
+// 例: "({[]})" → true, "({[})" → false
+function isBalanced(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(isBalanced("({[]})")); // true
+console.log(isBalanced("({[})")); // false
+```
+
+### 問題3-3: 配列内の最も頻出する要素
+配列内で最も頻繁に出現する要素を見つける関数を実装してください。
+
+
+// 問題3-3: 最も頻出する要素
+// 例: [1, 2, 3, 2, 2, 4, 5, 2] → 2
+function mostFrequent(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(mostFrequent([1, 2, 3, 2, 2, 4, 5, 2])); // 2
+console.log(mostFrequent(["a", "b", "a", "c", "a"])); // "a"
+```
+
+## パート4: 実践的問題
+
+### 問題4-1: 連続する部分配列の最大和
+整数配列の連続する部分配列の最大和を求める関数を実装してください。
+
+
+// 問題4-1: 連続する部分配列の最大和
+// 例: [-2, 1, -3, 4, -1, 2, 1, -5, 4] → 6 (部分配列 [4, -1, 2, 1])
+function maxSubArraySum(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(maxSubArraySum([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // 6
+console.log(maxSubArraySum([1, 2, 3, 4])); // 10
+```
+
+### 問題4-2: ユーザー情報のフィルタリングと変換
+ユーザー情報の配列から特定の年齢以上のユーザーの名前のみを抽出する関数を実装してください。
+
+
+// 問題4-2: ユーザー情報のフィルタリングと変換
+// 例: [{name: "Alice", age: 25}, {name: "Bob", age: 17}, {name: "Charlie", age: 30}], 18
+//     → ["Alice", "Charlie"]
+function filterAndMapUsers(users, minAge) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+const users = [
+  {name: "Alice", age: 25},
+  {name: "Bob", age: 17},
+  {name: "Charlie", age: 30}
+];
+console.log(filterAndMapUsers(users, 18)); // ["Alice", "Charlie"]
+console.log(filterAndMapUsers(users, 26)); // ["Charlie"]
+```
+
+# 回答例
+
+## パート1: 文字列操作
+
+### 問題1-1: 文字列圧縮
+
+function compressString(str) {
+  if (!str || str.length === 0) return "";
+  
+  let result = "";
+  let count = 1;
+  let currentChar = str[0];
+  
+  for (let i = 1; i <= str.length; i++) {
+    if (i < str.length && str[i] === currentChar) {
+      count++;
+    } else {
+      result += currentChar + count;
+      if (i < str.length) {
+        currentChar = str[i];
+        count = 1;
+      }
+    }
+  }
+  
+  // 圧縮後の文字列が元の文字列よりも長くなる場合は元の文字列を返す
+  return result.length < str.length ? result : str;
+}
+```
+
+### 問題1-2: 回文チェック
+
+function isPalindrome(str) {
+  // スペースや記号を削除して小文字に変換するバージョン
+  // const cleanStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  // return cleanStr === cleanStr.split('').reverse().join('');
+  
+  // シンプルバージョン
+  return str === str.split('').reverse().join('');
+}
+```
+
+### 問題1-3: 文字列のアナグラムチェック
+
+function areAnagrams(str1, str2) {
+  if (str1.length !== str2.length) return false;
+  
+  // 方法1: ソートして比較
+  return str1.split('').sort().join('') === str2.split('').sort().join('');
+  
+  // 方法2: 文字の出現回数をカウント
+  /*
+  const charCount = {};
+  
+  // str1の各文字の出現回数をカウント
+  for (let char of str1) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+  
+  // str2の各文字をチェック
+  for (let char of str2) {
+    if (!charCount[char]) return false;
+    charCount[char]--;
+  }
+  
+  return true;
+  */
+}
+```
+
+## パート2: 配列操作
+
+### 問題2-1: 重複要素の削除
+
+function removeDuplicates(arr) {
+  // 方法1: Setを使用
+  return [...new Set(arr)];
+  
+  // 方法2: filterを使用
+  // return arr.filter((item, index) => arr.indexOf(item) === index);
+}
+```
+
+### 問題2-2: 配列の要素変換
+
+function doubleValues(arr) {
+  return arr.map(num => num * 2);
+}
+```
+
+### 問題2-3: 配列のフィルタリング
+
+function filterEvenNumbers(arr) {
+  return arr.filter(num => num % 2 === 0);
+}
+```
+
+## パート3: 応用問題
+
+### 問題3-1: 最長の共通プレフィックス
+
+function longestCommonPrefix(strs) {
+  if (strs.length === 0) return "";
+  
+  // 最初の文字列を基準にする
+  let prefix = strs[0];
+  
+  for (let i = 1; i < strs.length; i++) {
+    // 共通プレフィックスが見つからなくなったら終了
+    while (strs[i].indexOf(prefix) !== 0) {
+      prefix = prefix.substring(0, prefix.length - 1);
+      if (prefix === "") return "";
+    }
+  }
+  
+  return prefix;
+}
+```
+
+### 問題3-2: 括弧のバランスチェック
+
+function isBalanced(str) {
+  const stack = [];
+  const brackets = {
+    '(': ')',
+    '{': '}',
+    '[': ']'
+  };
+  
+  for (let char of str) {
+    if (brackets[char]) {
+      // 開き括弧ならスタックに追加
+      stack.push(char);
+    } else {
+      // 閉じ括弧なら対応する開き括弧があるか確認
+      const lastBracket = stack.pop();
+      if (brackets[lastBracket] !== char) {
+        return false;
+      }
+    }
+  }
+  
+  // スタックが空なら全ての括弧がバランスしている
+  return stack.length === 0;
+}
+```
+
+### 問題3-3: 配列内の最も頻出する要素
+
+function mostFrequent(arr) {
+  const frequency = {};
+  let maxFreq = 0;
+  let mostFreqItem;
+  
+  for (let item of arr) {
+    frequency[item] = (frequency[item] || 0) + 1;
+    
+    if (frequency[item] > maxFreq) {
+      maxFreq = frequency[item];
+      mostFreqItem = item;
+    }
+  }
+  
+  return mostFreqItem;
+}
+```
+
+## パート4: 実践的問題
+
+### 問題4-1: 連続する部分配列の最大和
+
+function maxSubArraySum(arr) {
+  if (arr.length === 0) return 0;
+  
+  let maxSoFar = arr[0];
+  let currentMax = arr[0];
+  
+  for (let i = 1; i < arr.length; i++) {
+    // 現在の要素を含めた方が大きければ含める、そうでなければ新しい部分配列を開始
+    currentMax = Math.max(arr[i], currentMax + arr[i]);
+    // これまでの最大値を更新
+    maxSoFar = Math.max(maxSoFar, currentMax);
+  }
+  
+  return maxSoFar;
+}
+```
+
+### 問題4-2: ユーザー情報のフィルタリングと変換
+
+function filterAndMapUsers(users, minAge) {
+  return users
+    .filter(user => user.age >= minAge)
+    .map(user => user.name);
+}
+```
+
+これらの問題と解答を通じて、IBM面接で出題される可能性のある基本的なアルゴリズム問題をカバーできます。配列操作と文字列操作の基本から応用まで、さまざまなパターンを練習することで、実際のコーディングテストに自信を持って臨めるようになるでしょう。

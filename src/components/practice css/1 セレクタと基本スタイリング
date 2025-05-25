@@ -1,0 +1,91 @@
+/* CSS 基礎練習 - Day 1: セレクタの基本 (5分で復習) */
+
+/*
+HTMLコード（CodePenのHTMLに貼り付け）:
+
+<div class="container">
+  <h1 id="title">CSS基礎練習</h1>
+  <p class="intro">これは<span class="highlight">重要</span>な文章です。</p>
+  <ul class="list">
+    <li>項目1</li>
+    <li>項目2</li>
+    <li>項目3</li>
+  </ul>
+  <button class="btn">ボタン</button>
+  <input type="text" placeholder="入力してください">
+</div>
+*/
+
+/* 基本リセット */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* === 問題1: 基本セレクタ === */
+/* コメントアウトを解除して練習 */
+
+/* 問題1-1: ID #title に青色(#0066cc)を設定 */
+/* #title { color: #0066cc; } */
+
+/* 問題1-2: クラス .highlight に黄色背景(#ffff99)を設定 */
+/* .highlight { background-color: #ffff99; } */
+
+/* 問題1-3: 全ての p に行間 1.5 を設定 */
+/* p { line-height: 1.5; } */
+
+/* === 問題2: 擬似クラス（面接頻出）=== */
+
+/* 問題2-1: ボタンホバーで背景色を赤(#ff0000)に */
+/* .btn:hover { background-color: #ff0000; } */
+
+/* 問題2-2: 入力フィールドフォーカスで枠を青(#0066cc)に */
+/* input:focus { border: 2px solid #0066cc; outline: none; } */
+/* outline: noneがないと縁の色が変わらないので注意 */
+
+/* 問題2-3: リストの偶数番目に背景色(#f0f0f0)を設定 */
+/* .list li:nth-child(even) { background-color: #f0f0f0; } */
+/* 奇数の場合はodd */
+/* nth-child は同じ親を持つ兄弟要素に対して使います。*/
+/* nth-child は要素の種類に関係なく、兄弟要素の中での順番で判定します。*/
+/* 
+nth-child の兄弟要素
+すべての要素が兄弟になります：
+<div class="parent">
+  <h2>タイトル</h2>    <!-- 1番目 -->
+  <div>div1</div>      <!-- 2番目 -->
+  <ul>リスト</ul>      <!-- 3番目 -->
+  <div>div2</div>      <!-- 4番目 -->
+</div>
+*/
+
+/* === 問題3: 子孫・隣接セレクタ === */
+
+/* 問題3-1: .container内の全てのliに左余白10px */
+/* .container li { margin-left: 10px; } */
+
+/* 問題3-2: h1の直後のpに太字を設定 */
+/* h1 + p { font-weight: bold; } */
+/* 兄弟、つまり同列のものを+はかえる。*/
+/* 直接子要素なら、>を使う。*/
+
+/* === 模範解答（練習後に確認）=== */
+/*
+#title { color: #0066cc; }
+.highlight { background-color: #ffff99; }
+p { line-height: 1.5; }
+.btn:hover { background-color: #ff0000; }
+input:focus { border: 2px solid #0066cc; }
+.list li:nth-child(even) { background-color: #f0f0f0; }
+.container li { margin-left: 10px; }
+h1 + p { font-weight: bold; }
+*/
+
+/* === 復習チェックリスト === */
+/*
+✓ IDセレクタ (#)
+✓ クラスセレクタ (.)
+✓ 要素セレクタ
+✓ :hover疑似クラス
+✓ :focus疑似クラス  
+✓ :nth-child()疑似クラス
+✓ 子孫セレクタ（スペース）
+✓ 隣接セレクタ（+）
+*/

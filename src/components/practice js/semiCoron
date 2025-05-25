@@ -1,0 +1,33 @@
+セミコロンの使い所
+JavaScriptでのセミコロンの使用規則：
+
+必要な場所：
+
+変数宣言や代入: let x = 5;
+式文（式を文として使用）: console.log('hello');
+return, throw, break, continue: return value;
+import/export文: import React from 'react';
+
+
+不要な場所：
+
+関数宣言: function foo() { ... }
+if, for, while などのブロック文: if (condition) { ... }
+クラス宣言: class MyClass { ... }
+
+
+
+簡単な判断基準：
+
+行が { で終わる場合、セミコロン不要
+行が } で終わる場合、その } がオブジェクトリテラルの一部でない限りセミコロン不要
+
+ーーーーー覚え方 4つのみ
+
+セミコロンは、
+変数と、return
+とimport、それとconsoleの4つの時以外は、
+;なしでokって覚えるけどいい？これなら覚えられそう。ミスも減りそう。
+
+セミコロンのルールで覚えやすい方法を見つけられて良いですね。
+「変数宣言/代入」「return文」「import/export文」「console～などの式文」の4つが主な使用場所です。

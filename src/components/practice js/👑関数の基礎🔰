@@ -1,0 +1,110 @@
+よくわからなくなるところ
+
+ーーーーーーーーーーーーーーーー
+
+関数のスコープについて（簡潔に）
+「通常の関数宣言はどこからでも呼び出せる」ということです。例えば：
+function hello() { console.log("こんにちは"); }
+
+function sayHi() {
+  hello(); // 問題なく呼び出せる
+}
+これはJavaScriptの関数がデフォルトでグローバルに定義されるためです。
+
+
+ーーーーーーーーーーーーーーーー
+
+関数の配置、innerHTML、statusの意味、そして前回との違いについて明確に説明します。
+1. 関数を内部/外部に書く違い
+/ 例1: 外部に関数を定義（前回の例）
+document.addEventListener('DOMContentLoaded', function() {
+  fetchUsers();
+});
+
+function fetchUsers() { /* ... */ }
+function displayUsers(users) { /* ... */ }
+
+// 例2: 内部に関数を定義（今回の例）
+document.getElementById('button').addEventListener('click', function() {
+  function fetchUsers() { /* ... */ }
+  fetchUsers();
+});
+違いと選択基準:
+
+外部定義: 他の場所からも呼び出せる（再利用性が高い）
+内部定義: その場所でしか使わない、スコープを限定したい場合
+
+どちらも正しいアプローチで、状況によって使い分けます。特に決まりはありません。
+
+ーーーーーーーーーーーーーーーー
+
+JavaScriptにおける中括弧（`{}`）の使用条件を明確に説明します：
+
+## 中括弧（`{}`）を使うべき場合
+
+1. **複数の文（statements）を書く場合**
+   
+   (param) => {
+     const x = param * 2;
+     console.log(x);
+     return x + 1;
+   }
+   
+
+2. **条件分岐（if文）を使う場合**
+   
+   (param) => {
+     if (param > 0) {
+       return "正";
+     } else {
+       return "負または0";
+     }
+   }
+   
+
+3. **return が必要だが、即時に値を返さない場合**
+   
+   (param) => {
+     const result = someCalculation(param);
+     return result;
+   }
+   
+
+4. **try-catch でエラーハンドリングをする場合**
+   
+   (param) => {
+     try {
+       return riskyOperation(param);
+     } catch (error) {
+       handleError(error);
+     }
+   }
+   
+
+## 中括弧を省略できる場合（使わなくてよい場合）
+
+1. **単一の式のみを評価して、その結果を返す場合**
+   
+   (param) => param * 2
+   (param) => doSomething(param)
+   
+
+2. **三項演算子を使った単一の条件分岐**
+   
+   (param) => param > 0 ? "正" : "負または0"
+   
+
+3. **オブジェクトリテラルを返す場合**（ただし括弧で囲む必要あり）
+   
+   (param) => ({ id: param, value: param * 2 })
+   
+
+## 明確な線引き
+
+- **単一の式で表現できる**：中括弧不要
+- **複数の文（変数宣言、条件分岐、ループなど）が必要**：中括弧が必要
+
+これで中括弧を使うべき場合と省略できる場合の違いが明確になりましたでしょうか？簡単に言えば、1行の「式」なら省略可能、複数行の「文」または制御構造が必要なら中括弧が必要です。
+
+
+ーーーーーーーーーーーーーーーー

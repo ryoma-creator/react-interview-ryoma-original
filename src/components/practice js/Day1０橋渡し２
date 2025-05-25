@@ -1,0 +1,378 @@
+これらのタイマー関数（setTimeout/setInterval）の問題セットを見ると、現代のフロントエンド開発では重要な基礎知識です。
+IBMの面接対策として考えた場合、以下のように優先順位を考えると良いでしょう：
+
+## 優先して取り組むべき問題
+
+1. **問題1〜3**: 基本的なsetTimeout、引数付きsetTimeout、timeoutのクリア
+   - これらはタイマー関数の基本的な使い方で、実務でもよく使われます
+   - 特に非同期処理の理解を示す上で重要です
+
+2. **問題4〜5**: 基本的なsetInterval、カウントアップタイマー
+   - タイマーの継続的な実行と停止は基本的なスキルです
+
+## 時間があれば取り組む問題
+
+3. **問題6〜7**: 複数の遅延実行、遅延ループ
+   - やや応用的な内容ですが、理解していると役立ちます
+
+## 後回しにしても良い問題
+
+4. **問題8**: デバウンス関数
+   - より高度な概念で、初級者のコーディング評価では出にくいかもしれません
+   - ただし、これを理解していると差別化できます
+
+## 結論
+
+IBMのフロントエンド面接に向けた準備としては、問題1〜5を理解しておくことが基本として重要です。
+これらはJavaScript開発の基礎的な部分であり、非同期処理の理解を示すために価値があります。
+
+しかし、全体としての優先順位を考えると：
+
+1. Day 10の非同期処理（Promise, async/await）
+2. Day 11のDOM操作
+3. 今回のタイマー関数（setTimeout/setInterval）
+
+この順番で学習するのが効率的でしょう。タイマー関数は非同期処理の一部ではありますが、
+Promise/async/awaitの方が現代のJavaScript開発では使用頻度が高いです。
+
+時間に余裕がなければ、問題1〜3だけでも理解しておき、Day 10とDay 11の内容に集中する方が良いでしょう。
+タイマー関数の詳細は、面接に受かった後でも十分学ぶことができます。
+
+
+
+
+// JavaScript 日次練習問題 - setTimeout/setInterval の基礎
+// 以下の問題を解いて、setTimeout と setInterval の基本的な使い方に慣れましょう。
+
+// 問題1: 基本的な setTimeout
+// 3秒後に "こんにちは！" というメッセージを表示する関数を作成してください
+function greetAfterDelay() {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題1: setTimeout の基本");
+console.log("3秒後にメッセージが表示されます...");
+greetAfterDelay();
+// 3秒後に "こんにちは！" と表示される
+
+// 問題2: 引数付きの setTimeout
+// 指定された名前と秒数後に挨拶を表示する関数を作成してください
+function greetPersonAfterDelay(name, seconds) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題2: 引数付き setTimeout");
+console.log("指定した秒数後に挨拶が表示されます...");
+greetPersonAfterDelay("山田", 2);
+// 2秒後に "こんにちは、山田さん！" と表示される
+
+; ///////////////////////////////////////////////////////
+!問題３へ行く前の橋渡し!
+// 練習問題1: 基本的なsetTimeout
+// 指定された秒数後にメッセージを表示する関数を作成してください
+
+function showDelayedMessage(message, seconds) {
+  // ここにコードを書いてください
+  // seconds秒後にmessageを表示する
+}
+
+// テスト
+console.log("練習問題1: 基本的なsetTimeout");
+console.log("すぐに表示されるメッセージ");
+showDelayedMessage("3秒後に表示されるメッセージ", 3);
+
+
+練習問題2: setTimeoutのキャンセル
+javascript// 練習問題2: setTimeoutのキャンセル
+// メッセージを表示するタイマーをセットし、キャンセルする関数を作成してください
+
+function setMessageTimer(message, seconds) {
+  // ここにコードを書いてください
+  // seconds秒後にmessageを表示するタイマーをセットし、タイマーIDを返す
+}
+
+function cancelMessageTimer(timerId) {
+  // ここにコードを書いてください
+  // タイマーをキャンセルし、"メッセージはキャンセルされました"と表示する
+}
+
+// テスト
+console.log("練習問題2: setTimeoutのキャンセル");
+const messageTimerId = setMessageTimer("このメッセージは表示されないはずです", 5);
+console.log("タイマーがセットされました");
+setTimeout(function() {
+  cancelMessageTimer(messageTimerId);
+}, 2000); // 2秒後にタイマーをキャンセル
+練習問題3: シンプルなカウントアップ
+javascript// 練習問題3: シンプルなカウントアップ
+// 1から始めて1秒ごとに数字を増やし、指定された数に達したら停止する関数を作成してください
+
+function startCountUp(maxCount) {
+  // ここにコードを書いてください
+  // 1から始めて1秒ごとに数字を増やし、maxCountに達したら停止する
+  // 返り値としてタイマーIDを返す
+}
+
+function stopCountUp(timerId) {
+  // ここにコードを書いてください
+  // カウントアップを停止し、"カウントアップが停止されました"と表示する
+}
+
+// テスト
+console.log("練習問題3: シンプルなカウントアップ");
+const countUpId = startCountUp(10);
+// 途中で停止したい場合は以下のようにする
+setTimeout(function() {
+  stopCountUp(countUpId);
+}, 4000); // 4秒後に停止（4まで表示される）
+
+
+; ///////////////////////////////////////////////////////
+
+// 問題3: setTimeout のクリア
+// カウントダウンを開始し、途中で停止できる関数を作成してください
+function startCountdown() {
+  let count = 5;
+  
+  console.log("カウントダウン開始: " + count);
+  
+  // ここにコードを書いてください
+  // 1秒ごとにカウントダウンし、カウントが0になったら "終了！" と表示する
+  // setTimeout の ID を返す
+  
+}
+
+function stopCountdown(timeoutId) {
+  // ここにコードを書いてください
+  // カウントダウンを停止し、"カウントダウンが停止されました" と表示する
+  
+}
+
+// テスト
+console.log("問題3: setTimeout のクリア");
+const countdownId = startCountdown();
+// カウントダウンが数秒間続いた後
+setTimeout(function() {
+  stopCountdown(countdownId);
+}, 3000);
+// 3秒後にカウントダウンが停止される
+
+// 問題4: 基本的な setInterval
+// 1秒ごとに現在時刻を表示する関数を作成してください
+function showCurrentTime() {
+  // ここにコードを書いてください
+  // setInterval を使って1秒ごとに現在時刻を表示する
+  // 時刻の表示形式は "HH:MM:SS" とする
+  
+}
+
+// テスト
+console.log("問題4: setInterval の基本");
+console.log("1秒ごとに現在時刻を表示します...");
+const clockId = showCurrentTime();
+// いくつかの時刻が表示された後、別の問題に進む前に停止する
+setTimeout(function() {
+  clearInterval(clockId);
+  console.log("時計を停止しました");
+}, 5000);
+// 5秒後に時計が停止される
+
+// 問題5: カウントアップタイマー
+// 0から始まり、1秒ごとにカウントアップするタイマーを作成してください
+function startTimer() {
+  // ここにコードを書いてください
+  // 1秒ごとにカウントアップし、現在のカウント値を表示する
+  // intervalId を返す
+  
+}
+
+function stopTimer(intervalId) {
+  // ここにコードを書いてください
+  // タイマーを停止し、"タイマーが停止されました" と表示する
+  
+}
+
+// テスト
+console.log("問題5: カウントアップタイマー");
+const timerId = startTimer();
+// タイマーが数秒間動作した後
+setTimeout(function() {
+  stopTimer(timerId);
+}, 5000);
+// 5秒後にタイマーが停止される
+
+// 問題6: 複数の遅延実行
+// 異なる遅延で複数のメッセージを表示する関数を作成してください
+function scheduleMessages() {
+  // ここにコードを書いてください
+  // 1秒後に "最初のメッセージ"
+  // 2秒後に "2番目のメッセージ"
+  // 3秒後に "最後のメッセージ"
+  // をそれぞれ表示する
+  
+}
+
+// テスト
+console.log("問題6: 複数の遅延実行");
+console.log("これから複数のメッセージが順番に表示されます...");
+scheduleMessages();
+
+// 問題7: 遅延ループ
+// 配列の各要素を1秒間隔で順番に表示する関数を作成してください
+function displayWithDelay(items) {
+  // ここにコードを書いてください
+  // 配列の各要素を1秒間隔で順番に表示する
+  
+}
+
+// テスト
+console.log("問題7: 遅延ループ");
+console.log("配列の要素を1秒間隔で表示します...");
+displayWithDelay(["りんご", "バナナ", "オレンジ", "ぶどう", "メロン"]);
+
+// 問題8: デバウンス関数
+// 連続して呼び出されると、最後の呼び出しから一定時間後にのみ実行される関数を作成してください
+function debounce(func, delay) {
+  // ここにコードを書いてください
+  // funcが連続して呼び出されると、最後の呼び出しからdelay ms後にのみ実行される関数を返す
+  
+}
+
+// テスト
+console.log("問題8: デバウンス関数");
+// デバウンスされた関数を作成
+const debouncedLog = debounce(function(message) {
+  console.log("デバウンス後のメッセージ: " + message);
+}, 1000);
+
+// 連続して呼び出す
+console.log("連続して関数を呼び出します...");
+debouncedLog("テスト1");
+debouncedLog("テスト2");
+debouncedLog("テスト3");
+setTimeout(function() {
+  debouncedLog("テスト4");
+}, 500);
+// 最後の呼び出しから1秒後に "デバウンス後のメッセージ: テスト4" のみが表示される
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: 基本的な setTimeout
+function greetAfterDelay() {
+  setTimeout(function() {
+    console.log("こんにちは！");
+  }, 3000);
+}
+
+// 問題2: 引数付きの setTimeout
+function greetPersonAfterDelay(name, seconds) {
+  setTimeout(function() {
+    console.log("こんにちは、" + name + "さん！");
+  }, seconds * 1000);
+}
+
+// 問題3: setTimeout のクリア
+function startCountdown() {
+  let count = 5;
+  
+  console.log("カウントダウン開始: " + count);
+  
+  const timeoutId = setTimeout(function countdownStep() {
+    count--;
+    
+    if (count > 0) {
+      console.log(count);
+      setTimeout(countdownStep, 1000);
+    } else {
+      console.log("終了！");
+    }
+  }, 1000);
+  
+  return timeoutId;
+}
+
+function stopCountdown(timeoutId) {
+  clearTimeout(timeoutId);
+  console.log("カウントダウンが停止されました");
+}
+
+// 問題4: 基本的な setInterval
+function showCurrentTime() {
+  const intervalId = setInterval(function() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    
+    console.log(`${hours}:${minutes}:${seconds}`);
+  }, 1000);
+  
+  return intervalId;
+}
+
+// 問題5: カウントアップタイマー
+function startTimer() {
+  let count = 0;
+  
+  const intervalId = setInterval(function() {
+    count++;
+    console.log("タイマー: " + count + "秒");
+  }, 1000);
+  
+  return intervalId;
+}
+
+function stopTimer(intervalId) {
+  clearInterval(intervalId);
+  console.log("タイマーが停止されました");
+}
+
+// 問題6: 複数の遅延実行
+function scheduleMessages() {
+  setTimeout(function() {
+    console.log("最初のメッセージ");
+  }, 1000);
+  
+  setTimeout(function() {
+    console.log("2番目のメッセージ");
+  }, 2000);
+  
+  setTimeout(function() {
+    console.log("最後のメッセージ");
+  }, 3000);
+}
+
+// 問題7: 遅延ループ
+function displayWithDelay(items) {
+  let index = 0;
+  
+  function displayNext() {
+    if (index < items.length) {
+      console.log(items[index]);
+      index++;
+      setTimeout(displayNext, 1000);
+    }
+  }
+  
+  displayNext();
+}
+
+// 問題8: デバウンス関数
+function debounce(func, delay) {
+  let timeoutId;
+  
+  return function(...args) {
+    // 既存のタイマーをクリア
+    clearTimeout(timeoutId);
+    
+    // 新しいタイマーを設定
+    timeoutId = setTimeout(function() {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+*/

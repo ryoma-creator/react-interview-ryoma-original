@@ -1,0 +1,196 @@
+// JavaScript 日次練習問題 - コールバック関数の基礎
+// 以下の問題を解いて、コールバック関数の基本的な使い方に慣れましょう。
+
+// 問題1: シンプルなコールバック関数
+// greeting関数に名前と、挨拶を表示するコールバック関数を渡して実行する例
+function greeting(name, callback) {
+  // コールバック関数を実行し、nameを渡す
+}
+
+// テスト
+console.log("問題1:");
+// 無名関数をコールバックとして渡す
+greeting("太郎", function(name) {
+  console.log("こんにちは、" + name + "さん！");
+});
+
+// 問題2: 引数を受け取るコールバック関数
+// 2つの数値を受け取り、コールバック関数に渡して計算結果を返す関数
+function calculate(a, b, callback) {
+  // ここにコードを書いてください
+  // aとbを引数としてコールバック関数を呼び出し、その結果を返す
+  
+}
+
+// テスト
+console.log("問題2:");
+// 足し算のコールバック
+const result1 = calculate(5, 3, function(x, y) {
+  return x + y;
+});
+console.log("5 + 3 =", result1); // 8
+
+// 掛け算のコールバック
+const result2 = calculate(5, 3, function(x, y) {
+  return x * y;
+});
+console.log("5 * 3 =", result2); // 15
+
+// 問題3: 配列に対する基本的なコールバック
+// 配列内の各要素に対してコールバック関数を適用する関数
+function processArray(arr, callback) {
+  // ここにコードを書いてください
+  // 配列の各要素に対してコールバック関数を呼び出し、結果を新しい配列に格納して返す
+  
+}
+
+// テスト
+console.log("問題3:");
+// 各要素を2倍にする
+const numbers = [1, 2, 3, 4, 5];
+const doubled = processArray(numbers, function(num) {
+  return num * 2;
+});
+console.log("元の配列:", numbers);
+console.log("2倍にした配列:", doubled);
+
+// 問題4: シンプルなsetTimeout
+// 指定された時間（ミリ秒）後にメッセージを表示する関数
+function delayedMessage(message, delay) {
+  // ここにコードを書いてください
+  // setTimeout を使って、指定された時間後にメッセージを表示する
+  
+}
+
+// テスト
+console.log("問題4:");
+console.log("次のメッセージが2秒後に表示されます...");
+delayedMessage("こんにちは、非同期プログラミングの世界へようこそ！", 2000);
+// 2秒後に "こんにちは、非同期プログラミングの世界へようこそ！" と表示される
+
+// 問題5: 複数のコールバックを順番に実行する
+// 2つのコールバック関数を順番に実行する関数
+function doInSequence(callback1, callback2) {
+  // ここにコードを書いてください
+  // 最初のコールバックを実行した後、2番目のコールバックを実行する
+  
+}
+
+// テスト
+console.log("問題5:");
+doInSequence(
+  function() { console.log("最初のタスク完了"); },
+  function() { console.log("2番目のタスク完了"); }
+);
+// "最初のタスク完了" と "2番目のタスク完了" が順番に表示される
+
+// 問題6: 簡単なイベントリスナー風の関数
+// 「ボタン」のクリックをシミュレートする関数
+function simulateButton(buttonName, clickHandler) {
+  // ここにコードを書いてください
+  // コンソールにボタンがクリックされたことを表示し、clickHandlerを呼び出す
+  
+}
+
+// テスト
+console.log("問題6:");
+simulateButton("送信ボタン", function() {
+  console.log("フォームが送信されました");
+});
+// "送信ボタンがクリックされました" と "フォームが送信されました" が表示される
+
+// 問題7: 条件付きコールバック
+// 条件に応じて異なるコールバックを実行する関数
+function conditionalCallback(value, successCallback, errorCallback) {
+  // ここにコードを書いてください
+  // valueが10以上ならsuccessCallbackを実行し、そうでなければerrorCallbackを実行する
+  
+}
+
+// テスト
+console.log("問題7:");
+conditionalCallback(15, 
+  function(val) { console.log(val + "は条件を満たしています"); },
+  function(val) { console.log(val + "は条件を満たしていません"); }
+);
+// "15は条件を満たしています" と表示される
+
+conditionalCallback(5, 
+  function(val) { console.log(val + "は条件を満たしています"); },
+  function(val) { console.log(val + "は条件を満たしていません"); }
+);
+// "5は条件を満たしていません" と表示される
+
+// 問題8: setTimeoutを使った非同期コールバック
+// ランダムな遅延後にコールバックを実行する関数
+function randomDelay(callback) {
+  // ここにコードを書いてください
+  // 1〜3秒のランダムな時間後にコールバックを実行し、何秒遅延したかを表示する
+  
+}
+
+// テスト
+console.log("問題8:");
+console.log("ランダムな遅延が始まります...");
+randomDelay(function(seconds) {
+  console.log(seconds + "秒後に実行されました");
+});
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題2: 引数を受け取るコールバック関数
+function calculate(a, b, callback) {
+  return callback(a, b);
+}
+
+// 問題3: 配列に対する基本的なコールバック
+function processArray(arr, callback) {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(callback(arr[i]));
+  }
+  return result;
+  
+  // または
+  // return arr.map(callback);
+}
+
+// 問題4: シンプルなsetTimeout
+function delayedMessage(message, delay) {
+  setTimeout(function() {
+    console.log(message);
+  }, delay);
+}
+
+// 問題5: 複数のコールバックを順番に実行する
+function doInSequence(callback1, callback2) {
+  callback1();
+  callback2();
+}
+
+// 問題6: 簡単なイベントリスナー風の関数
+function simulateButton(buttonName, clickHandler) {
+  console.log(buttonName + "がクリックされました");
+  clickHandler();
+}
+
+// 問題7: 条件付きコールバック
+function conditionalCallback(value, successCallback, errorCallback) {
+  if (value >= 10) {
+    successCallback(value);
+  } else {
+    errorCallback(value);
+  }
+}
+
+// 問題8: setTimeoutを使った非同期コールバック
+function randomDelay(callback) {
+  // 1から3秒のランダムな遅延（ミリ秒単位）
+  const seconds = Math.floor(Math.random() * 3) + 1;
+  const delay = seconds * 1000;
+  
+  setTimeout(function() {
+    callback(seconds);
+  }, delay);
+}
+*/

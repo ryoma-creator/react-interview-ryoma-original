@@ -1,0 +1,387 @@
+# IBM Frontend Developer Test: Multiple Choice Questions
+
+Based on recent reviews and analysis, IBM's multiple choice questions typically test core concepts in HTML, CSS, JavaScript, and basic React knowledge. The number of questions ranges from 6-10, with varying difficulty levels.
+
+## Quantity for Mastery
+To thoroughly prepare for IBM's selection tests, practicing with about **35-50 questions** covering all key areas would be ideal. This provides a comprehensive understanding of the concepts IBM frequently tests.
+
+Below are 40 representative multiple choice questions based on actual IBM test patterns:
+
+## JavaScript Questions
+
+### 1. What is the output of the following code?
+```javascript
+console.log(typeof []);
+```
+a) "array"  
+b) "object"  
+c) "function"  
+d) "undefined"
+
+### 2. What will the following code return?
+```javascript
+console.log(2 === "2");
+```
+a) true  
+b) false  
+c) NaN  
+d) TypeError
+
+### 3. What does the following code print?
+```javascript
+let x = 10;
+let y = x++;
+console.log(y);
+```
+a) 10  
+b) 11  
+c) undefined  
+d) NaN
+
+### 4. Which method adds one or more elements to the end of an array?
+a) push()  
+b) unshift()  
+c) concat()  
+d) splice()
+
+### 5. Which of the following correctly creates a Promise?
+a) `new Promise(resolve, reject)`  
+b) `new Promise((resolve, reject) => {})`  
+c) `Promise.create((resolve, reject) => {})`  
+d) `Promise((resolve, reject) => {})`
+
+### 6. What will be the output of the following code?
+```javascript
+const arr = [1, 2, 3];
+const [x, y, z] = arr;
+console.log(y);
+```
+a) undefined  
+b) 1  
+c) 2  
+d) [1, 2, 3]
+
+### 7. What is the correct way to check if a variable is an array?
+a) `typeof variable === 'array'`  
+b) `variable instanceof Array`  
+c) `variable.isArray()`  
+d) `variable.constructor === Array`
+
+### 8. What is the output of the following code?
+```javascript
+console.log(null == undefined);
+```
+a) true  
+b) false  
+c) TypeError  
+d) "undefined"
+
+### 9. What is the correct way to create a new object in JavaScript?
+a) `var obj = Object.create();`  
+b) `var obj = {};`  
+c) `var obj = new Object{};`  
+d) `var obj = Object();`
+
+### 10. What is the output of the following code?
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(num => num * 2);
+console.log(doubled);
+```
+a) [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]  
+b) [2, 4, 6, 8, 10]  
+c) [1, 4, 9, 16, 25]  
+d) undefined
+
+### 11. Which statement correctly creates a function in JavaScript?
+a) `function = myFunction() {}`  
+b) `function myFunction() {}`  
+c) `function:myFunction() {}`  
+d) `create function myFunction() {}`
+
+### 12. What will the following code output?
+```javascript
+console.log("5" + 5);
+```
+a) 10  
+b) "55"  
+c) 55  
+d) Error
+
+### 13. What is the output of the following code?
+```javascript
+const fruits = ["apple", "banana", "cherry"];
+fruits.splice(1, 1, "orange");
+console.log(fruits);
+```
+a) ["apple", "orange", "cherry"]  
+b) ["orange", "banana", "cherry"]  
+c) ["apple", "banana", "orange"]  
+d) ["apple", "banana", "cherry", "orange"]
+
+### 14. What is the correct way to handle errors in asynchronous code?
+a) `try { async function() {} } catch (e) {}`  
+b) `async function() { try {} catch(e) {} }`  
+c) `async function().catch(error => {})`  
+d) `async function().try().catch(error => {})`
+
+### 15. What is the output of the following code?
+```javascript
+const person = { name: "John", age: 30 };
+const { name, age, job = "Developer" } = person;
+console.log(job);
+```
+a) undefined  
+b) null  
+c) "Developer"  
+d) ReferenceError
+
+## CSS Questions
+
+### 16. Which CSS property is used to control the spacing between elements?
+a) margin  
+b) padding  
+c) spacing  
+d) gap
+
+### 17. Which of the following is NOT a valid CSS selector?
+a) `.class`  
+b) `#id`  
+c) `@element`  
+d) `:hover`
+
+### 18. What is the CSS box-sizing property used for?
+a) To include padding and border in an element's total width and height  
+b) To control how an element's content is displayed  
+c) To set the size of an element's border box  
+d) To specify how elements should be sized within a flexbox container
+
+### 19. Which CSS property creates a flexible container?
+a) `display: flex;`  
+b) `position: flex;`  
+c) `flex: display;`  
+d) `flex: 1;`
+
+### 20. What is the difference between 'display: none' and 'visibility: hidden'?
+a) They are identical  
+b) 'display: none' removes the element from the flow, while 'visibility: hidden' keeps the space  
+c) 'visibility: hidden' removes the element from the flow, while 'display: none' keeps the space  
+d) Both keep the element in the flow but make it transparent
+
+### 21. Which CSS property is used to add shadow to elements?
+a) element-shadow  
+b) shadow-effect  
+c) box-shadow  
+d) text-shadow
+
+### 22. What is the correct way to write a media query in CSS?
+a) `@media screen (max-width: 600px) { ... }`  
+b) `@media-query (max-width: 600px) { ... }`  
+c) `@media screen and (max-width: 600px) { ... }`  
+d) `@screen (max-width: 600px) { ... }`
+
+### 23. Which CSS property would you use to make text uppercase?
+a) font-style  
+b) text-style  
+c) text-transform  
+d) font-variant
+
+### 24. Which CSS property controls the order of flexible items?
+a) flex-order  
+b) order  
+c) z-index  
+d) position
+
+### 25. Which selector has the highest specificity?
+a) element selector  
+b) class selector  
+c) ID selector  
+d) attribute selector
+
+## HTML Questions
+
+### 26. Which HTML element is used to define a table header cell?
+a) `<td>`  
+b) `<th>`  
+c) `<header>`  
+d) `<thead>`
+
+### 27. What is the correct HTML for creating a hyperlink?
+a) `<a url="http://www.example.com">Example</a>`  
+b) `<a href="http://www.example.com">Example</a>`  
+c) `<a>http://www.example.com</a>`  
+d) `<a name="http://www.example.com">Example</a>`
+
+### 28. Which attribute is used to provide alternative text for an image?
+a) title  
+b) alt  
+c) description  
+d) text
+
+### 29. What is the purpose of the HTML `<meta>` tag?
+a) To store JavaScript metadata  
+b) To define metadata about an HTML document  
+c) To link to external stylesheets  
+d) To create navigational elements
+
+### 30. Which HTML5 element is used to specify a footer for a document or section?
+a) `<bottom>`  
+b) `<section>`  
+c) `<footer>`  
+d) `<end>`
+
+## React Questions
+
+### 31. What is the correct way to render a list in React?
+a) Using a for loop  
+b) Using the map() method  
+c) Using the forEach() method  
+d) Using the filter() method
+
+### 32. Which hook is used for side effects in functional components?
+a) useState  
+b) useContext  
+c) useEffect  
+d) useReducer
+
+### 33. What is the correct syntax for React event handling?
+a) `<button onclick={handleClick}>Click me</button>`  
+b) `<button onClick={handleClick()}>Click me</button>`  
+c) `<button onClick={handleClick}>Click me</button>`  
+d) `<button on-click={handleClick}>Click me</button>`
+
+### 34. Which React method is called after a component is rendered for the first time?
+a) componentDidMount  
+b) componentWillMount  
+c) componentDidUpdate  
+d) componentWillUpdate
+
+### 35. What is the purpose of keys in React lists?
+a) To add styling to list items  
+b) To access list items from parent components  
+c) To help React identify which items have changed, added, or removed  
+d) To specify the order of list items
+
+### 36. What will be rendered by the following code?
+```jsx
+function App() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+a) A paragraph with "You clicked 0 times" and a button that increments the count when clicked  
+b) A paragraph with "You clicked {count} times" and a button that doesn't work  
+c) A paragraph with "You clicked 0 times" and a button that doesn't work  
+d) A compilation error because useState is not imported
+
+### 37. Which of the following is NOT a valid way to create a React component?
+a) Class component  
+b) Functional component  
+c) Higher-order component  
+d) Interface component
+
+### 38. How do you pass data from a parent component to a child component in React?
+a) Using cookies  
+b) Using props  
+c) Using state  
+d) Using context API
+
+### 39. What is React's virtual DOM?
+a) A complete DOM tree rendered in memory  
+b) A lightweight copy of the real DOM  
+c) A DOM that only exists in virtual reality  
+d) An external library used by React
+
+### 40. What lifecycle method would you use to perform cleanup actions in a React class component?
+a) componentDidMount  
+b) componentWillUpdate  
+c) componentWillUnmount  
+d) componentDidUpdate
+
+---
+
+These 40 questions cover the full range of concepts frequently tested in IBM's multiple choice section. The difficulty level varies from basic knowledge checks to more complex understanding of JavaScript, CSS, HTML, and React principles. 
+
+Based on recent reviews, IBM's tests typically include 6-10 questions of similar nature and difficulty level. Mastering these 40 questions will provide a comprehensive preparation for IBM's selection test.
+
+
+........................
+選択問題の練習
+IBMの選択問題を想定した練習問題を10問用意しました：
+JavaScript選択問題
+
+次のコードの出力は何ですか？
+
+javascriptconsole.log(typeof []);
+a) "array"
+b) "object"
+c) "undefined"
+d) "function"
+
+次のコードの出力は何ですか？
+
+javascriptconsole.log(2 == "2");
+a) true
+b) false
+c) undefined
+d) エラー
+
+次のコードで、arrの値は何になりますか？
+
+javascriptconst arr = [1, 2, 3];
+arr.push(4);
+arr.shift();
+a) [1, 2, 3, 4]
+b) [2, 3, 4]
+c) [1, 2, 3]
+d) [4, 3, 2]
+CSS選択問題
+
+次のうち、優先順位（specificity）が最も高いセレクタはどれですか？
+a) .header
+b) #nav
+c) div
+d) *
+box-sizing: border-box; の効果は何ですか？
+a) 要素の幅と高さにパディングとボーダーを含める
+b) 要素にボーダーを表示する
+c) 要素の周りにボックスシャドウを追加する
+d) 要素の幅と高さからパディングとボーダーを除外する
+
+HTML選択問題
+
+次のうち、セマンティック要素ではないのはどれですか？
+a) <article>
+b) <div>
+c) <header>
+d) <footer>
+フォームの送信を防止するJavaScriptコードはどれですか？
+a) event.stopPropagation();
+b) event.preventDefault();
+c) event.stopSubmit();
+d) form.preventSubmit();
+
+React基礎選択問題
+
+Reactで状態を管理するために使用するフックは？
+a) useEffect
+b) useState
+c) useContext
+d) useReducer
+Reactコンポーネントで副作用を扱うためのフックは？
+a) useEffect
+b) useState
+c) useMemo
+d) useCallback
+Reactでリストをレンダリングする際に必要な属性は？
+a) id
+b) class
+c) key
+d) ref

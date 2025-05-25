@@ -1,0 +1,19 @@
+function countEmailDomains(emails) {
+    // Your code here
+    const domainCounts = {};
+
+    emails.forEach(email => {
+        const domain = email.slice(email.indexOF('@'+1));
+        domainCounts[domain] = (domainCounts[domain] || 0) +1;
+
+    });
+
+    const sortedEntries = object.entries(domainCounts)
+    .sort((a, b) => b[1] - a[1]);
+     
+
+  }
+  
+  // Example:
+  // Input: ["user@gmail.com", "john@yahoo.com", "steve@gmail.com", "anna@outlook.com", "mike@gmail.com"]
+  // Output: { "gmail.com": 3, "yahoo.com": 1, "outlook.com": 1 }

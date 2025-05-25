@@ -1,0 +1,773 @@
+; HTMLのテーブルについて理解を深めるのは大切ですね。テーブルの基本から段階的に学べる練習問題を作成します。
+; 「HTMLテーブルの基礎から応用まで - 段階的練習問題」のセットはIBMのコーディングテストで
+; 出題されるDOM操作とテーブル操作の対策として十分な内容です。
+
+; このセットは以下の重要な要素をカバーしています：
+
+; テーブルの基本構造の理解（レベル1〜2）
+
+; テーブル要素 (<table>, <tr>, <th>, <td>, <thead>, <tbody>)
+; スタイリングの基本
+
+
+; JavaScriptによるテーブル操作（レベル3〜5）
+
+; 行の追加と削除
+; フォームからのデータ取得とテーブルへの挿入
+; テーブル内の特定のデータ操作
+
+
+; 高度なテーブル機能（レベル6〜7）
+
+; 検索/フィルタリング機能
+; ソート機能（列ヘッダーによるデータのソート）
+
+; 特にGlassdoorのレビューによると、IBMのコーディングテストでは「テーブルデータのソートとフィルタリング」の問題がよく出題されるようです。
+; このセットのレベル6と7はこれらの機能を直接カバーしているため、IBMの面接対策として非常に適切です。
+; ただし、APIデータ取得とその表示を組み合わせた問題も出題される可能性があるため、
+; 先ほど提供したAPI操作練習問題集（特にレベル4と5）と組み合わせて練習すると、より完璧な対策になります。
+; テーブル操作の練習問題は、HTMLとJavaScript両方の知識を組み合わせたDOM操作の基本をカバーしており、
+; IBMのフロントエンド開発者面接のコア部分を十分に対策できています。
+
+
+# HTMLテーブルの基礎から応用まで - 段階的練習問題
+
+## レベル1: テーブルの基本構造を理解する
+
+**テーブルとは何か？**
+テーブルはデータを行と列の形式で表示するためのHTML要素です。Excelのシートのようなグリッド（格子）構造を作ります。
+
+**テーブル要素の覚え方**
+- `<table>` - テーブル全体（**T**able - **テ**ーブル全体）
+- `<thead>` - ヘッダー部分（**T**able **Head** - 表の頭部分）
+- `<tbody>` - 本体部分（**T**able **Body** - 表の本体部分）
+- `<tr>` - テーブルの行（**T**able **R**ow - **横**一列のデータ）
+- `<td>` - 通常のセル（**T**able **D**ata - データを入れる箱）
+- `<th>` - ヘッダーセル（**T**able **H**eader - 表の見出し）
+
+
+**覚え方のコツ**:
+- `tr` = Table Row = 横一行
+- `th` = Table Header = 見出しセル（太字・中央寄せになる）
+- `td` = Table Data = 通常のデータセル
+
+### 練習問題1-1: 最もシンプルなテーブルを作る
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>テーブル練習1-1</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h2>最もシンプルなテーブル</h2>
+  
+  <!-- ここに2行2列のテーブルを作成してください -->
+  <!-- 1行目: 名前, 年齢 -->
+  <!-- 2行目: 山田太郎, 30 -->
+  
+</body>
+</html>
+
+
+**解答例**:
+
+<table>
+  <tr>
+    <td>名前</td>
+    <td>年齢</td>
+  </tr>
+  <tr>
+    <td>山田太郎</td>
+    <td>30</td>
+  </tr>
+</table>
+
+
+### 練習問題1-2: ヘッダーセルを使ったテーブル
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>テーブル練習1-2</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h2>ヘッダーセルを使ったテーブル</h2>
+  
+  <!-- ここに2行2列のテーブルを作成してください -->
+  <!-- 1行目はヘッダーセル(<th>)を使用: 名前, 年齢 -->
+  <!-- 2行目は通常セル(<td>)を使用: 山田太郎, 30 -->
+  
+</body>
+</html>
+
+
+**解答例**:
+<table>
+  <tr>
+    <th>名前</th>
+    <th>年齢</th>
+  </tr>
+  <tr>
+    <td>山田太郎</td>
+    <td>30</td>
+  </tr>
+</table>
+
+
+## レベル2: thead と tbody を使ったテーブル
+
+### 練習問題2-1: thead と tbody を使用
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>テーブル練習2-1</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+    }
+    thead {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h2>thead と tbody を使ったテーブル</h2>
+  
+  <!-- ここにtheadとtbodyを使った3行3列のテーブルを作成してください -->
+  <!-- theadには1行: ID, 名前, 年齢 -->
+  <!-- tbodyには2行のデータ: 
+       1, 山田太郎, 30
+       2, 佐藤花子, 25 -->
+  
+</body>
+</html>
+
+
+**解答例**:
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>名前</th>
+      <th>年齢</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>山田太郎</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>佐藤花子</td>
+      <td>25</td>
+    </tr>
+  </tbody>
+</table>
+
+
+## レベル3: JavaScriptでテーブルに行を追加する
+
+### 練習問題3-1: 既存のテーブルに行を追加
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>テーブル練習3-1</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+    }
+    thead {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h2>JavaScriptで行を追加</h2>
+  
+  <table id="myTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>年齢</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>山田太郎</td>
+        <td>30</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <button id="addRowBtn">行を追加</button>
+  
+  <script>
+    // ボタンをクリックしたときに行を追加する関数を作成してください
+    // 追加する行のデータは: 2, 佐藤花子, 25
+    
+    document.getElementById('addRowBtn').addEventListener('click', function() {
+      // ここにコードを書いてください
+      
+    });
+  </script>
+</body>
+</html>
+
+
+🔻これ使って
+ <script src="script.js"></script>
+
+
+**解答例**:
+
+document.getElementById('addRowBtn').addEventListener('click', function() {
+  // テーブルのtbody要素を取得
+  const table = document.getElementById('myTable');
+  const tbody = table.querySelector('tbody');
+  
+  // 新しい行を作成
+  const newRow = document.createElement('tr');
+  
+  // IDセルを作成
+  const idCell = document.createElement('td');
+  idCell.textContent = '2';
+  
+  // 名前セルを作成
+  const nameCell = document.createElement('td');
+  nameCell.textContent = '佐藤花子';
+  
+  // 年齢セルを作成
+  const ageCell = document.createElement('td');
+  ageCell.textContent = '25';
+  
+  // 行にセルを追加
+  newRow.appendChild(idCell);
+  newRow.appendChild(nameCell);
+  newRow.appendChild(ageCell);
+  
+  // テーブルに行を追加
+  tbody.appendChild(newRow);
+});
+
+
+## レベル4: フォームからテーブルにデータを追加する
+
+### 練習問題4-1: フォーム入力からテーブルに行を追加
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>テーブル練習4-1</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+    }
+    thead {
+      background-color: #f2f2f2;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input {
+      margin: 5px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>フォームからテーブルにデータを追加</h2>
+  
+  <form id="userForm">
+    <input type="text" id="nameInput" placeholder="名前">
+    <input type="number" id="ageInput" placeholder="年齢">
+    <button type="submit">追加</button>
+  </form>
+  
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>年齢</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>山田太郎</td>
+        <td>30</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <script>
+    // フォーム送信時にテーブルに行を追加する関数を作成してください ▶︎ 送信時のvalueを行へは追加ってこと？
+    // IDは自動的に増加するようにしてください
+    
+    document.getElementById('userForm').addEventListener('submit', function(event) {
+      // ここにコードを書いてください
+      
+    });
+  </script>
+</body>
+</html>
+
+🔻これ使って
+ <script src="script.js"></script>
+
+**解答例**:
+
+
+const addRowForm = (e) => {
+  e.preventDefault();
+  const table = document.getElementById("userTable");
+  const tbody = table.querySelector("tbody");
+  const rowId = tbody.children.length + 1;
+  
+  // 値をまとめる
+  const rowData = [
+    rowId,
+    document.getElementById("nameInput").value,
+    document.getElementById("ageInput").value
+  ];
+  
+  // 新しい行を作成
+  const newTr = document.createElement("tr");
+  
+  // 配列から要素を作成して追加
+  rowData.forEach(value => {
+    const td = document.createElement("td");
+    td.textContent = value;
+    newTr.appendChild(td);
+  });
+  
+  // テーブルに追加
+  tbody.appendChild(newTr);
+  
+  // フォームをリセット
+  document.getElementById("userForm").reset();
+};
+
+## レベル5: テーブルに削除ボタンを追加
+
+### 練習問題5-1: 削除ボタン付きのテーブル
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>テーブル練習5-1</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+    }
+    thead {
+      background-color: #f2f2f2;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input {
+      margin: 5px;
+      padding: 5px;
+    }
+    .delete-btn {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>削除ボタン付きのテーブル</h2>
+  
+  <form id="userForm">
+    <input type="text" id="nameInput" placeholder="名前">
+    <input type="number" id="ageInput" placeholder="年齢">
+    <button type="submit">追加</button>
+  </form>
+  
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>年齢</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>山田太郎</td>
+        <td>30</td>
+        <td><button class="delete-btn" onclick="deleteRow(this)">削除</button></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <script>
+    // フォーム送信時に削除ボタン付きの行を追加する関数を作成してください
+    
+    document.getElementById('userForm').addEventListener('submit', function(event) {
+      // レベル4の解答を参考に、削除ボタンも追加してください
+      
+    });
+    
+    // 削除ボタンをクリックすると行を削除する関数を作成してください
+    function deleteRow(button) {
+      // ここにコードを書いてください
+      
+    }
+  </script>
+</body>
+</html>
+
+🔻これ使って
+ <script src="script.js"></script>
+
+**解答例**:
+// フォーム送信時の処理
+document.getElementById('userForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  // 入力値を取得
+  const name = document.getElementById('nameInput').value;
+  const age = document.getElementById('ageInput').value;
+  
+  // テーブルを取得
+  const tbody = document.getElementById('userTable').querySelector('tbody');
+  
+  // 行数から新しいIDを計算
+  const newId = tbody.children.length + 1;
+  
+  // 新しい行を作成
+  const newRow = document.createElement('tr');
+  
+  // データセルを作成して追加
+  [newId, name, age].forEach(value => {
+    const cell = document.createElement('td');
+    cell.textContent = value;
+    newRow.appendChild(cell);
+  });
+  
+  // 削除ボタンを作成
+  const deleteCell = document.createElement('td');
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = '削除';
+  
+  // 削除ボタンのクリックイベント
+  deleteButton.addEventListener('click', function() {
+    // このボタンがある行を削除
+    const row = this.parentNode.parentNode;
+    row.remove();
+  });
+  
+  // 削除ボタンをセルに追加
+  deleteCell.appendChild(deleteButton);
+  newRow.appendChild(deleteCell);
+  
+  // 行をテーブルに追加
+  tbody.appendChild(newRow);
+  
+  // フォームをクリア
+  document.getElementById('userForm').reset();
+  //🔺thisでもok
+});
+
+## レベル6: テーブルの検索機能
+
+### 練習問題6-1: 名前で検索
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>テーブル練習6-1</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+    }
+    thead {
+      background-color: #f2f2f2;
+    }
+    form, .search-container {
+      margin-bottom: 20px;
+    }
+    input {
+      margin: 5px;
+      padding: 5px;
+    }
+    .delete-btn {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>テーブルの検索機能</h2>
+  
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="名前で検索...">
+  </div>
+  
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>年齢</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>山田太郎</td>
+        <td>30</td>
+        <td><button class="delete-btn" onclick="deleteRow(this)">削除</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>佐藤花子</td>
+        <td>25</td>
+        <td><button class="delete-btn" onclick="deleteRow(this)">削除</button></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>鈴木一郎</td>
+        <td>40</td>
+        <td><button class="delete-btn" onclick="deleteRow(this)">削除</button></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <script>
+    // 削除関数（前のレベルと同じ）
+    function deleteRow(button) {
+      const row = button.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+    }
+    
+    // 検索機能を実装してください
+    // 検索ボックスに入力すると、名前が一致する行だけが表示されるようにしてください
+    // 検索ボックスが空の場合は全ての行が表示されるようにしてください
+    
+    document.getElementById('searchInput').addEventListener('input', function() {
+      // ここにコードを書いてください
+      
+    });
+  </script>
+</body>
+</html>
+
+**解答例**:
+document.getElementById('searchInput').addEventListener('input', function() {
+  const searchText = this.value.toLowerCase();
+  const table = document.getElementById('userTable');
+  const rows = table.querySelectorAll('tbody tr');
+  
+  rows.forEach(function(row) {
+    const nameCell = row.cells[1]; // 名前は2番目のセル
+    const name = nameCell.textContent.toLowerCase();
+    
+    if (name.includes(searchText)) {
+      row.classList.remove('hidden');
+    } else {
+      row.classList.add('hidden');
+    }
+  });
+});
+
+
+## レベル7: テーブルのソート機能
+
+### 練習問題7-1: 列でソート
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>テーブル練習7-1</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+    }
+    thead {
+      background-color: #f2f2f2;
+    }
+    th {
+      cursor: pointer;
+    }
+    th:hover {
+      background-color: #ddd;
+    }
+    form, .search-container {
+      margin-bottom: 20px;
+    }
+    input {
+      margin: 5px;
+      padding: 5px;
+    }
+    .delete-btn {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>テーブルのソート機能</h2>
+  
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th onclick="sortTable(0)">ID</th>
+        <th onclick="sortTable(1)">名前</th>
+        <th onclick="sortTable(2)">年齢</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>3</td>
+        <td>鈴木一郎</td>
+        <td>40</td>
+        <td><button class="delete-btn" onclick="deleteRow(this)">削除</button></td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>山田太郎</td>
+        <td>30</td>
+        <td><button class="delete-btn" onclick="deleteRow(this)">削除</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>佐藤花子</td>
+        <td>25</td>
+        <td><button class="delete-btn" onclick="deleteRow(this)">削除</button></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <script>
+    // 削除関数（前のレベルと同じ）
+    function deleteRow(button) {
+      const row = button.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+    }
+    
+    // ソート機能を実装してください
+    // 列のヘッダーをクリックすると、その列でテーブルをソートするようにしてください
+    // 最初はIDでソートされているとします
+    
+    function sortTable(columnIndex) {
+      // ここにコードを書いてください
+      
+    }
+  </script>
+</body>
+</html>
+
+
+**解答例**:
+function sortTable(columnIndex) {
+  const table = document.getElementById('userTable');
+  const tbody = table.querySelector('tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  
+  // データ型を考慮してソート
+  rows.sort(function(a, b) {
+    let aValue = a.cells[columnIndex].textContent;
+    let bValue = b.cells[columnIndex].textContent;
+    
+    // ID列と年齢列は数値としてソート
+    if (columnIndex === 0 || columnIndex === 2) {
+      return parseInt(aValue) - parseInt(bValue);
+    } 
+    // 名前列は文字列としてソート
+    else {
+      return aValue.localeCompare(bValue);
+    }
+  });
+  
+  // ソートした行をテーブルに追加し直す
+  rows.forEach(function(row) {
+    tbody.appendChild(row);
+  });
+}
+
+
+## まとめ
+
+これらの練習問題を段階的に取り組むことで、HTMLテーブルの基本から応用までを学ぶことができます。
+各レベルを完成させてから次に進むことで、着実にテーブル操作のスキルを身につけることができます。
+
+テーブル操作で覚えておくべき重要なポイント：
+
+1. テーブルの基本構造: `<table>`, `<tr>`, `<th>`, `<td>`, `<thead>`, `<tbody>`
+2. JavaScriptでのテーブル操作:
+   - `table.querySelector('tbody')` でテーブル本体を取得
+   - `document.createElement('tr')` で新しい行を作成
+   - `document.createElement('td')` でセルを作成
+   - `row.appendChild(cell)` でセルを行に追加
+   - `tbody.appendChild(row)` で行をテーブルに追加
+3. データの追加、削除、検索、ソートの実装方法
+
+これらの基本をマスターすれば、IBMのコーディング面接でテーブル操作に関する問題に対応できるようになるでしょう。

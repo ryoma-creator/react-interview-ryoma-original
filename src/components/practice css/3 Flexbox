@@ -1,0 +1,132 @@
+/* CSS 基礎練習 - Day 3: Flexbox (5分で復習) */
+
+/*
+HTMLコード（CodePenのHTMLに貼り付け）:
+
+<div class="container1">
+  <div class="item">A</div>
+  <div class="item">B</div>
+  <div class="item">C</div>
+</div>
+
+<div class="container2">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+</div>
+
+<div class="container3">
+  <div class="item">X</div>
+  <div class="item">Y</div>
+  <div class="item">Z</div>
+</div>
+*/
+
+/* 基本リセット */
+/* div要素はブロック要素なので、デフォルトでwidth: 100%（親要素の幅いっぱい）になります。
+    これがデフォルトの動作 */
+div {
+  display: block;  /* ブロック要素 */
+  width: 100%;     /* 親の幅いっぱい */
+}
+*/
+/* インライン要素との違い
+css.item { display: inline-block; width: 100px; }
+/* → 指定した幅になる */
+横幅を制限したい場合は明示的にwidthを指定する必要があります。
+*/
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* 共通スタイル */
+.container1, .container2, .container3 {
+  height: 200px;
+  margin: 20px 0;
+  border: 2px solid #333;
+}
+
+.item {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  margin: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* === 問題1: 基本のFlexbox === */
+/* コメントアウトを解除して練習 */
+
+/* 問題1-1: .container1をflexコンテナにして横並びに */
+/* .container1 { display: flex; } */
+
+/* 問題1-2: .container2をflexコンテナにして縦並びに */
+/* .container2 { display: flex; flex-direction: column; } */
+
+/* === 問題2: justify-content（面接頻出）=== */
+
+/* 問題2-1: .container1の子要素を中央寄せ */
+/* .container1 { justify-content: center; } */
+
+/* 問題2-2: .container1の子要素を両端寄せ */
+/* .container1 { justify-content: space-between; } */
+
+/* 問題2-3: .container1の子要素を等間隔に配置 */
+/* .container1 { justify-content: space-around; } */
+
+/* === 問題3: align-items === */
+
+/* 問題3-1: .container2の子要素を垂直中央寄せ */
+/* .container2 { align-items: center; } */
+/* flex-start flex-end center*/
+
+/* 問題3-2: .container2の子要素を下寄せ */
+/* .container2 { align-items: flex-end; } */
+
+/* === 問題4: flex-grow, flex-shrink === */
+
+/* 問題4-1: .container3の2番目の子要素のみ伸縮させる */
+/* .container3 .item:nth-child(2) { flex-grow: 1; } */
+/*.container1でrowだと変化わかる 余ったスペース分埋めるようになる*/
+
+/* === 模範解答（練習後に確認）=== */
+/*
+.container1 { 
+  display: flex; 
+  justify-content: space-between; 
+}
+.container2 { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+}
+.container3 { 
+  display: flex; 
+}
+.container3 .item:nth-child(2) { 
+  flex-grow: 1; 
+}
+*/
+
+/* === IBM面接でよく聞かれる質問 === */
+/*
+Q: justify-contentとalign-itemsの違いは？
+A: justify-content→主軸方向、align-items→交差軸方向
+
+Q: flex-directionがcolumnの時のjustify-contentは？
+A: 縦方向（上下）の配置を制御
+
+Q: 要素を完全に中央に配置するには？
+A: display: flex; justify-content: center; align-items: center;
+*/
+
+/* === 復習チェックリスト === */
+/*
+✓ display: flex
+✓ flex-direction（row/column）
+✓ justify-content（center/space-between/space-around）
+✓ align-items（center/flex-start/flex-end）
+✓ flex-grow
+✓ flex-shrink
+✓ 主軸と交差軸の概念
+*/

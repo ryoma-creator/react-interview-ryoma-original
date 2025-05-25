@@ -1,0 +1,172 @@
+/* CSS 基礎練習 - Day 4: Position & Display (5分で復習) */
+
+/*
+HTMLコード（CodePenのHTMLに貼り付け）:
+
+<div class="parent">
+  <div class="child1">子要素1</div>
+  <div class="child2">子要素2</div>
+  <div class="child3">子要素3</div>
+</div>
+
+<div class="display-demo">
+  <span class="inline">インライン</span>
+  <div class="block">ブロック</div>
+  <span class="inline-block">インラインブロック</span>
+  <div class="hidden">非表示</div>
+</div>
+*/
+
+/* 基本リセット */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* 共通スタイル */
+.parent {
+  height: 300px;
+  border: 2px solid #333;
+  margin: 20px 0;
+  position: relative;
+}
+
+.child1, .child2, .child3 {
+  background-color: #FF5722;
+  color: white;
+  padding: 15px;
+  margin: 10px;
+  text-align: center;
+}
+
+.display-demo {
+  border: 2px solid #2196F3;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.inline, .block, .inline-block {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+}
+
+/* === 問題1: Position（面接超頻出）=== */
+/* コメントアウトを解除して練習 */
+
+/* 問題1-1: .child1を相対位置で上から20px、左から20px移動 */
+/* .child1 { position: relative; top: 20px; left: 20px; } */
+/* 親要素(relative)の左上角が基準。*/
+/* 
+top/right/bottom/left の方向
+top: 20px → 下に 20px 移動 ⬇️
+left: 30px → 右に 30px 移動 ➡️
+right: 10px → 左に 10px 移動 ⬅️
+bottom: 15px → 上に 15px 移動 ⬆️
+*/
+/* 
+相対 = 「元の場所から◯px移動」
+絶対 = 「親要素の◯の位置に配置」
+*/
+
+
+/* 問題1-2: .child2を絶対位置で右上角に配置 */
+/* .child2 { position: absolute; top: 0; right: 0; } */
+
+/* 問題1-3: .child3を絶対位置で中央に配置 */
+/* .child3 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); } */
+/*  現代ではdisplay: grid; place-items: centerの方が簡単*/
+/*  display: grid; place-items: center なら position: relative は不要*/
+
+/* === 問題2: Display（面接頻出）=== */
+
+/* 問題2-1: spanをブロック要素にする */
+/* .inline { display: block; } */
+
+/* 問題2-2: divをインライン要素にする */
+/* .block { display: inline; } */
+
+/* 問題2-3: spanをインラインブロック要素にする */
+/* .inline-block { display: inline-block; width: 100px; height: 50px; } */
+
+/* 問題2-4: 要素を非表示にする */
+/* .hidden { display: none; } */
+
+/* === 問題3: Z-index === */
+
+/* 問題3-1: .child2を最前面に表示 */
+/* .child2 { z-index: 10; } */
+/* 
+z-indexが効かない理由
+z-indexはpositionが設定された要素にのみ有効です：
+css/* ❌ 効かない */
+.child2 { z-index: 100; }
+
+/* ✅ 効く */
+z-indexはposition: static以外が必要です：
+css/* ❌ 効かない（デフォルトはstatic） */
+.child2 { z-index: 100; }
+
+/* ✅ いずれかが必要 */
+.child2 { position: relative; z-index: 100; }
+.child2 { position: absolute; z-index: 100; }
+.child2 { position: fixed; z-index: 100; }
+数値が高いほど前面に表示されます。z-index: 1でも他の要素より高ければOKです。
+*/
+/*positionを指定すると「レイヤー」として扱われ、z-indexで前後関係を制御できるようになります。*/
+
+/* === 模範解答（練習後に確認）=== */
+/*
+.child1 { 
+  position: relative; 
+  top: 20px; 
+  left: 20px; 
+}
+.child2 { 
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  z-index: 10; 
+}
+.child3 { 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+}
+.inline { 
+  display: block; 
+}
+.block { 
+  display: inline; 
+}
+.inline-block { 
+  display: inline-block; 
+  width: 100px; 
+  height: 50px; 
+}
+.hidden { 
+  display: none; 
+}
+*/
+
+/* === IBM面接でよく聞かれる質問 === */
+/*
+Q: positionのstatic, relative, absolute, fixedの違いは？
+A: static→通常配置、relative→元位置から相対移動、
+   absolute→親要素基準、fixed→viewport基準
+
+Q: 要素を完全に中央配置する方法は？
+A: position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+
+Q: display: noneとvisibility: hiddenの違いは？
+A: display: none→要素が完全に消える、visibility: hidden→見えないがスペースは残る
+*/
+
+/* === 復習チェックリスト === */
+/*
+✓ position: static/relative/absolute/fixed
+✓ top, right, bottom, left
+✓ transform: translate()で中央配置
+✓ display: block/inline/inline-block/none
+✓ z-index
+✓ visibility: hidden
+*/

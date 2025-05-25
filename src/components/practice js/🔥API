@@ -1,0 +1,94 @@
+-----------------
+
+throw new Errorの中のものは文字列を渡すのではないので注意。
+catch内では以下のように、propertyとしてアクセスしないと受け取れない。
+
+なぜ問題か:
+
+throw new Error("エラーメッセージ")で作成したエラーオブジェクトは、単純な文字列ではなく、プロパティを持つオブジェクトです
+ブラウザによって表示方法が異なる場合があります
+エラーオブジェクトには追加の情報（スタックトレースなど）も含まれています
+
+正しい方法:
+.catch(error => loading.textContent = error.message);
+
+-----------------
+
+3. innerHTML = '' vs remove()
+▶︎ 判断基準は「その要素自体が後で必要かどうか」です。
+
+ 方法1: 内容を空にする
+element.innerHTML = '';
+
+ 方法2: 要素自体を削除する
+element.remove();
+これらは明確に異なる動作をします：
+innerHTML = '':
+
+要素自体はDOMに残ります
+子要素だけがすべて削除されます
+その後、同じ要素に新しいコンテンツを追加できます
+
+remove():
+
+要素自体がDOMから完全に削除されます
+その要素に後からコンテンツを追加することはできません
+再度アクセスするには、要素を新しく作成する必要があります
+
+どちらを使うべきか:
+innerHTML = '' を使う場合:
+
+コンテナとして再利用する要素（dataContainerなど）
+表示内容を更新したい場合
+
+remove() を使う場合:
+
+一度表示したら不要になる要素（ローディングインジケータなど）
+DOMをクリーンに保ちたい場合
+
+あなたのコードの場合、loadingElementは「データを読み込んでいます...」というメッセージを表示するための一時的な要素なので、
+データ取得後はremove()で削除するのが適切です。一方、dataContainerは常にページに存在するコンテナなので、その内容だけをクリアするinnerHTML = ''が適切です。
+
+判断基準は「その要素自体が後で必要かどうか」です。
+
+
+-----------------
+
+textContentだけだと文字列だけになる。
+🔻
+innerHTMLならcssも追加できる
+
+現在のコードでは、ローディング表示に単純な文字列を使っています：
+loading.textContent = "now loading...";
+改善案としては、CSSクラスを活用する方法があります：
+loading.innerHTML = '<div class="loading">データを読み込んでいます...</div>';
+これにより：
+
+ローディング表示に青い色やイタリック体などのスタイルが適用される
+ローディングアニメーション（スピナーなど）も追加できる
+
+ただし、これは必須ではなく「あると良い」レベルの改善です。
+
+-----------------
+
+.finally() について
+はい、.finally() は Promise チェーンでも async/await 構文でも使えます！
+Promise チェーンでの使用例：
+fetch("https://example.com/api")
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error))
+  .finally(() => console.log("完了しました"));
+async/await での使用例：
+async function fetchData() {
+  try {
+    const response = await fetch("https://example.com/api");
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  } finally {
+    console.log("完了しました");
+  }
+}
+どちらの場合も、.finally() または finally ブロック内のコードは、成功でも失敗でも必ず実行されます。

@@ -1,0 +1,253 @@
+; 最初に添付いただいたGlassdoorのレビュー情報を基に分析すると、
+; IBMのフロントエンド面接では実際に非同期処理のうち特定の部分に重点が置かれていることがわかります。
+; IBMの面接で重視される非同期処理スキル
+; レビュー情報からは、次の項目が特に重要視されています：
+
+; 基本的なPromise操作（then/catchの使い方）
+; async/await構文（特にエラーハンドリングを含む）
+; APIからのデータ取得と処理
+
+; Promise.allとPromise.raceについては、「時間があれば取り組むと良い」と記載されており、必須ではないことが示唆されています。
+; 私の見解
+; 正直な意見としては：
+
+; 現時点では5パートのシンプルな方に集中する方が効率的です。IBMの面接に直結する基本的なスキルを確実に習得する方が、時間を有効に使えます。
+; Day 12のAPIデータ取得と表示の練習に早めに進む方が、実際の面接問題に近い形で練習できます。特にAPIからデータを取得してDOM操作と組み合わせる練習が最も重要です。
+; DOM操作に関しては、先ほど提供した練習問題でIBMの面接で問われる主要な操作はカバーできています。特に不足している点はありません。
+
+; 結論
+; 時間に余裕があれば Promise.all と Promise.race も学ぶと理解が深まりますが、限られた時間でIBMの面接に合格することが目標なら、
+; 提供した5パートの練習問題と、Day 12のAPIデータ取得練習に集中することをお勧めします。基本をしっかり固めた上で、
+; 実践的なアプリケーション開発の練習に移ることが最も効果的な準備方法です。
+
+
+; この練習問題はIBMのコーディングテストに最も関連性の高い非同期処理の概念に焦点を当てています：
+
+; 1. **パート1**: コールバック関数の基礎
+; 2. **パート2**: Promiseの基本
+; 3. **パート3**: Promiseチェーン
+; 4. **パート4**: async/awaitの基本
+; 5. **パート5**: エラーハンドリング
+
+; Promise.allとPromise.raceはIBMの面接では優先度が低いため、この練習では省略しています。
+
+; 各パートはボタンをクリックして個別にテストできるので、一度に全てを解く必要はありません。
+; これらの概念を理解すれば、Day 12のAPIデータ取得と表示に進む準備が整います。
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBM対策 非同期処理練習</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .result {
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #f5f5f5;
+      border-left: 4px solid #4CAF50;
+    }
+    .error {
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #ffebee;
+      border-left: 4px solid #f44336;
+    }
+    button {
+      padding: 5px 10px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    .part {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>IBM対策 非同期処理練習</h1>
+  
+  <div class="part">
+    <h2>パート1: コールバック関数の基礎</h2>
+    <button id="callbackButton">テスト実行</button>
+    <div id="callbackResult" class="result"></div>
+  </div>
+  
+  <div class="part">
+    <h2>パート2: Promiseの基本</h2>
+    <button id="promiseButton">テスト実行</button>
+    <div id="promiseResult" class="result"></div>
+  </div>
+  
+  <div class="part">
+    <h2>パート3: Promiseチェーン</h2>
+    <button id="chainButton">テスト実行</button>
+    <div id="chainResult" class="result"></div>
+  </div>
+  
+  <div class="part">
+    <h2>パート4: async/await の基本</h2>
+    <button id="asyncButton">テスト実行</button>
+    <div id="asyncResult" class="result"></div>
+  </div>
+  
+  <div class="part">
+    <h2>パート5: エラーハンドリング</h2>
+    <button id="errorButton">テスト実行</button>
+    <div id="errorResult" class="result"></div>
+  </div>
+  
+  <script>
+    // パート1: コールバック関数の基礎
+    
+    // 問題1: 基本的なコールバック関数
+    // 数値を受け取り、1秒後にその数値を2倍にして返すコールバック関数を作成してください
+    function doubleAfterDelay(number, callback) {
+      // ここにコードを書いてください
+      
+    }
+    
+    // パート1のテスト実行
+    document.getElementById('callbackButton').addEventListener('click', function() {
+      const resultDiv = document.getElementById('callbackResult');
+      resultDiv.innerHTML = '実行中...<br>';
+      
+      // 経過表示
+      resultDiv.innerHTML += '開始<br>';
+      
+      doubleAfterDelay(5, function(result) {
+        resultDiv.innerHTML += '5の2倍は ' + result;
+      });
+      
+      resultDiv.innerHTML += '処理を続行中...<br>';
+    });
+    
+    // パート2: Promiseの基本
+    
+    // 問題2: 基本的なPromise
+    // 数値を受け取り、1秒後にその数値を2倍にして返すPromiseを作成してください
+    function doubleAfterDelayPromise(number) {
+      // ここにコードを書いてください
+      
+    }
+    
+    // パート2のテスト実行
+    document.getElementById('promiseButton').addEventListener('click', function() {
+      const resultDiv = document.getElementById('promiseResult');
+      resultDiv.innerHTML = '実行中...<br>';
+      
+      // 経過表示
+      resultDiv.innerHTML += '開始<br>';
+      
+      doubleAfterDelayPromise(10)
+        .then(result => {
+          resultDiv.innerHTML += '10の2倍は ' + result;
+        })
+        .catch(error => {
+          resultDiv.innerHTML += 'エラー: ' + error;
+        });
+      
+      resultDiv.innerHTML += '処理を続行中...<br>';
+    });
+    
+    // パート3: Promiseチェーン
+    
+    // 問題3: 基本的なPromiseチェーン
+    // 数値を受け取り、各ステップで以下の操作を行うPromiseチェーンを作成してください:
+    // 1. 数値を2倍にする
+    // 2. 結果に10を加える
+    // 3. 結果を2で割る
+    // 4. 最終結果を返す
+    function processNumber(number) {
+      // ここにコードを書いてください
+      
+    }
+    
+    // パート3のテスト実行
+    document.getElementById('chainButton').addEventListener('click', function() {
+      const resultDiv = document.getElementById('chainResult');
+      resultDiv.innerHTML = '実行中...<br>';
+      
+      processNumber(5)
+        .then(result => {
+          resultDiv.innerHTML += '5を処理した結果: ' + result + ' ((5*2 + 10)/2 = 10)';
+        })
+        .catch(error => {
+          resultDiv.innerHTML += 'エラー: ' + error;
+        });
+    });
+    
+    // パート4: async/await の基本
+    
+    // 問題4: 基本的なasync/await
+    // 問題2と同じ機能をasync/awaitを使って実装してください
+    async function doubleAfterDelayAsync(number) {
+      // ここにコードを書いてください
+      
+    }
+    
+    // パート4のテスト実行
+    document.getElementById('asyncButton').addEventListener('click', async function() {
+      const resultDiv = document.getElementById('asyncResult');
+      resultDiv.innerHTML = '実行中...<br>';
+      
+      // 経過表示
+      resultDiv.innerHTML += '開始<br>';
+      
+      try {
+        const result = await doubleAfterDelayAsync(20);
+        resultDiv.innerHTML += '20の2倍は ' + result;
+      } catch (error) {
+        resultDiv.innerHTML += 'エラー: ' + error;
+      }
+      
+      resultDiv.innerHTML += '<br>処理を続行中...';
+    });
+    
+    // パート5: エラーハンドリング
+    
+    // 問題5: try/catchによるエラーハンドリング
+    // 以下の関数を完成させて、エラーが発生した場合に適切に処理してください
+    // bが0の場合は「0で割ることはできません」というエラーをスローすること
+    async function divideNumbers(a, b) {
+      // ここにコードを書いてください
+      
+    }
+    
+    // パート5のテスト実行
+    document.getElementById('errorButton').addEventListener('click', async function() {
+      const resultDiv = document.getElementById('errorResult');
+      resultDiv.innerHTML = '実行中...<br>';
+      
+      // 成功パターン
+      try {
+        const result1 = await divideNumbers(10, 2);
+        resultDiv.innerHTML += '10 ÷ 2 = ' + result1 + '<br>';
+      } catch (error) {
+        resultDiv.innerHTML += 'エラー: ' + error.message + '<br>';
+      }
+      
+      // 失敗パターン
+      try {
+        const result2 = await divideNumbers(10, 0);
+        resultDiv.innerHTML += '10 ÷ 0 = ' + result2;
+      } catch (error) {
+        resultDiv.innerHTML += 'エラー: ' + error.message;
+      }
+    });
+  </script>
+</body>
+</html>

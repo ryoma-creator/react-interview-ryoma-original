@@ -1,0 +1,472 @@
+; API操作練習問題集 - IBM面接対策
+; この練習問題集は、APIからのデータ取得と表示に関するスキルを段階的に習得できるように設計されています。
+
+; レベル1: 基本的なAPIリクエスト
+; 問題1-1: シンプルなGET要求
+; JSONPlaceholderから基本的なデータを取得し、コンソールに表示してください。
+; // ボタンがクリックされたら、JSONPlaceholderからデータを取得して表示する関数を実装してください
+; // URL: https://jsonplaceholder.typicode.com/posts/1
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>基本的なAPI取得</title>
+</head>
+<body>
+  <h1>基本的なAPI取得</h1>
+  <button id="fetchButton">データを取得</button>
+  <div id="result"></div>
+  
+</body>
+</html>
+
+; 自分が理解しやすいの回答:レベル1: 基本的なAPIリクエスト
+; document.getElementById('fetchButton').addEventListener('click', function() {
+;   fetch("https://jsonplaceholder.typicode.com/posts/1")
+;     .then(response => {
+;       if(!response.ok){
+;         throw new Error("エラー");
+;       }
+;       return response.json(); 
+;     })
+;     .then(data => {
+;       console.log(data);
+;       const resultDivElement = document.getElementById("result");
+;       resultDivElement.textContent = data.title;
+;     })
+; });
+
+; // レベル2: データ取得とDOM表示
+; // 問題2-1: ユーザーリストの取得と表示
+; // JSONPlaceholderからユーザーデータを取得し、リスト形式で表示してください。
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ユーザーリスト</title>
+  <style>
+    .user-card {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>ユーザーリスト</h1>
+  <div id="userList">
+    <!-- ここにユーザーデータが表示されます -->
+    <p id="loading">データを読み込んでいます...</p>
+  </div>
+</body>
+</html>
+
+    // ページ読み込み時にユーザーデータを取得して表示する関数を実装してください
+    // URL: https://jsonplaceholder.typicode.com/users
+    // 各ユーザーの名前、メール、会社名を表示してください
+    
+    // ここにコードを書いてください
+    
+
+
+; 自分が理解しやすいの回答:レベル2: データ取得とDOM表示
+; // ページ読み込み時に実行する関数
+; document.addEventListener('DOMContentLoaded', function() {
+;   fetchUsers();
+; });
+
+; // ユーザーデータを取得して表示する関数
+; function fetchUsers() {
+;   fetch('https://jsonplaceholder.typicode.com/users')
+;     .then(response => {
+;       if (!response.ok) {
+;         throw new Error('データの取得に失敗しました');
+;       }
+;       return response.json();
+;     })
+;     .then(users => {
+;       displayUsers(users);
+;     })
+;     .catch(error => {
+;       document.getElementById('userList').innerHTML = `
+;         <p class="error">エラーが発生しました: ${error.message}</p>
+;       `;
+;     });
+; }
+
+; // ユーザーデータを表示する関数
+; function displayUsers(users) {
+;   const userListElement = document.getElementById('userList');
+  
+;   // ローディングメッセージを削除
+;   const loadingElement = document.getElementById('loading');
+;   if (loadingElement) {
+;     loadingElement.remove();
+;   }
+  
+;   // ユーザーごとにカードを作成
+;   users.forEach(user => {
+;     const userCard = document.createElement('div');
+;     userCard.className = 'user-card';
+    
+;     // テンプレートリテラルを使ってHTML内容を作成
+;     userCard.innerHTML = `
+;       <h2>${user.name}</h2>
+;       <p><strong>Email:</strong> ${user.email}</p>
+;       <p><strong>会社名:</strong> ${user.company.name}</p>
+;     `;
+    
+;     userListElement.appendChild(userCard);
+;   });
+; }
+
+
+ // レベル3: ローディングとエラーハンドリング
+ // 問題3-1: ローディング状態とエラー表示
+ // APIからデータを取得する際のローディング状態とエラーハンドリングを実装してください。
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ローディングとエラーハンドリング</title>
+  <style>
+    .loading {
+      color: blue;
+      font-style: italic;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+      padding: 10px;
+      border: 1px solid red;
+      background-color: #ffebee;
+    }
+    .user-item {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+  <h1>ユーザーデータ</h1>
+  <button id="fetchButton">データを取得</button>
+  <div id="statusContainer">
+    <!-- ステータスメッセージがここに表示されます -->
+  </div>
+  <div id="dataContainer">
+    <!-- データがここに表示されます -->
+  </div>
+</body>
+</html>
+
+    // ボタンクリック時にAPIからデータを取得し、以下の状態を適切に処理する関数を実装してください
+    // 1. データ取得前: ローディングメッセージを表示
+    // 2. データ取得成功: ユーザーデータを表示
+    // 3. データ取得失敗: エラーメッセージを表示
+    // URL (正常): https://jsonplaceholder.typicode.com/users
+    // URL (エラー用): https://jsonplaceholder.typicode.com/invalid-endpoint
+    //ユーザーデータの表示について。何を表示？
+    //プロフェッショナルなアプローチでは、単にすべてのデータをダンプするのではなく、ユーザーにとって重要な情報（名前、メール、会社名など）を整形して表示します。
+    
+    document.getElementById('fetchButton').addEventListener('click', function() {
+      // ここにコードを書いてください
+      
+    });
+
+; 自分が理解しやすいの回答:レベル3: ローディングとエラーハンドリング
+; 書き方は、eventlistenerの中に、一括で全部書くパターンもあったが、分けたものにした。
+; listenerでイベントの発動をどうするかが書かれていて、
+; fetch Usersでデータをfetch
+; そして、そのfetchしたデータをどうしたいのかで、もう1つの関数がある
+; こういった、3つの役割だったよね。シンプルだ。、役割
+
+    ; document.getElementById('fetchButton').addEventListener('click', function() {
+    ;   // ここにコードを書いてください
+    ;   const loading = document.getElementById("statusContainer");
+    ;   const data = document.getElementById("dataContainer");
+    ;   loading.innerHTML = '<div class="loading">データを読み込んでいます...</div>';
+    ;   data.innerHTML = "";
+      
+    ;   fetch("https://jsonplaceholder.typicode.com/users")
+    ;     .then(response => {
+    ;       if(!response.ok){
+    ;         throw new Error("error is happening");
+    ;       }  
+    ;       return response.json();
+    ;     })
+    ;     .then(data => {
+    ;       console.log(data);
+    ;       loading.textContent = "";
+    ;       data.forEach(user => 
+    ;       dataContainer.innerHTML += `
+    ;         <div class="user-item">
+    ;           <h3>${user.name}</h3>
+    ;           <p>Email: ${user.email}</p>
+    ;           <p>会社: ${user.company.name}</p>
+    ;         </div>
+    ;        `
+    ;        );
+    ;     })
+    ;     .catch(error => loading.textContent = error.message);
+    ; });
+
+
+
+// レベル4: テーブルへのAPIデータ表示
+// 問題4-1: APIデータをテーブルに表示
+// APIから取得したデータをテーブル形式で表示し、基本的なフィルタリング機能を実装してください。
+
+    // 以下の機能を実装してください:
+    // 1. APIからユーザーデータを取得 (https://jsonplaceholder.typicode.com/users)
+    // 2. データをテーブル形式で表示 (ID, 名前, ユーザー名, メール, 会社名の列)
+    // 3. 検索ボックスでリアルタイムフィルタリング (名前で検索)
+    // 4. ローディング表示とエラーハンドリング
+    
+    // ここにコードを書いてください
+
+HTML
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>APIデータテーブル</title>
+</head>
+<body>
+  <h1>ユーザーデータテーブル</h1>
+  
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="名前で検索...">
+  </div>
+  
+  <div id="tableContainer">
+    <!-- テーブルがここに表示されます -->
+    <p class="loading">データを読み込んでいます...</p>
+  </div>
+
+</body>
+</html>
+
+
+CSS
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+      cursor: pointer;
+    }
+    .search-container {
+      margin-bottom: 20px;
+    }
+    #searchInput {
+      padding: 8px;
+      width: 300px;
+    }
+    .loading {
+      text-align: center;
+      padding: 20px;
+      font-style: italic;
+      color: blue;
+    }
+    .error {
+      color: red;
+      padding: 10px;
+      border: 1px solid red;
+      background-color: #ffebee;
+    }  
+
+
+
+; API注意点
+
+; returnの役割
+
+; 通常の関数ではreturnは関数を終了させます
+; しかし.then()では、returnした値は次の.then()に渡されます
+; これは「Promise Chain（プロミスチェーン）」という機能です
+
+; throwとcatchの仕組み
+
+; 勝手にcatchへ行く時があるの、意味がよくわからない
+
+; catchは以下の2つの場合に実行されます：
+
+---------
+; throwとcatchについて
+
+; throwで明示的にエラーを投げた場合
+; JavaScriptエンジンが自動的に検出したエラー（例：存在しないプロパティにアクセス）
+
+; あなたの混乱は2の場合かもしれません。わざわざthrowしなくても、エラーが発生したら自動的にcatchに行きます。
+
+; > ただ、このケースではエラーにしてね！この条件ではエラーにしてね！って指定できるのが、throw Errorってことか。
+; エラーとして捉えられないかもしれないやつもあるけど、条件でこれはエラーに絶対してねって明治というか師弟というかして必ずエラーにすることか。
+
+; 正確です！throwは「このケースでは正常ではなくエラーとして扱ってください」と明示的に指示する方法です。
+; 例えば「HTTPステータスが404や500でも、技術的には通信は成功している」のですが、あなたのアプリケーションでは「それはエラーとして扱いたい」場合に使います。
+; 自動で検出されるエラーは主に：
+
+; 存在しないプロパティへのアクセス（undefined.something）
+; ネットワーク切断
+; 構文エラー（JSON.parse("不正なJSON")）
+
+; などですが、「HTTPステータスが404や500」のような「技術的には成功したけど論理的には失敗」というケースは、自分でthrowする必要があります。
+---------
+
+; Promiseとresponseの関係について
+; > promiseは予約券みたいなものって聞いたけど、その予約してた実物が手に入った時に,responseobjectになるってこと？
+; その例えはとても的確です！まさにその通りです：
+
+; Promise = レストランの予約券（「あとで料理が出てきますよ」という約束）
+; Response = 実際に出てきた料理（予約の結果として受け取るもの）
+
+; fetchした時点では「後でデータをお届けします」という予約券（Promise）をもらい、データが実際に届いたときにResponseオブジェクトという形で中身を受け取ります。
+
+
+----------
+
+非同期処理と Promise について説明します。
+
+通常の Fetch API を使った非同期処理では、明示的に `new Promise()` を作成せずに使うことができます。これは `fetch()` 自体がすでに Promise を返すからです。
+
+Fetch API の例:
+
+// Fetch はすでに Promise を返すので new Promise() は必要ない
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('エラー:', error));
+
+
+一方、自分で非同期処理を作成する場合は、`new Promise()` を使います:
+
+function myAsyncFunction() {
+  return new Promise((resolve, reject) => {
+    // 何らかの非同期処理
+    setTimeout(() => {
+      const success = true;
+      if (success) {
+        resolve('成功しました！');  // then() に渡される
+      } else {
+        reject('失敗しました');  // catch() に渡される
+      }
+    }, 1000);
+  });
+}
+
+myAsyncFunction()
+  .then(result => console.log(result))
+  .catch(error => console.error(error));
+
+
+つまり:
+1. `fetch()`、`axios.get()`などの関数は**すでに Promise を返す**ので、自分で Promise を作る必要はありません
+2. タイマーや独自の非同期処理など、Promise を返さない処理を非同期化したい場合は `new Promise()` を使って自分でラップする必要があります
+
+Promise の3つの状態を理解することも重要です:
+- **pending**: 処理中（まだ結果が出ていない）
+- **fulfilled**: 成功（`resolve()` が呼ばれた）
+- **rejected**: 失敗（`reject()` が呼ばれた、またはエラーが発生した）
+
+お問い合わせのドキュメントにあるように、Promise は「予約券」のようなもので、実際の結果（Response）が後から届くというコンセプトです。
+
+
+---------------
+
+Promiseと非同期処理について整理して説明します。
+
+## .thenとreturnについて
+
+1. `.then(callback)`の中で`return`する値は、次の`.then()`に渡されます。
+
+2. あなたが示した例とわたしの例を比較：
+
+
+// あなたの例
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+  .then(response => {
+    if(!response.ok){
+      throw new Error("エラー");
+    }
+    return response.json(); // 次のthenに渡すために必要
+  })
+  .then(data => {
+    console.log(data);
+  })
+
+
+
+// わたしの例（省略した書き方）
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json()) // 暗黙のreturnがある
+  .then(data => console.log(data))
+
+
+アロー関数で`{}`を省略した場合、式の結果が自動的に返されます。これは「暗黙のreturn」です。両方とも同じように機能します。
+
+## rejectとthrow Errorの違い
+
+
+// 方法1: Promiseの中でreject
+new Promise((resolve, reject) => {
+  // 何か問題があった場合
+  reject('失敗しました'); // このメッセージはcatchに渡される
+})
+.catch(error => console.error(error)); // 「失敗しました」が表示される
+
+// 方法2: throw Error
+fetch(url)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('失敗しました'); // このエラーはcatchに渡される
+    }
+    return response.json();
+  })
+  .catch(error => console.error(error.message)); // 「失敗しました」が表示される
+
+
+両方とも似た結果になります：エラーメッセージが`.catch()`ブロックに渡されます。違いは：
+- `reject()`はPromiseの作成時にのみ使用できる
+- `throw Error`はどこでも使用できる
+
+## 「すでにPromiseを返す」の意味
+
+
+// 自分でPromiseを作る場合
+function myAsyncFunction() {
+  return new Promise((resolve, reject) => {
+    // 非同期処理
+    setTimeout(() => resolve('結果'), 1000);
+  });
+}
+
+// fetchはすでにPromiseを返すので、自分で作る必要はない
+function getUser() {
+  // 「return new Promise(...)」は不要
+  return fetch('https://api.example.com/user');
+}
+
+
+`fetch()`関数は内部ですでにPromiseを作成して返しているので、私たちが自分で`new Promise()`を書く必要がないという意味です。
+
+## Promiseの3つの状態
+
+Promise状態は次のようになります：
+1. **Pending**：非同期処理がまだ完了していない状態
+2. **Fulfilled**：成功して値が返された状態（`resolve(値)`が呼ばれた）
+3. **Rejected**：エラーが発生した状態（`reject(エラー)`が呼ばれた、または例外が投げられた）
+
+「予約券」の例えで考えると：
+- **Pending**：まだ料理が来ていない（予約中）
+- **Fulfilled**：料理が無事に届いた（予約成功）
+- **Rejected**：料理が提供できない（予約失敗）
+
+これでPromiseの仕組みが理解しやすくなりましたでしょうか？
+

@@ -1,0 +1,132 @@
+// サンプルユーザーデータ
+const sampleUsers = [
+  { id: 1, name: "山田太郎", email: "yamada@example.com" },
+  { id: 2, name: "佐藤花子", email: "sato@example.com" },
+  { id: 3, name: "鈴木一郎", email: "suzuki@example.com" }
+];
+
+// パート1: 基本的なDOM操作
+
+// 問題1-1: 要素の選択と内容変更
+// id="title"の要素のテキストを「DOMマスター」に変更してください。
+function changeTitle() {
+  // ここにコードを書いてください
+  
+}
+
+// 問題1-2: 複数要素の選択と操作
+// class="text"の要素すべてに"highlight"クラスを追加してください。
+function highlightTexts() {
+  // ここにコードを書いてください
+  
+}
+
+// 問題1-3: 要素の作成と追加
+// id="list"のリストに新しいリストアイテム"アイテム4"を追加してください。
+function addListItem() {
+  // ここにコードを書いてください
+  
+}
+
+// 問題1-4: 要素の削除
+// id="list"のリストから最後のリストアイテムを削除してください。
+function removeLastItem() {
+  // ここにコードを書いてください
+  
+}
+
+// パート2: イベント処理の基本
+
+// 問題2-1: ボタンクリックイベント
+// id="add-button"のボタンがクリックされたらaddListItem関数を実行し、
+// id="remove-button"のボタンがクリックされたらremoveLastItem関数を実行するようにイベントリスナーを設定してください。
+function setupButtonListeners() {
+  // ここにコードを書いてください
+  
+}
+
+// 問題2-2: フォーム送信イベント
+// id="user-form"のフォームが送信されたとき、デフォルトの送信動作を防ぎ、
+// 入力された名前とメールアドレスをid="output"の要素に表示してください。
+function handleFormSubmit() {
+  // ここにコードを書いてください
+  
+}
+
+// 問題2-3: 要素のクリックで表示切替
+// id="title"の要素をクリックするたびに表示/非表示を切り替えるようにしてください（"hidden"クラスの追加/削除）。
+function toggleTitleVisibility() {
+  // ここにコードを書いてください
+  
+}
+
+// パート3: シンプルなテーブル操作
+
+// 問題3-1: 基本的なテーブルの作成
+// sampleUsersデータから、シンプルなHTMLテーブルを作成し、id="user-table-container"に追加してください。
+// テーブルには「ID」「名前」「メール」の列を含めてください。
+function createUserTable() {
+  // ここにコードを書いてください
+  
+}
+
+// 問題3-2: テーブルへの行追加
+// フォームに入力された名前とメールアドレスをテーブルに新しい行として追加してください。
+// IDは最後の行のID+1とします。
+function addUserToTable(name, email) {
+  // ここにコードを書いてください
+  
+}
+
+// 問題3-3: 行の削除ボタン
+// テーブルの各行に「削除」ボタンを追加し、クリックするとその行を削除できるようにしてください。
+function addDeleteButtons() {
+  // ここにコードを書いてください
+  
+}
+
+// パート4: 入力検証（バリデーション）
+
+// 問題4-1: 基本的な入力検証
+// フォーム送信時に以下の検証を行い、エラーがある場合はエラーメッセージを表示してください：
+// - 名前は2文字以上必須
+// - メールは@を含む有効な形式であること
+function validateForm(name, email) {
+  // ここにコードを書いてください
+  
+}
+
+// パート5: テーブルの検索とソート（応用）
+
+// 問題5-1: テーブル検索機能
+// 検索入力に応じてテーブルの行をフィルタリングする機能を実装してください。
+function setupTableSearch() {
+  // ここにコードを書いてください
+  
+}
+
+// 問題5-2: テーブルのソート機能
+// テーブルのヘッダーをクリックすると、その列でテーブルをソートする機能を実装してください。
+function setupTableSorting() {
+  // ここにコードを書いてください
+  
+}
+
+// 以下の関数を呼び出して初期設定を行います
+// 各パートが完成したら、対応する関数のコメントを外して実行してください
+
+// パート1の実行
+// changeTitle();
+// highlightTexts();
+
+// パート2の実行
+// setupButtonListeners();
+// handleFormSubmit();
+// toggleTitleVisibility();
+
+// パート3の実行
+// createUserTable();
+
+// パート5の実行
+// setupTableSearch();
+// setupTableSorting();

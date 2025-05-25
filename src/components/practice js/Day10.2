@@ -1,0 +1,254 @@
+// JavaScript 非同期処理 - 追加練習問題
+// Day 10と同じレベルの問題ですが、別の問題設定で練習できます。
+
+// 問題1: コールバック関数
+// 文字列を受け取り、2秒後にその文字列を大文字に変換して返すコールバック関数を作成してください
+function convertToUpperAfterDelay(str, callback) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題1: 開始");
+convertToUpperAfterDelay("hello world", function(result) {
+  console.log("変換結果: " + result); // "HELLO WORLD"
+});
+console.log("処理を続行...");
+// 期待される出力:
+// 問題1: 開始
+// 処理を続行...
+// (2秒後) 変換結果: HELLO WORLD
+
+// 問題2: Promiseの基本
+// 温度を摂氏（℃）で受け取り、2秒後にその温度を華氏（℉）に変換して返すPromiseを作成してください
+// 変換式: 華氏 = 摂氏 × 9/5 + 32
+function convertToFahrenheitPromise(celsius) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題2: 開始");
+convertToFahrenheitPromise(25)
+  .then(result => {
+    console.log("摂氏25度は華氏 " + result + " 度です");  // 77度
+  })
+  .catch(error => {
+    console.error("エラー:", error);
+  });
+console.log("処理を続行...");
+// 期待される出力:
+// 問題2: 開始
+// 処理を続行...
+// (2秒後) 摂氏25度は華氏 77 度です
+
+// 問題3: Promiseチェーン
+// 文字列を受け取り、各ステップで以下の操作を行うPromiseチェーンを作成してください:
+// 1. 文字列をすべて小文字に変換する
+// 2. 文字列内のスペースをすべて削除する
+// 3. 文字列を逆順にする
+// 4. 最終結果を返す
+function processString(str) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+processString("Hello World")
+  .then(result => {
+    console.log("問題3: 最終結果 = " + result); // "dlrowolleh"
+  });
+
+// 問題4: 並行処理の制御
+// 3つの非同期操作を実行し、それらがすべて完了したら結果を結合して返す関数を作成してください
+function combineResults(input1, input2, input3) {
+  // ここにコードを書いてください
+  
+}
+
+// 文字列の各単語の最初の文字を大文字にする非同期関数
+function capitalizeFirstLetter(str) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const result = str.replace(/\b\w/g, char => char.toUpperCase());
+      resolve(result);
+    }, 1000);
+  });
+}
+
+// 文字列から母音を削除する非同期関数
+function removeVowels(str) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const result = str.replace(/[aeiou]/gi, '');
+      resolve(result);
+    }, 1500);
+  });
+}
+
+// 文字列に感嘆符を追加する非同期関数
+function addExclamation(str) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(str + "!");
+    }, 800);
+  });
+}
+
+// テスト
+combineResults("hello world", "javascript is fun", "async programming")
+  .then(result => {
+    console.log("問題4: 結合結果:", result);
+    // 例: "Hello World" + "Jvscrpt s fn" + "async programming!" のような結合結果
+  });
+
+// 問題5: タイムアウト処理
+// 指定された時間内に完了しない場合はタイムアウトエラーを発生させるPromiseラッパー関数を作成してください
+function withTimeout(promise, timeoutMs) {
+  // ここにコードを書いてください
+  
+}
+
+// 3秒後に解決するPromise
+const slowOperation = new Promise(resolve => setTimeout(() => resolve("操作完了"), 3000));
+
+// テスト: 2秒のタイムアウトを設定（タイムアウトするはず）
+console.log("問題5-1: 開始（タイムアウトするテスト）");
+withTimeout(slowOperation, 2000)
+  .then(result => {
+    console.log("このメッセージは表示されないはずです");
+  })
+  .catch(error => {
+    console.error("問題5-1 エラー:", error); // "操作がタイムアウトしました"
+  });
+
+// テスト: 4秒のタイムアウトを設定（タイムアウトしないはず）
+console.log("問題5-2: 開始（タイムアウトしないテスト）");
+withTimeout(slowOperation, 4000)
+  .then(result => {
+    console.log("問題5-2 結果:", result); // "操作完了"
+  })
+  .catch(error => {
+    console.error("このエラーメッセージは表示されないはずです");
+  });
+
+// 問題6: async/await の基本
+// 問題2と同じ機能をasync/awaitを使って実装してください
+// 問題2-1: 基本的なPromise
+// 温度を摂氏（℃）で受け取り、2秒後にその温度を華氏（℉）に変換して返すPromiseを作成してください
+// 変換式: 華氏 = 摂氏 × 9/5 + 32
+
+async function convertToFahrenheitAsync(celsius) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題6: 開始");
+convertToFahrenheitAsync(30)
+  .then(result => {
+    console.log("摂氏30度は華氏 " + result + " 度です"); // 86度
+  });
+console.log("処理を続行...");
+
+// 問題7: try/catchによるエラーハンドリング
+// 以下の関数を完成させて、エラーが発生した場合に適切に処理してください
+async function safelyParseJSON(jsonString) {
+  // ここにコードを書いてください
+  // 有効なJSONならパースしたオブジェクトを返し、
+  // 無効なJSON文字列ならユーザーフレンドリーなエラーメッセージを返す
+  
+}
+
+// テスト: 有効なJSON
+safelyParseJSON('{"name": "John", "age": 30}')
+  .then(result => {
+    console.log("問題7-1 パース結果:", result); // {name: "John", age: 30}
+  })
+  .catch(error => {
+    console.error("このエラーメッセージは表示されないはずです");
+  });
+
+// テスト: 無効なJSON
+safelyParseJSON('{name: "John", age: 30}') // nameが引用符で囲まれていない
+  .then(result => {
+    console.log("問題7-2 パース結果:", result); // "JSONパースエラー: 有効なJSONではありません"
+  })
+  .catch(error => {
+    console.error("このエラーメッセージは表示されないはずです");
+  });
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: コールバック関数
+function convertToUpperAfterDelay(str, callback) {
+  setTimeout(() => {
+    const result = str.toUpperCase();
+    callback(result);
+  }, 2000);
+}
+
+// 問題2: Promiseの基本
+function convertToFahrenheitPromise(celsius) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const fahrenheit = celsius * 9/5 + 32;
+      resolve(fahrenheit);
+    }, 2000);
+  });
+}
+
+// 問題3: Promiseチェーン
+function processString(str) {
+  return Promise.resolve(str)
+    .then(s => s.toLowerCase())
+    .then(s => s.replace(/\s/g, ''))
+    .then(s => s.split('').reverse().join(''));
+}
+
+// 問題4: 並行処理の制御
+function combineResults(input1, input2, input3) {
+  const promise1 = capitalizeFirstLetter(input1);
+  const promise2 = removeVowels(input2);
+  const promise3 = addExclamation(input3);
+  
+  return Promise.all([promise1, promise2, promise3])
+    .then(results => results.join(' + '));
+}
+
+// 問題5: タイムアウト処理
+function withTimeout(promise, timeoutMs) {
+  // タイムアウト用のPromise
+  const timeoutPromise = new Promise((_, reject) => {
+    setTimeout(() => {
+      reject("操作がタイムアウトしました");
+    }, timeoutMs);
+  });
+  
+  // 元のPromiseとタイムアウトPromiseでレース
+  return Promise.race([promise, timeoutPromise]);
+}
+
+// 問題6: async/await の基本
+async function convertToFahrenheitAsync(celsius) {
+  // 遅延関数
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+  
+  // 2秒待機
+  await delay(2000);
+  
+  // 摂氏から華氏に変換
+  const fahrenheit = celsius * 9/5 + 32;
+  return fahrenheit;
+}
+
+// 問題7: try/catchによるエラーハンドリング
+async function safelyParseJSON(jsonString) {
+  try {
+    const parsed = JSON.parse(jsonString);
+    return parsed;
+  } catch (error) {
+    return "JSONパースエラー: 有効なJSONではありません";
+  }
+}
+*/

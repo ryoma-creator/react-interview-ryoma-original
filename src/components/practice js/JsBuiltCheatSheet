@@ -1,0 +1,365 @@
+組み込み関数/チートシート/JavaScript
+
+// タイマー関数
+setTimeout(() => { /* 処理 */ }, 1000);   // 1000ミリ秒後に一度だけ実行
+setInterval(() => { /* 処理 */ }, 1000);  // 1000ミリ秒ごとに繰り返し実行
+clearTimeout(timeoutId);                  // setTimeout をキャンセル
+clearInterval(intervalId);                // setInterval をキャンセル
+
+
+// 型変換関数
+parseInt("42");             // 文字列を整数に変換: 42
+parseFloat("3.14");         // 文字列を浮動小数点数に変換: 3.14
+Number("42");               // 文字列を数値に変換: 42
+String(42);                 // 数値を文字列に変換: "42"
+Boolean(1);                 // 値を真偽値に変換: true
+
+// 数学関数
+Math.max(1, 2, 3);          // 最大値を返す: 3
+Math.min(1, 2, 3);          // 最小値を返す: 1
+Math.round(3.7);            // 四捨五入: 4
+Math.floor(3.7);            // 切り捨て: 3
+Math.ceil(3.2);             // 切り上げ: 4
+Math.random();              // 0以上1未満のランダムな数: 0.123...
+Math.PI                        3.14..　
+  ▶︎toFixed(2)とすると小数点以下2桁まで　よくこのコンビは使うのでセットで覚えよう
+
+; Tips!
+; Math.random()
+; Math.random() * 3は確かに0以上3未満の乱数を生成しますが、
+; 問題では「1〜3秒」という指定があるため、0からではなく1から始まるようにするために
+; Math.random() * 2 + 1という式を使っています。
+; Math.random() * 3だと0から始まってしまうため、最短が0秒になってしまいます。
+
+
+
+; Tips！
+; 小数点関連の関数の覚え方！！！！：
+
+; Math.floor() - 「床（floor）」に向かって切り捨て（下方向への丸め）
+; Math.ceil() - 「天井（ceiling）」に向かって切り上げ（上方向への丸め）
+; Math.round() - 普通の四捨五入（最も近い整数への丸め）
+
+; Tips
+; Math.max() は複数の引数を受け取ります（例：Math.max(1, 2, 3)）
+; 配列をそのまま渡すと（Math.max(nums)）処理できません (numbsは配列)
+; スプレッド構文を使うと Math.max(2, 3, 6, 6, 5) のように展開されます
+; Math.maxには、引数を。。
+; ああ、どれが一番高いかを決めるから、配列の数値を展開しないと使えないのか。
+
+// 日付・時間関数
+new Date();                 // 現在の日時
+Date.now();                 // 現在のタイムスタンプ（ミリ秒）
+
+// JSON処理
+JSON.parse('{"name":"John"}');   // JSON文字列をオブジェクトに変換
+JSON.stringify({name:"John"});   // オブジェクトをJSON文字列に変換
+
+-
+typeof ▶︎ typeをチェックしたい時。 もしnumberなら...みたいにif文でも使える。
+
+; typeof 42;                 // 値の型を文字列で返す: "number"
+; typeof "hello";            // 文字列の型: "string"
+; typeof true;               // 真偽値の型: "boolean"
+; typeof undefined;          // 未定義の型: "undefined"
+; typeof {};                 // オブジェクトの型: "object"
+; typeof [];                 // 配列の型（オブジェクトとして）: "object"
+; typeof null;               // null の型（歴史的な理由で）: "object"
+; typeof function(){};       // 関数の型: "function"
+
+
+-
+Set について
+Set はJavaScriptの組み込みオブジェクトで、重複しない値の集合を扱います：
+
+// Set を作成
+const uniqueSet = new Set([1, 2, 2, 3, 4, 4, 5]);
+// Set(5) {1, 2, 3, 4, 5} - 重複が除去される
+; new は必須です！
+
+// Set を配列に戻す
+const uniqueArray = [...uniqueSet];
+// [1, 2, 3, 4, 5]
+... はスプレッド構文で、Set の各要素を展開します。
+
+; Tips
+; const nums = [2, 3, 6, 6, 5];
+; const setNums = new Set(nums); // Set { 2, 3, 6, 5 }
+
+; Set は重複を自動的に除去します
+; Set には sort() メソッドがありません
+; Set を配列に変換するには [...setNums] のようにスプレッド構文を使います
+;    const uniqueNums = [...new Set(nums)];
+
+; Tips2
+; // 元の配列
+; const arr = [1, 2, 2, 3, 4, 4, 5];
+
+; // Setに変換（重複が除去される）
+; const uniqueSet = new Set(arr); // Set(5) {1, 2, 3, 4, 5}
+
+; // 配列に戻す
+; const uniqueArray = [...uniqueSet]; // [1, 2, 3, 4, 5]
+
+; // 結果を返す
+; return uniqueArray;
+
+; Setを配列に変換するには、スプレッド構文 [...mySet] か Array.from(mySet) を使います
+
+注意！[...uniqueSet]; // Setを配列に戻す
+
+
+-
+
+—疑問点解決
+
+parseInt と Number の違い
+
+parseInt("42");    // 42
+Number("42");      // 42
+主な違いは：
+* parseInt は文字列の先頭から数値に変換できる部分だけを整数に変換します
+    * parseInt("42px") → 42 (単位を切り捨て)
+    * parseInt("3.14") → 3 (小数点以下を切り捨て)
+* Number は文字列全体が有効な数値である必要があります
+    * Number("42px") → NaN (Not a Number)
+    * Number("3.14") → 3.14 (小数点も処理)
+
+-
+データ型変換
+Q: 文字列から数値に変換するには？
+A: Number(), parseInt(), parseFloat() を使います。
+
+// 整数に変換
+const num1 = Number("42");        // 42
+; Number(arr) - 配列全体を Number に渡すと：
+; 結果は NaN になります
+; 配列は直接数値に変換できないためです
+
+; arr.map(Number) - 配列の各要素に Number 関数を適用すると：
+; 結果は [1, 2, NaN, 4, NaN] になります
+; 文字列 "1", "2", "4" は数値に変換できますが、"three" と "five" は変換できず NaN になります
+; （注：コンソール出力で NaN が null と表示されていますが、これは表示の問題です。実際には NaN です）
+
+; filter(num => !isNaN(num)) - NaN でない値だけを残すフィルタリング：
+; 結果は [1, 2, 4] になります
+; isNaN(num) は「値が NaN かどうか」を判定し、true/false を返します
+; !isNaN(num) でその否定を取るので、「値が数値である（NaN でない）」場合に true になります
+
+; .map(Number) の構文について：
+; これは .map(item => Number(item)) の短縮形です
+; JavaScript では関数をそのまま別の関数に渡せます
+; Number はここでは関数として渡されています（括弧なし）
+
+
+const num2 = parseInt("42");      // 42
+const num3 = parseInt("42.5");    // 42（小数点以下は切り捨て）
+
+// 浮動小数点数に変換
+const num4 = Number("42.5");      // 42.5
+const num5 = parseFloat("42.5");  // 42.5
+
+-
+Math オブジェクト
+Q: 数学計算に役立つ定数や関数は？
+A: JavaScriptには Math オブジェクトがあります。
+
+// 定数
+const pi = Math.PI;         // 3.141592653589793（円周率）
+
+// 計算
+const area = Math.PI * r * r;   // 円の面積
+const sqrt = Math.sqrt(16);     // 4（平方根）
+const max = Math.max(5, 10);    // 10（最大値）
+const round = Math.round(4.7);  // 5（四捨五入）
+; Math.floor(x): x 以下の最大の整数（切り捨て）
+; Math.ceil(x): x 以上の最小の整数（切り上げ）
+; Math.round(x): x に最も近い整数（四捨五入）
+; Math.trunc(x): 小数部分を削除（正の数では Math.floor と同じ、負の数では Math.ceil と同じ）
+
+  const PI = Math.PI;
+
+  Math.pow(x, y)は「xのy乗」を計算する関数です。例えば：
+
+; Math.pow(2, 3) = 2³ = 8
+; Math.pow(5, 2) = 5² = 25
+
+; コーディングテストでよく使われますが、単純な2乗なら、num * numの方が読みやすく効率的です。
+; より複雑な指数計算（3乗以上や小数乗）の場合はMath.pow()が便利です。
+; pow は "power"（累乗・べき乗）の略
+
+; isNaN() とは
+isNaN() は「Is Not a Number」の略で、与えられた値が数値として扱えないかどうかを確認する関数です。
+isNaN(123)   // false (123は数値)
+isNaN("123") // false (文字列"123"は数値に変換可能)
+isNaN("abc") // true (文字列"abc"は数値に変換できない)
+isNaN(NaN)   // true (NaNはNot a Number)
+NaNとは「Not a Number」の略で、数値として扱えない値を表します。
+; 数値計算の結果が無効な場合に返されます。
+; シンプルな覚え方：
+isNaN(x) → 「x は数値ではない」場合に true
+!isNaN(x) → 「x は数値である」場合に true
+
+JSON.parse()は文字列をJavaScriptオブジェクトに変換する関数
+const jsonString = '{"name":"John", "age":30}';
+const obj = JSON.parse(jsonString);
+; // obj は {name: "John", age: 30} というJavaScriptオブジェクトになります
+解析 = parse = 文字列object ▶︎ jsのobjectへ変換
+🔻
+!注意!
+throw new Error()と同様の処理が行われている
+JavaScriptの組み込み関数の中には、エラー状況が発生したときに例外をスローするものがあります。
+JSON.parse()もその一つです。
+そのため、try...catchを使って例外を捕捉することが必要になります。
+if文だけでは例外は捕捉できません。
+例外が発生すると、プログラムはその場で実行を中断して、対応するcatchブロックにジャンプします。
+🔻
+JSON.parse()は、この関数は例外が込みの関数なので、例外だった時のパターン、
+つまりcatch書くのが前提。catch書くといいうことは、必然的に、tryも書くのが前提となる。
+
+なぜifだとダメなのか？
+// これは機能しません
+function parseJSONUnsafe(jsonString, defaultValue) {
+  // ここで JSON.parse が例外をスローしたら、
+  // 次の行は実行されず、関数全体がクラッシュします
+  const result = JSON.parse(jsonString);
+  
+  if (result) {
+    return result;
+  } else {
+    return defaultValue;
+  }
+}
+このコードは、無効なJSON文字列が来たときにJSON.parse()でエラーが発生し、
+次の行に進む前にプログラムが中断されてしまいます。
+
+if 文へ行く前に、実行されなくなるので。そこから先はcatchのみ拾える。
+
+function parseJSONSafely(jsonString, defaultValue) {
+  try {
+    return JSON.parse(jsonString);
+  } catch (e) {
+    return defaultValue;
+  }
+}
+
+
+
+----------------  
+  // 面積 = π × r²
+  const area = PI * radius * radius;
+  
+  // 周囲の長さ = 2 × π × r
+  const perimeter = 2 * PI * radius;
+
+  --その他公式
+  数列の和の公式
+n * (n + 1) / 2は、1からnまでの和を計算する数学的公式です。
+これは「ガウスの等差数列の和」として知られています。
+例えば、n=5の場合：
+
+5 * (5 + 1) / 2 = 5 * 6 / 2 = 30 / 2 = 15
+
+これは1 + 2 + 3 + 4 + 5 = 15と同じ結果になります。
+
+
+----------------  
+正の数をチェックするには num > 0 を使います
+
+
+----------------
+// 配列をコピーして元の配列を変更しないようにする
+  const newArr = [...arr];
+
+「元の配列を変更せず」という要件は、元の配列をそのままにして、シャッフルされた新しい配列を返すことを意味します。
+上記のコードでは [...arr] を使って配列のコピーを作成しています。
+
+
+-----------------
+✅ よく出てくる略記法まとめ
+
+書き方	意味
+count++	count = count + 1
+count--	count = count - 1
+count += 2	count = count + 2
+count -= 3	count = count - 3
+✅ よく出てくる関数ID系まとめ
+
+関数	説明
+setTimeout(fn, ms)	指定ミリ秒後に一度だけ実行
+clearTimeout(id)	その setTimeout をキャンセル
+setInterval(fn, ms)	指定ミリ秒ごとに繰り返し実行
+clearInterval(id)	その setInterval をキャンセル
+
+「interval」の意味
+「interval」は「一定の間隔」という意味です。setIntervalは「一定間隔で繰り返し実行する」という機能を持つ関数です。
+JavaScript の組み込みタイマー関数
+JavaScript には次の組み込み関数があります：
+
+setTimeout: 一定時間後に1回だけ関数を実行
+setInterval: 一定間隔で繰り返し関数を実行
+clearTimeout: setTimeout をキャンセル
+clearInterval: setInterval をキャンセル
+
+これらはすべてブラウザや Node.js に組み込まれている標準機能です。自分で作る必要はありません。
+タイマーID とは？
+setTimeoutやsetIntervalを実行すると、ブラウザは内部でそのタイマーを識別するための「ID」（単なる数字）を生成し、それを返します。この「タイマーID」があれば、後からそのタイマーを停止できます。
+
+---------------------------------
+非同期処理の合図となるもの
+JavaScriptでは、以下のものが自動的に非同期処理になります：
+
+タイマー関数
+
+setTimeout
+setInterval
+
+
+APIへのリクエスト
+
+fetch
+XMLHttpRequest
+
+
+ファイル操作（Node.js環境）
+
+fs.readFile
+fs.writeFile
+
+
+イベントリスナー
+
+addEventListener
+
+
+
+💡これらを使った時点で、その処理は非同期になります。
+Promiseやasync/awaitは非同期処理をより扱いやすくするための仕組みです
+
+---------------------------------
+通常の関数との違い
+
+通常の関数：
+function normalFunc() {
+  return "結果";
+}
+const result = normalFunc(); // すぐに結果が返る
+
+Promise関数：
+function promiseFunc() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve("結果"), 1000);
+  });
+}
+promiseFunc().then(result => {
+  // 1秒後に結果が来る
+});
+考え方としては
+あなたの考え方はとても正しいです！
+
+.then()と.catch()が使われているなら、Promiseを返す関数が必要
+Promiseを返すにはreturn new Promise()で書く
+resolve()を呼ぶと.then()に渡される
+reject()を呼ぶと.catch()に渡される
+
+この基本的な理解があれば、非同期処理の基礎はマスターできたと言えるでしょう！

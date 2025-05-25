@@ -1,0 +1,154 @@
+import { useState } from 'react';
+
+const SimpleForm = () => {
+  // フォームデータを管理する状態
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
+  
+  // エラーメッセージを管理する状態
+  const [error, setError] = useState('');
+  
+  // 送信完了メッセージの状態
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  
+  // 入力変更を処理するハンドラー
+  const handleChange = (e) => {
+    // 入力フィールドから名前と値を取得
+    const { name, value } = e.target;
+    
+    // フォームデータを更新（他のフィールドは維持しつつ、変更されたフィールドだけ更新）
+    setFormData({
+      ...formData,  // スプレッド演算子で既存のデータを維持
+      [name]: value // 変更されたフィールドだけ更新
+    });
+    
+    // 入力が変更されたらエラーを消去（UX向上）
+    setError('');
+  };
+  
+  // フォーム送信を処理するハンドラー
+  const handleSubmit = (e) => {
+    e.preventDefault();  // デフォルトの送信動作をキャンセル
+    
+    // バリデーション（入力チェック）
+    if (!formData.name.trim()) {
+      setError('名前は必須です');
+      return;  // エラーがあれば処理を中断
+    }
+    
+    if (!formData.email) {
+      setError('メールアドレスは必須です');
+      return;
+    }
+    
+    if (!formData.email.includes('@')) {
+      setError('正しいメールアドレスを入力してください');
+      return;
+    }
+    
+    if (!formData.password) {
+      setError('パスワードは必須です');
+      return;
+    }
+    
+    if (formData.password.length < 6) {
+      setError('パスワードは6文字以上必要です');
+      return;
+    }
+    
+    // ここまで来たらエラーなし（バリデーション成功）
+    console.log('送信成功:', formData);
+    setIsSubmitted(true);
+    
+    // 実際のAPIを呼び出す部分（面接では省略可）
+    // fetch('/api/register', {
+    //   method: 'POST', 
+    //   body: JSON.stringify(formData)
+    // });
+  };
+  
+  // 送信完了後に再度フォームを表示するために使用
+  const resetForm = () => {
+    setFormData({ name: '', email: '', password: '' });
+    setIsSubmitted(false);
+  };
+  
+  // 送信完了時のメッセージを表示
+  if (isSubmitted) {
+    return (
+      <div className="p-4 bg-green-100 rounded">
+        <h2 className="text-xl font-bold text-green-800">送信完了!</h2>
+        <p>フォームが正常に送信されました。</p>
+        <button 
+          onClick={resetForm}
+          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          新しいフォーム
+        </button>
+      </div>
+    );
+  }
+  
+  // 通常のフォーム表示
+  return (
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4">
+      <h2 className="text-xl font-bold mb-4">登録フォーム</h2>
+      
+      {/* エラーメッセージを表示 */}
+      {error && (
+        <div className="mb-4 p-2 bg-red-100 text-red-700 rounded">
+          {error}
+        </div>
+      )}
+      
+      {/* 名前フィールド */}
+      <div className="mb-4">
+        <label className="block mb-2">名前</label>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          className="w-full px-4 py-2 border rounded"
+        />
+      </div>
+      
+      {/* メールフィールド */}
+      <div className="mb-4">
+        <label className="block mb-2">メールアドレス</label>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-4 py-2 border rounded"
+        />
+      </div>
+      
+      {/* パスワードフィールド */}
+      <div className="mb-4">
+        <label className="block mb-2">パスワード</label>
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-4 py-2 border rounded"
+        />
+      </div>
+      
+      {/* 送信ボタン */}
+      <button 
+        type="submit"
+        className="w-full bg-blue-500 text-white px-4 py-2 rounded"
+      >
+        登録する
+      </button>
+    </form>
+  );
+};
+
+export default SimpleForm;

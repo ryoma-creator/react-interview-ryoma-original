@@ -1,0 +1,290 @@
+// JavaScript 基本問題集 - IBMエントリーレベル面接対策
+// 以下の問題はIBMのエントリーレベルのフロントエンド開発者向けコーディングテストに合わせた基本的な内容です。
+; 💡問題４はよくわからなかったけど実務で絶対使えそうなobjectからのやつ作るやつ　やって！
+
+
+
+// ========== 配列操作の基本 ==========
+
+// 問題1: map - 数値配列の各要素を2倍にする
+// 入力: [1, 2, 3, 4, 5]
+// 出力: [2, 4, 6, 8, 10]
+function doubleNumbers(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(doubleNumbers([1, 2, 3, 4, 5])); // [2, 4, 6, 8, 10]
+
+// 問題2: filter - 偶数のみをフィルタリングする
+// 入力: [1, 2, 3, 4, 5, 6]
+// 出力: [2, 4, 6]
+function filterEvenNumbers(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(filterEvenNumbers([1, 2, 3, 4, 5, 6])); // [2, 4, 6]
+
+// 問題3: reduce - 配列の合計を計算する
+// 入力: [1, 2, 3, 4, 5]
+// 出力: 15
+function sumArray(arr) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(sumArray([1, 2, 3, 4, 5])); // 15
+
+// ========== オブジェクト操作 ==========
+
+// 問題4: オブジェクトからプロパティを抽出する
+// 入力: { name: "John", age: 30, city: "New York" }, ["name", "city"]
+// 出力: { name: "John", city: "New York" }
+function pickProperties(obj, props) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(pickProperties({ name: "John", age: 30, city: "New York" }, ["name", "city"]));
+// { name: "John", city: "New York" }
+
+// 問題5: オブジェクトの値を変換する
+// 入力: { a: 1, b: 2, c: 3 }
+// 出力: { a: 2, b: 4, c: 6 } (すべての値を2倍にする)
+function doubleValues(obj) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log(doubleValues({ a: 1, b: 2, c: 3 })); // { a: 2, b: 4, c: 6 }
+
+// ========== 基本的な非同期処理 ==========
+
+// 問題6: 基本的なPromiseの作成
+// 1秒後に"完了"というメッセージを返すPromiseを作成してください
+function delayedResponse() {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題6: 開始");
+delayedResponse()
+  .then(message => {
+    console.log(message); // "完了"
+  });
+console.log("問題6: Promiseを作成しました");
+
+// 問題7: Promiseによる連続処理
+// 数値を受け取り、1秒後にその数値を2倍にし、
+// さらに1秒後にその結果に10を足すPromiseチェーンを作成してください
+function processNumberWithDelay(num) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題7: 開始");
+processNumberWithDelay(5)
+  .then(result => {
+    console.log("最終結果:", result); // 20 (5*2 + 10)
+  });
+console.log("問題7: 処理を開始しました");
+
+// 問題8: 基本的なasync/awaitの使用
+// 問題6と同じ機能をasync/awaitを使って実装してください
+async function delayedResponseAsync() {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+console.log("問題8: 開始");
+delayedResponseAsync()
+  .then(message => {
+    console.log(message); // "完了"
+  });
+console.log("問題8: async関数を呼び出しました");
+
+// 問題9: async/awaitでの基本的なエラーハンドリング
+// 引数が0以下の場合はエラーをスロー、それ以外の場合は値を返すasync関数を作成してください
+async function validatePositiveNumber(num) {
+  // ここにコードを書いてください
+  
+}
+
+// テスト
+validatePositiveNumber(5)
+  .then(result => {
+    console.log("有効な数値:", result); // 5
+  })
+  .catch(error => {
+    console.error("このメッセージは表示されないはずです");
+  });
+
+validatePositiveNumber(-3)
+  .then(result => {
+    console.log("このメッセージは表示されないはずです");
+  })
+  .catch(error => {
+    console.error("エラー:", error.message); // "数値は0より大きくなければなりません"
+  });
+
+// ========== 基本的なDOM操作（面接で出る可能性がある内容） ==========
+
+// 問題10: 要素の選択と内容の変更
+// id="output"の要素のテキストを"更新されました"に変更する関数を作成してください
+function updateTextContent() {
+  // ここにコードを書いてください
+  // 注: この関数はブラウザ環境でのみ動作します
+}
+
+// 問題11: 新しい要素の作成と追加
+// リストに新しいアイテムを追加する関数を作成してください
+// ul#list に新しいli要素を追加し、テキストは引数で受け取った値を使用します
+function addListItem(text) {
+  // ここにコードを書いてください
+  // 注: この関数はブラウザ環境でのみ動作します
+}
+
+// 問題12: イベントリスナーの追加
+// ボタンがクリックされたときにアラートを表示する関数を作成してください
+function setupButtonListener() {
+  // ここにコードを書いてください
+  // id="myButton"のボタンがクリックされたときに"ボタンがクリックされました"というアラートを表示
+  // 注: この関数はブラウザ環境でのみ動作します
+}
+
+// 模範解答 (練習後に確認してください)
+/*
+// 問題1: map - 数値配列の各要素を2倍にする
+function doubleNumbers(arr) {
+  return arr.map(num => num * 2);
+}
+
+// 問題2: filter - 偶数のみをフィルタリングする
+function filterEvenNumbers(arr) {
+  return arr.filter(num => num % 2 === 0);
+}
+
+// 問題3: reduce - 配列の合計を計算する
+function sumArray(arr) {
+  return arr.reduce((total, num) => total + num, 0);
+}
+
+// 問題4: オブジェクトからプロパティを抽出する
+function pickProperties(obj, props) {
+  const result = {};
+  props.forEach(prop => {
+    if (obj.hasOwnProperty(prop)) {
+      result[prop] = obj[prop];
+    }
+  });
+  return result;
+  
+  // または、より簡潔に:
+  // return props.reduce((result, prop) => {
+  //   if (obj.hasOwnProperty(prop)) {
+  //     result[prop] = obj[prop];
+  //   }
+  //   return result;
+  // }, {});
+}
+
+// 問題5: オブジェクトの値を変換する
+function doubleValues(obj) {
+  const result = {};
+  for (const key in obj) {
+    result[key] = obj[key] * 2;
+  }
+  return result;
+  
+  // または、Object.entriesを使用:
+  // return Object.fromEntries(
+  //   Object.entries(obj).map(([key, value]) => [key, value * 2])
+  // );
+}
+
+// 問題6: 基本的なPromiseの作成
+function delayedResponse() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("完了");
+    }, 1000);
+  });
+}
+
+// 問題7: Promiseによる連続処理
+function processNumberWithDelay(num) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const doubled = num * 2;
+      setTimeout(() => {
+        resolve(doubled + 10);
+      }, 1000);
+    }, 1000);
+  });
+  
+  // または、より良いチェーン:
+  // return new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     resolve(num * 2);
+  //   }, 1000);
+  // }).then(doubled => {
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve(doubled + 10);
+  //     }, 1000);
+  //   });
+  // });
+}
+
+// 問題8: 基本的なasync/awaitの使用
+async function delayedResponseAsync() {
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+  await delay(1000);
+  return "完了";
+}
+
+// 問題9: async/awaitでの基本的なエラーハンドリング
+async function validatePositiveNumber(num) {
+  if (num <= 0) {
+    throw new Error("数値は0より大きくなければなりません");
+  }
+  return num;
+}
+
+// 問題10: 要素の選択と内容の変更
+function updateTextContent() {
+  const outputElement = document.getElementById("output");
+  if (outputElement) {
+    outputElement.textContent = "更新されました";
+  }
+}
+
+// 問題11: 新しい要素の作成と追加
+function addListItem(text) {
+  const list = document.getElementById("list");
+  if (list) {
+    const newItem = document.createElement("li");
+    newItem.textContent = text;
+    list.appendChild(newItem);
+  }
+}
+
+// 問題12: イベントリスナーの追加
+function setupButtonListener() {
+  const button = document.getElementById("myButton");
+  if (button) {
+    button.addEventListener("click", function() {
+      alert("ボタンがクリックされました");
+    });
+  }
+}
+*/
