@@ -1,0 +1,171 @@
+
+2025 May 26
+const id = button.dataset.id;  // "123"が取れる
+
+これってto do listの時だけ重要？それともformとか検索するときに必要になるか？
+idで調べるなら、必要かもしれないが、検索用語で調べるなら、フィルターの仕方が違うか。？
+
+            <button data-id="${item.id}">削除</button>
+        `;
+        
+        // ↓この新しく作ったボタンにイベント設定
+        const deleteButton = div.querySelector('button');
+ここよくわからない。div出たどってbuttonで指定しているけど、他のhtml上で同じものがあったとしたら、どうなるの？
+
+
+divからbuttonを探す
+
+そのdivの中のbuttonだけ取得します！
+
+javascript
+
+// 新しく作ったdivの中のbuttonだけ
+const deleteButton = div.querySelector('button');
+
+他のbuttonは関係ありません。 そのdivの範囲内だけ探します。
+
+そのdivのっていうのはどうして？さっきのdivって書いただけで、なんで特定のdivだけを指定できた？それがわからない。
+
+divからbuttonを探す
+そのdivの中のbuttonだけ取得します！
+
+javascript
+// 新しく作ったdivの中のbuttonだけ
+const deleteButton = div.querySelector('button');
+他のbuttonは関係ありません。 そのdivの範囲内だけ探します。
+
+そのdivのっていうのはどうして？さっきのdivって書いただけで、なんで特定のdivだけを指定できた？それがわからない。
+
+更新（Update）の問題も作りましょうか？
+うん、お願い。to do listの考え方で重要なのは、日々、慣らしておきたいから
+すぐできそうな感じで大事な考え方をキープしたい
+
+return items.push(newItem); // ❌ pushは配列の長さを返す
+
+配列の長さって.lengthでしょ？
+
+React でも同じ考え方です！
+
+javascript
+
+setTodos([...todos, newItem]);  // 新しい配列を作る
+reactでも、 items.push(newItem);
+これでsetTodosへは追加できないの？
+
+/*
+
+問題1: 配列への追加（Create）
+
+新しいアイテムを配列に追加する
+
+*/
+
+function addItem(items, newItem) {
+
+  // ここにコードを書いてください
+
+  return [...items,newItem];
+
+}
+
+// テスト
+
+let todos = ['買い物', '勉強'];
+
+console.log(addItem(todos, '運動')); // ['買い物', '勉強', '運動']
+
+これでもエラー？もしかして、
+
+/*
+
+問題1: 配列への追加（Create）
+
+新しいアイテムを配列に追加する
+
+*/
+
+function addItem(items, newItem) {
+
+  // ここにコードを書いてください
+
+  return [...items,newItem];
+
+}
+
+// テスト
+
+let todos = ['買い物', '勉強'];
+
+console.log(addItem(todos, '運動')); // ['買い物', '勉強', '運動']
+
+/*
+
+問題2: IDで削除（Delete）
+
+IDが一致するアイテムを削除
+
+*/
+
+function deleteById(items, id) {
+
+  // ここにコードを書いてください
+
+}
+
+// テスト
+
+let items = [{id: 1, text: '買い物'}, {id: 2, text: '勉強'}];
+
+console.log(deleteById(items, 1)); // [{id: 2, text: '勉強'}]
+
+/*
+
+問題3: 検索フィルター（Read）
+
+キーワードを含むアイテムを検索
+
+*/
+
+function searchItems(items, keyword) {
+
+  // ここにコードを書いてください
+
+}
+
+// テスト
+
+let todos = ['買い物リスト', '勉強計画', '買い物予算'];
+
+console.log(searchItems(todos, '買い物')); // ['買い物リスト', '買い物予算']
+
+これ問題としてjsに全部貼っているけど、
+
+todosっていうのが同名でたくさん定義されたことになっているのか？
+
+/*
+
+問題2: IDで削除（Delete）
+
+IDが一致するアイテムを削除
+
+*/
+
+function deleteById(items, id) {
+
+  // ここにコードを書いてください
+
+  return items.filter(item => item.id !== id);
+
+}
+
+// テスト
+
+let items = [{id: 1, text: '買い物'}, {id: 2, text: '勉強'}];
+
+console.log(deleteById(items, 1)); // [{id: 2, text: '勉強'}]
+
+/*
+
+これは間違い？
+
+
