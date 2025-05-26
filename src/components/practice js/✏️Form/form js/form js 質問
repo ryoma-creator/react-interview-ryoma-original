@@ -266,3 +266,44 @@ onClickとか直接要素に書くからいらないんだっけ？
 // 画面表示更新 renderItems(); } // 画面に表示 function renderItems() { todoList.innerHTML = ''; // 一旦クリア items.forEach(item => { const div = document.createElement('div'); div.innerHTML = <span>${item.text}</span>; todoList.appendChild(div); });
 
 このrender itemsのやつが一元管理というか、こいつを通せば表示できるようになるんだろ？これがわからんのよ。filteredとかいうやつでも別の関数なのに、なんでこいつと押すと表示できるようにできるのか。ここの考え、超簡単て思えるように教えてくれる？
+
+const id = this.dataset.id; // ←これでIDを取得
+
+dataset.idって何？どこからきた？追加時のobjectのkeyの君が勝手につけた名前？
+
+thisはbuttonかな。// ボタンがクリックされた時 button.addEventListener('click', function() { const id = this.dataset.id; // ←これでIDを取得 deleteItem(id); // ←削除実行 });
+
+でもbuttonってhtml上に大量にあるんだから、これだけで指定できるの？
+
+削除ボタンについては君のコード上だとまだ、querySelectorとか、指定してないよね？buttonは変数名？
+
+ <button onClick={() => deleteItem(item.id)}>削除</button>
+
+        {/* ↑直接IDを渡せる */}
+
+ああ、reactだとここで渡せるのか。すっかり忘れているは。３ヶ月も、vanila js復習していたら。
+
+
+// 検索
+function search(keyword) {
+    if (keyword === '') {
+        filteredItems = [...items];  // ←元に戻す
+    } else {
+        filteredItems = items.filter(item => item.includes(keyword));
+    }
+}
+
+元データのitemsは絶対に変更しないから戻せます！
+
+どういうこと？
+
+itemsに足して.filterして新しい配列を作っているよね？
+
+作ったやつは、filteredItemsの前もって作っておいた、変数へ入れるから、
+
+大丈夫ってこと？もしここがitemsとか入れちゃったら、Itemsのやつが上書きされて消えるってこと？
+
+表示させる関数は、どっちを表示するの？2つもあるよね？どっちにも表示させる関数使っているけど。これが謎だ。
+
+ 
+

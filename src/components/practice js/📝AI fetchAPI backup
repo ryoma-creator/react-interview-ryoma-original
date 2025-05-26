@@ -6451,8 +6451,66 @@ const apiData = await fetchUserData(); // ←これ！
 
 大枠もそうだな。fetchしたものはこれをつけないといけないのか。そして、呼び出しの関数には、awaitつけるのか。やば、忘れるわ。もし、promisechainならどうなっていた？
 
+🎯 暗記不要の思考法
+
+「何を入れて、何が出てくるか」を最初に考える
+
+関数は「材料を入れて、完成品を出す工場」
+
+戻り値が必要なら変数に保存、不要ならそのまま使う
+
+この思考パターンがあれば、どんな関数でも同じように作れます！
+
+これができるようになりたい。できるようにするにはどうしたらいい？これを毎回やって、何度も暗記するんじゃなくて、少ない量でその思考を使えば全部できるようになりたい。。。記憶量が多すぎて、テストまで全部復習しきれない。
+
+// 呼び出される側（関数定義） async function fetchUserData() { // ←asyncをつける const response = await fetch(url); // ←fetchにawaitをつける return data;
+
+awaitをどれにつけるのかが判断できない。関数のfunctionとか書いているのは、asyncって書いておけば良さそうっていうのはなんとなくわかるが
+
+// 呼び出し側 document.addEventListener('DOMContentLoaded', function() { // asyncなし fetchUserData() .then(apiData => { // awaitの代わりにthen console.log('データ:', apiData); // テーブル表示処理... }); });
+
+こっちの呼び出し時に.thenでデータを受け取ったところから開始するのか。。しらなかったよ。。
 
 
+const id = this.dataset.id; // ←これでIDを取得
+
+dataset.idって何？どこからきた？追加時のobjectのkeyの君が勝手につけた名前？
+
+thisはbuttonかな。// ボタンがクリックされた時 button.addEventListener('click', function() { const id = this.dataset.id; // ←これでIDを取得 deleteItem(id); // ←削除実行 });
+
+でもbuttonってhtml上に大量にあるんだから、これだけで指定できるの？
+
+削除ボタンについては君のコード上だとまだ、querySelectorとか、指定してないよね？buttonは変数名？
+
+ <button onClick={() => deleteItem(item.id)}>削除</button>
+
+        {/* ↑直接IDを渡せる */}
+
+ああ、reactだとここで渡せるのか。すっかり忘れているは。３ヶ月も、vanila js復習していたら。
+
+
+// 検索
+function search(keyword) {
+    if (keyword === '') {
+        filteredItems = [...items];  // ←元に戻す
+    } else {
+        filteredItems = items.filter(item => item.includes(keyword));
+    }
+}
+
+元データのitemsは絶対に変更しないから戻せます！
+
+どういうこと？
+
+itemsに足して.filterして新しい配列を作っているよね？
+
+作ったやつは、filteredItemsの前もって作っておいた、変数へ入れるから、
+
+大丈夫ってこと？もしここがitemsとか入れちゃったら、Itemsのやつが上書きされて消えるってこと？
+
+表示させる関数は、どっちを表示するの？2つもあるよね？どっちにも表示させる関数使っているけど。これが謎だ。
+
+ 
 
 
 
