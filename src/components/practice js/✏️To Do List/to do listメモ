@@ -168,4 +168,52 @@ console.log(deleteById(items, 1)); // [{id: 2, text: '勉強'}]
 
 これは間違い？
 
+/*
+問題3: 検索フィルター（Read）
+キーワードを含むアイテムを検索
+*/
+function searchItems(items, keyword) {
+  // ここにコードを書いてください
+  return items.filter(item => item.includes(keyword));
+}
+
+// テスト
+let todos = ['買い物リスト', '勉強計画', '買い物予算'];
+console.log(searchItems(todos, '買い物')); // ['買い物リスト', '買い物予算']
+
+/*
+
+問題4: IDで更新（Update）
+
+IDが一致するアイテムのtextを新しい値に更新
+
+*/
+
+function updateById(items, id, newText) {
+
+  // ここにコードを書いてください
+
+  return items.forEach(item => item.id === id ? {id: item.id, text: newText} : item);
+
+}
+
+// テスト
+
+let items = [{id: 1, text: '買い物'}, {id: 2, text: '勉強'}];
+
+console.log(updateById(items, 1, '買い物完了')); 
+
+// [{id: 1, text: '買い物完了'}, {id: 2, text: '勉強'}]
+
+これじゃダメかな？
+
+考え方は、ようは、配列の中の個別のものにアクセスするから、配列メソッドをまず使う、
+
+今回はfilterじゃんなくて条件分岐したいから、無難にforEach選ぶ。
+
+次に、idがもし同じなら、さっきのidの場所へ、新しいテキストを値として入れる
+
+もしそうじゃないなら、そのまま返す。だから、ここでは, 配列メソッドのparameterをおいて、そのobjectを返すようにする。
+
+でもこれじゃエラーになるんだ。なんでだ？
 
