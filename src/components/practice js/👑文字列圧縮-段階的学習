@@ -167,7 +167,7 @@ console.log(compressFirstPart("xyyyz")); // "x1yyyz"
 // ; 問題6: 文字列全体を圧縮
 // ; 文字列全体を少しずつ圧縮していく関数を作成してください。
 
-// 問題6: 再帰を使って文字列全体を少しずつ圧縮する
+// 問題6: 再帰を使って文字列全体を少しずつ圧縮する→再起飛ばしてもいいかも
 // 例: compressRecursive("aaabbc") -> "a3b2c1"
 function compressRecursive(str) {
   // ここにコードを書いてください
@@ -193,3 +193,35 @@ console.log(compressString("aaabbc")); // "a3b2c1"
 console.log(compressString("aabcccccaaa")); // "a2b1c5a3"
 console.log(compressString("abcdef")); // "a1b1c1d1e1f1"
 
+
+
+// count 
+// 2025 Jun 11 (1-3まで) , Jun 12 (1-5まで), Jun 13 (1-7, 6以外)
+
+
+
+; 問題7 解答例
+; function compressString(str) {
+;   if (str.length === 0) return "";
+  
+;   let result = "";
+;   let currentChar = str[0];  // 現在処理中の文字
+;   let count = 1;             // その文字のカウント
+  
+;   for (let i = 1; i < str.length; i++) {
+;     if (str[i] === currentChar) {
+;       // 同じ文字が続く場合
+;       count++;
+;     } else {
+;       // 文字が変わった場合
+;       result += currentChar + count;  // 前の文字とカウントを結果に追加
+;       currentChar = str[i];           // 新しい文字に更新
+;       count = 1;                      // カウントをリセット
+;     }
+;   }
+  
+;   // 最後の文字とカウントを追加（重要！）
+;   result += currentChar + count;
+  
+;   return result;
+; }

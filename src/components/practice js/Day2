@@ -13,6 +13,30 @@ function convertToNumber(str) {
 console.log(convertToNumber("42")); // 42 (数値型)
 console.log(typeof convertToNumber("42")); // "number"
 
+追加問題: hacker rank
+// 問題1: 基本の絶対値計算
+// 入力例: -15
+// 出力例: 15
+function getAbsoluteValue(num) {
+  // Math.abs()
+  
+}
+
+// テスト
+console.log(getAbsoluteValue(-15)); // 15
+console.log(getAbsoluteValue(10));  // 10
+console.log(getAbsoluteValue(0));   // 0
+
+// 答え:
+function getAbsoluteValueAnswer(num) {
+  if (num < 0) {
+    return -num;
+  } else {
+    return num;
+  }
+}
+
+
 // 問題2: 小数点以下を切り捨てる
 // 入力例: 3.7
 // 出力例: 3
@@ -135,15 +159,15 @@ function calculateAverage(arr) {
 }
 */
 
-; function calculateAverage(arr) {
-;   // ここにコードを書いてください
-;   let sum = 0;
-;   for(let i = 0; i < arr.length; i++){
-;     sum += arr[i];
-;   }
-;   return sum/arr.length;  
-; }
+// ; function calculateAverage(arr) {
+// ;   // ここにコードを書いてください
+// ;   let sum = 0;
+// ;   for(let i = 0; i < arr.length; i++){
+// ;     sum += arr[i];
+// ;   }
+// ;   return sum/arr.length;  
+// ; }
 
 
-Complete Count from May 10
-May 10, May 19
+// Complete Count from May 10
+// May 10, May 19 ,Jun 11

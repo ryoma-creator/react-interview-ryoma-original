@@ -12,16 +12,6 @@ HTMLコード（CodePenのHTMLに貼り付け）:
 
 /* CSS 基礎練習 - Day 2: ボックスモデル (5分で復習) */
 
-/*
-HTMLコード（CodePenのHTMLに貼り付け）:
-
-<div class="container">
-  <div class="box1">ボックス1</div>
-  <div class="box2">ボックス2</div>
-  <div class="box3">ボックス3</div>
-</div>
-*/
-
 /* 基本リセット */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
