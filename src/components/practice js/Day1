@@ -78,12 +78,19 @@ function reverseString(str) {
 function isEvenOrOdd(num) {
   return num % 2 === 0 ? "偶数" : "奇数";
 }
+if文でも違いはわかっておいて。if文ではなぜ奇数と偶数が逆になる？
+0とそれ以外の挙動を知って。
+https://www.notion.so/if-30d7a17109708002b199cd6f49371af2
+
 
 // 問題4: 配列内の最大値を見つける
 function findMax(arr) {
   return Math.max(...arr);
   // または return arr.reduce((max, current) => current > max ? current : max, arr[0]);
 }
+▶︎ find ofでもやってみて。練習になる。
+https://www.notion.so/for-of-30d7a1710970804b9581f4a7e51b6f37
+
 
 // 問題5: 配列内の特定の値の出現回数をカウントする
 function countOccurrences(arr, value) {
@@ -96,11 +103,14 @@ function countOccurrences(arr, value) {
   //   }
   // }
   // return count;
-}
-*/
+}//
 
 
 
 
 Complete Count from May 10
-May 10, May 19, Jun 10,
+2025
+May 10, May 19, Jun 10, 
+
+2026 
+Feb 20,
