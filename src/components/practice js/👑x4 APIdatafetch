@@ -32,6 +32,7 @@
 ;     .then(data => {
 ;       console.log(data);
 ;       const resultDivElement = document.getElementById("result");
+
 ;       resultDivElement.textContent = data.title;
 ;     })
 ; });

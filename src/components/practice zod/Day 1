@@ -1,0 +1,83 @@
+// Zod 日次練習問題 - Day 1 (基礎: parse / safeParse / error)
+// 目的: 「正しい入力だけ通す」「落ちたら理由を返す」を体に入れる
+
+import { z } from "zod";
+
+// Problem 1: 文字列の長さチェック（username）
+// 条件: 3〜20文字, 英数字と_のみ
+// 入力例: "ryoma_01" -> OK
+// 入力例: "r!" -> NG
+export const usernameSchema = z
+  .string()
+  // ここにzodを追加
+  ;
+
+export function validateUsername(input: unknown) {
+  // ここで safeParse を使って、成功/失敗を返す
+}
+
+// Test
+console.log(validateUsername("ryoma_01"));
+console.log(validateUsername("r!"));
+
+// ------------------------------------------------------------
+
+// Problem 2: numberの基本（age）
+// 条件: 整数, 0〜120
+// 注意: inputは unknown
+export const ageSchema = z
+  .number()
+  // ここに条件
+  ;
+
+export function validateAge(input: unknown) {}
+
+// Test
+console.log(validateAge(25));
+console.log(validateAge("25")); // NG（Day1はcoerceしない）
+
+// ------------------------------------------------------------
+
+// Problem 3: coerce（フォームから来るstringをnumberに）
+// 条件: price は 0以上, 小数OK
+// 入力例: "19.99" -> 19.99
+// 入力例: "" -> NG
+export const priceSchema = z
+  // ここ：z.coerce.number() を使う
+  ;
+
+export function parsePrice(input: unknown) {}
+
+// Test
+console.log(parsePrice("19.99"));
+console.log(parsePrice(""));
+
+// ------------------------------------------------------------
+
+// Problem 4: objectの基本（Signup payload）
+// 条件:
+// - email: 有効なメール
+// - password: 8文字以上
+// - age: (optional) 0〜120
+export const signupSchema = z.object({
+  // ここに定義
+});
+
+export function validateSignup(body: unknown) {}
+
+// Test
+console.log(validateSignup({ email: "a@b.com", password: "12345678" }));
+console.log(validateSignup({ email: "bad", password: "123" }));
+
+// ------------------------------------------------------------
+
+// Problem 5: API向けエラーフォーマット（Next.jsの実務）
+// safeParse失敗時に:
+// { ok:false, fieldErrors: { email?: string[], password?: string[] ... } }
+// 成功時に:
+// { ok:true, data: <parsed data> }
+export function toApiResult<T>(result: z.SafeParseReturnType<unknown, T>) {
+  // ここに実装
+}
+
+// Test（Problem4の結果を入れて試す）
